@@ -1,0 +1,46 @@
+.footer {
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&-container {
+		padding: 0px 20px;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__copyright {
+		font-family: Steppe;
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 14px;
+		letter-spacing: 0em;
+	}
+	&__github {
+		width: 40px;
+		height: 40px;
+		background: url("https://raw.githubusercontent.com/ConstantineTU/rsschool-cv/gh-pages/img/header/header-footer/github.svg")
+			no-repeat;
+		opacity: 0.8;
+		background-size: contain;
+		transition: opacity 0.3s;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	&__rss {
+		display: block;
+		width: 83px;
+		height: 30px;
+		background: url("https://raw.githubusercontent.com/ConstantineTU/rsschool-cv/gh-pages/img/header/header-footer/rs-logo.svg")
+			no-repeat;
+		background-size: contain;
+		opacity: 0.8;
+		transition: opacity 0.3s;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
