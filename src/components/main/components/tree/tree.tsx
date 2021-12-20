@@ -5,8 +5,6 @@ import { Component } from 'react';
 //   activePage: string
 // }
 
-export default function Tree({ }) {
-  return (
-    <div>Tree Content</div>
-  );
+export default function Tree({}) {
+  return <div>Tree Content</div>;
 }

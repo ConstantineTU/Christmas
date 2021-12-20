@@ -2,11 +2,10 @@ import React, { Component, Fragment, useState } from 'react';
 import Header from '../header/header';
 import Main from '../main/main';
 import Footer from '../footer/footer';
-import toysData from '../../assets/data/data'
-
+import toysData from '../../assets/data/data';
 
 const App = () => {
-  const [activePage, setActivePage] = useState('игрушки')
+  const [activePage, setActivePage] = useState('игрушки');
 
   return (
     <Fragment>
@@ -14,9 +13,7 @@ const App = () => {
       <Main activePage={activePage} toysData={toysData} />
       <Footer />
     </Fragment>
-  )
-}
-
-
+  );
+};
 
 export default App;

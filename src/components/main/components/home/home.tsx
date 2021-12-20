@@ -5,8 +5,6 @@ import { Component } from 'react';
 //   activePage: string
 // }
 
-export default function Home({ }) {
-  return (
-    <div>Home Content</div>
-  );
+export default function Home({}) {
+  return <div>Home Content</div>;
 }

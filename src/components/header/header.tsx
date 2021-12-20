@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Component, Fragment, Dispatch } from 'react';
 import './header.scss';
 
-
-import Nav from './nav-link/nav'
+import Nav from './nav-link/nav';
 
 type Props = {
-  activePage: string
-  handleChangeActive: Dispatch<React.SetStateAction<string>>
-}
+  activePage: string;
+  handleChangeActive: Dispatch<React.SetStateAction<string>>;
+};
 
 export default function Header({ activePage, handleChangeActive }: Props) {
   return (
@@ -17,7 +16,6 @@ export default function Header({ activePage, handleChangeActive }: Props) {
     </header>
   );
 }
-
 
 // import NavLink from './nav-link/nav-link';
 

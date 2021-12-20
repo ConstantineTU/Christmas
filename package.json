@@ -50,10 +50,6 @@
     "html-webpack-plugin": "^5.2.0",
     "mini-css-extract-plugin": "^1.6.2",
     "prettier": "2.2.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router": "^6.2.1",
-    "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "sass": "^1.42.1",
     "sass-loader": "^11.1.1",
@@ -67,6 +63,10 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "ts-loader": "^9.2.6"
+    "ts-loader": "^9.2.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1"
   }
 }

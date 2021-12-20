@@ -2,24 +2,29 @@ import * as React from 'react';
 import { Dispatch } from 'react';
 import './nav.scss';
 // import { Link } from 'react-router-dom'
-import NavItem from './nav-item'
+import NavItem from './nav-item';
 
 type Props = {
-  activePage: string
-  handleChangeActive: Dispatch<React.SetStateAction<string>>
-}
+  activePage: string;
+  handleChangeActive: Dispatch<React.SetStateAction<string>>;
+};
 
 export default function Nav({ activePage, handleChangeActive }: Props) {
-  const pages = ['домашняя', 'игрушки', 'ёлка']
+  const pages = ['домашняя', 'игрушки', 'ёлка'];
 
   return (
-    <ul className='nav'>
-      {pages.map((pageName, index) => <NavItem pageName={pageName} key={index} active={activePage === pageName}
-        handleChangeActive={handleChangeActive} />)}
+    <ul className="nav">
+      {pages.map((pageName, index) => (
+        <NavItem
+          pageName={pageName}
+          key={index}
+          active={activePage === pageName}
+          handleChangeActive={handleChangeActive}
+        />
+      ))}
     </ul>
-  )
+  );
 }
-
 
 // const AppLink = (props) => ({
 //   render: () => (
