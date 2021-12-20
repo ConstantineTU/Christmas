@@ -8,6 +8,13 @@
 //<Подключаем шрифты>=======================================================================================
 //&display=swap&subset=cyrillic-ext
 // @import "fonts";
+@font-face {
+	font-family: "Steppe";
+	src: url("../fonts/Steppe.woff2") format("woff2"), /* Modern Browsers */ url("../fonts/Steppe.otf") format("opentype"); /* Safari, Android, iOS */
+	font-style: normal;
+	font-weight: normal;
+	text-rendering: optimizeLegibility;
+}
 
 //</Подключаем шрифты>=======================================================================================
 
@@ -113,6 +120,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background: url("../img/bg.jpg") no-repeat;
+	background: url("../img/bg.jpg") no-repeat fixed;
 	background-size: cover;
 }

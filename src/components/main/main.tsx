@@ -3,7 +3,7 @@ import { Component } from 'react';
 import './main.scss';
 
 import Home from './components/home/home'
-import FiltersAndToys from './components/filters/filters&toys'
+import FiltersAndToys from './components/filters&toys/filters&toys'
 import Tree from './components/tree/tree'
 
 type Props = {

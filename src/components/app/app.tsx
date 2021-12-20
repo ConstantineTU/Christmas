@@ -6,7 +6,7 @@ import toysData from '../../assets/data/data'
 
 
 const App = () => {
-  const [activePage, setActivePage] = useState('toys')
+  const [activePage, setActivePage] = useState('игрушки')
 
   return (
     <Fragment>

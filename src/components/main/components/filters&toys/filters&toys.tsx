@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 
 import Filters from './components/filters/filters';
-import Toys from './components/toys';
+import Toys from './components/toys/toys';
 
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
 
 export default function FiltersAndToys({ toysData }: Props) {
   return (
-    <div className="main">
+    <div className="toys section">
       {<Filters toysData={toysData} />}
       {<Toys toysData={toysData} />}
     </div>
