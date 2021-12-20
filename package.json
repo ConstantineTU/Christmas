@@ -15,9 +15,7 @@
     "url": ""
   },
   "keywords": [],
-  "author": "Aleh Serhiyenia",
-  "license": "ISC",
-  "homepage": "",
+  "author": "ConstantineTU",
   "babel": {
     "presets": [
       "@babel/env",
@@ -32,6 +30,7 @@
     "@types/node": "^16.11.14",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
+    "@types/react-router-dom": "^5.3.2",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "babel-loader": "^8.2.3",
@@ -53,6 +52,8 @@
     "prettier": "2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "sass": "^1.42.1",
     "sass-loader": "^11.1.1",

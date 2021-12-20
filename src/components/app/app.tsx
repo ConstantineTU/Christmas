@@ -1,22 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 import Header from '../header/header';
 import Main from '../main/main';
 import Footer from '../footer/footer';
+import toysData from '../../assets/data/data'
 
-class App extends Component {
-  render(): React.ReactNode {
-    return (
-      <Fragment>
-        <Header />
-        <Main />
-        <Footer />
-      </Fragment>
-    );
-  }
 
-  // public start() {
+const App = () => {
+  const [activePage, setActivePage] = useState('toys')
 
-  // }
+  return (
+    <Fragment>
+      <Header activePage={activePage} handleChangeActive={setActivePage} />
+      <Main activePage={activePage} toysData={toysData} />
+      <Footer />
+    </Fragment>
+  )
 }
+
+
 
 export default App;
