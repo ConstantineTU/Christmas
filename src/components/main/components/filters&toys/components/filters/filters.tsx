@@ -15,16 +15,20 @@ import Search from './components/10-search';
 type Props = {
   toysData: object;
   search: {
-    value: string,
-    setValue: Dispatch<React.SetStateAction<string>>
-  },
+    value: string;
+    setValue: Dispatch<React.SetStateAction<string>>;
+  };
+  sorts: {
+    value: string;
+    setValue: Dispatch<React.SetStateAction<string>>;
+  };
 };
 
 export default function Filters(props: Props) {
   return (
     <div className="filters">
       <div className="filters-container">
-        <Sort toysData={props.toysData} />
+        <Sort toysData={props.toysData} sorts={props.sorts} />
         <div className="filters-container-wrap">
           <Categories toysData={props.toysData} />
 

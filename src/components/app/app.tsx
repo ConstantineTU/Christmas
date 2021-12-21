@@ -6,10 +6,9 @@ import toysData from '../../assets/data/data';
 
 const App = () => {
   const [activePage, setActivePage] = useState('игрушки');
-  const selectedToys = []
+  const selectedToys = [];
 
   const [favoriteToys, setFavoriteToys] = useState(0);
-
 
   return (
     <Fragment>

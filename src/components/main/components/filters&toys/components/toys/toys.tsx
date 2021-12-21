@@ -25,6 +25,7 @@ export default function Toys(props: Props) {
         <h2 className="card-items-title">Игрушки</h2>
         <div className="card-items-favorite">{props.favoriteToys}</div>
       </div>
+      {!props.toysData.length && <h3 className="card-items-subtitle">Извините, совпадений не обнаружено</h3>}
       <div className="card-items">
         {props.toysData.map((data, index) => (
           <CardItem key={index} data={data} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />

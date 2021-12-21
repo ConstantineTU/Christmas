@@ -14,19 +14,23 @@ type Props = {
     color: string;
     size: string;
     favorite: boolean;
-  }[],
-  favoriteToys: number,
-  setFavoriteToys: Dispatch<SetStateAction<number>>,
+  }[];
+  favoriteToys: number;
+  setFavoriteToys: Dispatch<SetStateAction<number>>;
   search: {
-    value: string,
-    setValue: Dispatch<SetStateAction<string>>
-  },
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
+  sorts: {
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
 };
 
 export default function FiltersAndToys(props: Props) {
   return (
     <div className="toys section">
-      {<Filters toysData={props.toysData} search={props.search} />}
+      {<Filters toysData={props.toysData} search={props.search} sorts={props.sorts} />}
       {<Toys toysData={props.toysData} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />}
     </div>
   );

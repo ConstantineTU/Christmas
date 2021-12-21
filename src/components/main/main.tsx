@@ -20,7 +20,6 @@ type Props = {
   }[];
   favoriteToys: number;
   setFavoriteToys: Dispatch<SetStateAction<number>>;
-
 };
 
 export default function Main({ activePage, toysData, favoriteToys, setFavoriteToys }: Props) {
@@ -32,19 +31,45 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
     sizeFilter: ['Big'],
     quantityFilter: { min: '', max: '' },
     purchaseYearFilter: { min: '', max: '' },
-    favoriteFilter: true
+    favoriteFilter: true,
   });
 
-  const [search, setSearch] = useState('')
+  function SortArray(a, b): number {
+    if (sorts === 'AZ') {
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    } else if (sorts === 'ZA') {
+      if (a.name < b.name) return 1;
+      if (a.name > b.name) return -1;
+      return 0;
+    } else if (sorts === 'yearAscending') {
+      return a.year - b.year;
+    } else if (sorts === 'yearDescending') {
+      return b.year - a.year;
+    } else {
+      return 0;
+    }
+  }
+
   const pages = ['домашняя', 'игрушки', 'ёлка'];
-  const newToysData = toysData.filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()))
+  const [search, setSearch] = useState<string>('');
+  const newToysData = toysData.filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()));
+  const [sorts, setSorts] = useState<string>('');
+
+  newToysData.sort(SortArray);
 
   return (
     <main className="main">
       {activePage === pages[0] && <Home />}
       {activePage === pages[1] && (
-        <FiltersAndToys toysData={newToysData} favoriteToys={favoriteToys} setFavoriteToys={setFavoriteToys}
-          search={{ value: search, setValue: setSearch }} />
+        <FiltersAndToys
+          toysData={newToysData}
+          favoriteToys={favoriteToys}
+          setFavoriteToys={setFavoriteToys}
+          search={{ value: search, setValue: setSearch }}
+          sorts={{ value: sorts, setValue: setSorts }}
+        />
       )}
       {activePage === pages[2] && <Tree />}
     </main>
