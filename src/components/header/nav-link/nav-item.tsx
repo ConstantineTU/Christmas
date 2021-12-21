@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { Component, Fragment, Dispatch } from 'react';
-import { Link } from 'react-router-dom';
+import { Dispatch, SetStateAction } from 'react';
 import './nav.scss';
 
 type Props = {
   pageName: string;
   active: boolean;
-  handleChangeActive: Dispatch<React.SetStateAction<string>>;
-  setFavoriteToys: Dispatch<React.SetStateAction<number>>;
+  handleChangeActive: Dispatch<SetStateAction<string>>;
+  setFavoriteToys: Dispatch<SetStateAction<number>>;
   favoriteToys: number;
 };
 
@@ -15,7 +14,7 @@ export default function NavItem({ pageName, active, handleChangeActive, setFavor
   const handleChange = () => {
     handleChangeActive(pageName);
     if (pageName !== 'игрушки') {
-      setFavoriteToys(favoriteToys = 0)
+      setFavoriteToys((favoriteToys = 0));
     }
   };
 

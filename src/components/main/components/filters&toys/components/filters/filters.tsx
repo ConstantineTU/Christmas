@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Component } from 'react';
+import { Dispatch } from 'react';
 import './filters.scss';
 import Sort from './components/1-sorting';
 import Categories from './components/2-categories';
@@ -14,25 +14,29 @@ import Search from './components/10-search';
 
 type Props = {
   toysData: object;
+  search: {
+    value: string,
+    setValue: Dispatch<React.SetStateAction<string>>
+  },
 };
 
-export default function Filters({ toysData }: Props) {
+export default function Filters(props: Props) {
   return (
     <div className="filters">
       <div className="filters-container">
-        <Sort toysData={toysData} />
+        <Sort toysData={props.toysData} />
         <div className="filters-container-wrap">
-          <Categories toysData={toysData} />
+          <Categories toysData={props.toysData} />
 
-          <Search toysData={toysData} />
+          <Search toysData={props.toysData} search={props.search} />
         </div>
-        <Forms toysData={toysData} />
-        <Quantity toysData={toysData} />
-        <AcquisitionsYear toysData={toysData} />
-        <Colors toysData={toysData} />
-        <Size toysData={toysData} />
-        <Favorite toysData={toysData} />
-        <DischargeButton toysData={toysData} />
+        <Forms toysData={props.toysData} />
+        <Quantity toysData={props.toysData} />
+        <AcquisitionsYear toysData={props.toysData} />
+        <Colors toysData={props.toysData} />
+        <Size toysData={props.toysData} />
+        <Favorite toysData={props.toysData} />
+        <DischargeButton toysData={props.toysData} />
       </div>
     </div>
   );

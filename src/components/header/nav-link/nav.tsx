@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import './nav.scss';
 // import { Link } from 'react-router-dom'
 import NavItem from './nav-item';
 
 type Props = {
   activePage: string;
-  handleChangeActive: Dispatch<React.SetStateAction<string>>;
-  setFavoriteToys: Dispatch<React.SetStateAction<number>>;
+  handleChangeActive: Dispatch<SetStateAction<string>>;
+  setFavoriteToys: Dispatch<SetStateAction<number>>;
   favoriteToys: number;
 };
 

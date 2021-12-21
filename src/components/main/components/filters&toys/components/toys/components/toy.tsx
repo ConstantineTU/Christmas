@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Images from '../../../../../../../assets/img/toys/images';
 
 type Props = {
@@ -13,24 +13,23 @@ type Props = {
     size: string;
     favorite: boolean;
   };
-  favoriteToys: number
-  setFavoriteToys: Dispatch<React.SetStateAction<number>>
+  favoriteToys: number;
+  setFavoriteToys: Dispatch<SetStateAction<number>>;
 };
 
 const getFavoriteCard = (e, setFavoriteToys, favoriteToys) => {
   if (e.currentTarget.classList.contains('active')) {
-    e.currentTarget.classList.remove('active')
-    setFavoriteToys(favoriteToys - 1)
+    e.currentTarget.classList.remove('active');
+    setFavoriteToys(favoriteToys - 1);
   } else {
     if (favoriteToys >= 20) {
-      alert("Извините, все слоты заполнены")
+      alert('Извините, все слоты заполнены');
     } else {
-      e.currentTarget.classList.add('active')
-      setFavoriteToys(favoriteToys + 1)
+      e.currentTarget.classList.add('active');
+      setFavoriteToys(favoriteToys + 1);
     }
-
   }
-}
+};
 
 export default function CardItem({ data, favoriteToys, setFavoriteToys }: Props) {
   return (
