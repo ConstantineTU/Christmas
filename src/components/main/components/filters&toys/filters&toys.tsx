@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Component } from 'react';
+import { Dispatch } from 'react';
 
 import Filters from './components/filters/filters';
 import Toys from './components/toys/toys';
@@ -15,13 +15,15 @@ type Props = {
     size: string;
     favorite: boolean;
   }[];
+  favoriteToys: number
+  setFavoriteToys: Dispatch<React.SetStateAction<number>>
 };
 
-export default function FiltersAndToys({ toysData }: Props) {
+export default function FiltersAndToys({ toysData, favoriteToys, setFavoriteToys }: Props) {
   return (
     <div className="toys section">
       {<Filters toysData={toysData} />}
-      {<Toys toysData={toysData} />}
+      {<Toys toysData={toysData} favoriteToys={favoriteToys} setFavoriteToys={setFavoriteToys} />}
     </div>
   );
 }

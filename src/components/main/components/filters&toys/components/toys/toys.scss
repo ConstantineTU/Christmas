@@ -7,16 +7,46 @@
 		grid-template-columns: repeat(auto-fill, 222px);
 		justify-content: center;
 		gap: 36px 36px;
+		&-favorite {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			font-size: 30px;
+			flex-direction: column;
+			width: 90px;
+			height: 90px;
+			background: url("../../../../../../assets/img/svg/ball-2.svg") no-repeat;
+			z-index: 5;
+			background-position: center center;
+			background-size: 60px;
+			&::before {
+				content: "";
+				position: absolute;
+				top: 28px;
+				left: 17px;
+				width: 56px;
+				height: 55px;
+				background: #9d8665;
+				border-radius: 50%;
+				z-index: -1;
+			}
+		}
 		&-wrap {
 			flex: 1 1 auto;
 			padding: 25px;
 		}
 		&-title {
+			display: flex;
+			align-items: center;
 			font-family: Neucha;
 			font-size: 42px;
 			line-height: 46px;
 			letter-spacing: 0em;
-			padding: 0px 0px 32px 0px;
+			&-container {
+				display: flex;
+				justify-content: center;
+				padding: 0px 0px 32px 0px;
+			}
 		}
 	}
 	&__item {
@@ -30,6 +60,9 @@
 		transition: background-color 0.25s;
 		&:hover {
 			background: rgba(157, 134, 101, 0.7);
+		}
+		&.active {
+			background: rgba(157, 134, 101, 1);
 		}
 	}
 	&__title {

@@ -7,9 +7,11 @@ import NavItem from './nav-item';
 type Props = {
   activePage: string;
   handleChangeActive: Dispatch<React.SetStateAction<string>>;
+  setFavoriteToys: Dispatch<React.SetStateAction<number>>;
+  favoriteToys: number;
 };
 
-export default function Nav({ activePage, handleChangeActive }: Props) {
+export default function Nav({ activePage, handleChangeActive, setFavoriteToys, favoriteToys }: Props) {
   const pages = ['домашняя', 'игрушки', 'ёлка'];
 
   return (
@@ -20,6 +22,8 @@ export default function Nav({ activePage, handleChangeActive }: Props) {
           key={index}
           active={activePage === pageName}
           handleChangeActive={handleChangeActive}
+          setFavoriteToys={setFavoriteToys}
+          favoriteToys={favoriteToys}
         />
       ))}
     </ul>

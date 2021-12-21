@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Dispatch } from 'react';
 import Images from '../../../../../../../assets/img/toys/images';
 
 type Props = {
@@ -12,11 +13,28 @@ type Props = {
     size: string;
     favorite: boolean;
   };
+  favoriteToys: number
+  setFavoriteToys: Dispatch<React.SetStateAction<number>>
 };
 
-export default function CardItem({ data }: Props) {
+const getFavoriteCard = (e, setFavoriteToys, favoriteToys) => {
+  if (e.currentTarget.classList.contains('active')) {
+    e.currentTarget.classList.remove('active')
+    setFavoriteToys(favoriteToys - 1)
+  } else {
+    if (favoriteToys >= 20) {
+      alert("Извините, все слоты заполнены")
+    } else {
+      e.currentTarget.classList.add('active')
+      setFavoriteToys(favoriteToys + 1)
+    }
+
+  }
+}
+
+export default function CardItem({ data, favoriteToys, setFavoriteToys }: Props) {
   return (
-    <div className="card__item">
+    <div onClick={(e) => getFavoriteCard(e, setFavoriteToys, favoriteToys)} className="card__item">
       {<h1 className="card__title">{data.name}</h1>}
       {
         <div className="card__image-wrap">

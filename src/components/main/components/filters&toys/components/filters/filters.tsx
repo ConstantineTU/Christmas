@@ -10,6 +10,7 @@ import Colors from './components/6-colors';
 import Size from './components/7-size';
 import Favorite from './components/8-favorite';
 import DischargeButton from './components/9-discharge-button';
+import Search from './components/10-search';
 
 type Props = {
   toysData: object;
@@ -20,7 +21,11 @@ export default function Filters({ toysData }: Props) {
     <div className="filters">
       <div className="filters-container">
         <Sort toysData={toysData} />
-        <Categories toysData={toysData} />
+        <div className="filters-container-wrap">
+          <Categories toysData={toysData} />
+
+          <Search toysData={toysData} />
+        </div>
         <Forms toysData={toysData} />
         <Quantity toysData={toysData} />
         <AcquisitionsYear toysData={toysData} />

@@ -7,11 +7,16 @@ type Props = {
   pageName: string;
   active: boolean;
   handleChangeActive: Dispatch<React.SetStateAction<string>>;
+  setFavoriteToys: Dispatch<React.SetStateAction<number>>;
+  favoriteToys: number;
 };
 
-export default function NavItem({ pageName, active, handleChangeActive }: Props) {
+export default function NavItem({ pageName, active, handleChangeActive, setFavoriteToys, favoriteToys }: Props) {
   const handleChange = () => {
     handleChangeActive(pageName);
+    if (pageName !== 'игрушки') {
+      setFavoriteToys(favoriteToys = 0)
+    }
   };
 
   return (

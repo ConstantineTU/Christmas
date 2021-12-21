@@ -6,11 +6,16 @@ import toysData from '../../assets/data/data';
 
 const App = () => {
   const [activePage, setActivePage] = useState('игрушки');
+  const filters = useState({
+    search: '',
+    sorting: 'By title(A-Z)',
+  })
+  const [favoriteToys, setFavoriteToys] = useState(0)
 
   return (
     <Fragment>
-      <Header activePage={activePage} handleChangeActive={setActivePage} />
-      <Main activePage={activePage} toysData={toysData} />
+      <Header activePage={activePage} handleChangeActive={setActivePage} favoriteToys={favoriteToys} setFavoriteToys={setFavoriteToys} />
+      <Main activePage={activePage} toysData={toysData} favoriteToys={favoriteToys} setFavoriteToys={setFavoriteToys} />
       <Footer />
     </Fragment>
   );
