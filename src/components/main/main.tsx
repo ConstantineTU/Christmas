@@ -22,6 +22,17 @@ type Props = {
   setFavoriteToys: Dispatch<SetStateAction<number>>;
 };
 
+type toysDataType = {
+  num: string;
+  name: string;
+  count: string;
+  year: string;
+  shape: string;
+  color: string;
+  size: string;
+  favorite: boolean;
+};
+
 export default function Main({ activePage, toysData, favoriteToys, setFavoriteToys }: Props) {
   const [filters, setFilters] = useState({
     search: '',
@@ -34,7 +45,7 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
     favoriteFilter: true,
   });
 
-  function SortArray(a, b): number {
+  function SortArray(a: toysDataType, b: toysDataType): number {
     if (sorts === 'AZ') {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;
@@ -44,9 +55,9 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
       if (a.name > b.name) return -1;
       return 0;
     } else if (sorts === 'yearAscending') {
-      return a.year - b.year;
+      return +a.year - +b.year;
     } else if (sorts === 'yearDescending') {
-      return b.year - a.year;
+      return +b.year - +a.year;
     } else {
       return 0;
     }
@@ -54,10 +65,26 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
 
   const pages = ['домашняя', 'игрушки', 'ёлка'];
   const [search, setSearch] = useState<string>('');
-  const newToysData = toysData.filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()));
   const [sorts, setSorts] = useState<string>('');
-
-  newToysData.sort(SortArray);
+  const [shapeFilter, setShapeFilter] = useState<Array<string>>([
+    'колокольчик',
+    'шар',
+    'шишка',
+    'звезда',
+    'снежинка',
+    'фигурка',
+  ]);
+  const shapeFilterToysData = toysData.filter((toy) => {
+    for (let i = 0; i < shapeFilter.length; i++) {
+      if (toy.shape.includes(shapeFilter[i])) {
+        return toy.shape.includes(shapeFilter[i]);
+      }
+    }
+    return;
+  });
+  const newToysData = shapeFilterToysData
+    .filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()))
+    .sort(SortArray);
 
   return (
     <main className="main">
@@ -69,6 +96,7 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
           setFavoriteToys={setFavoriteToys}
           search={{ value: search, setValue: setSearch }}
           sorts={{ value: sorts, setValue: setSorts }}
+          shapeFilter={{ value: shapeFilter, setValue: setShapeFilter }}
         />
       )}
       {activePage === pages[2] && <Tree />}

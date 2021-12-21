@@ -126,6 +126,9 @@
       &:hover {
         filter: invert(54%) sepia(32%) saturate(369%) brightness(120%) contrast(86%);
       }
+      &.active {
+        filter: invert(54%) sepia(32%) saturate(369%) brightness(120%) contrast(86%);
+      }
     }
     &__img {
       width: 42px;

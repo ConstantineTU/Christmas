@@ -22,6 +22,10 @@ type Props = {
     value: string;
     setValue: Dispatch<React.SetStateAction<string>>;
   };
+  shapeFilter: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function Filters(props: Props) {
@@ -34,7 +38,7 @@ export default function Filters(props: Props) {
 
           <Search toysData={props.toysData} search={props.search} />
         </div>
-        <Forms toysData={props.toysData} />
+        <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} />
         <Quantity toysData={props.toysData} />
         <AcquisitionsYear toysData={props.toysData} />
         <Colors toysData={props.toysData} />

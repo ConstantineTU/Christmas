@@ -25,12 +25,16 @@ type Props = {
     value: string;
     setValue: Dispatch<SetStateAction<string>>;
   };
+  shapeFilter: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function FiltersAndToys(props: Props) {
   return (
     <div className="toys section">
-      {<Filters toysData={props.toysData} search={props.search} sorts={props.sorts} />}
+      {<Filters toysData={props.toysData} search={props.search} sorts={props.sorts} shapeFilter={props.shapeFilter} />}
       {<Toys toysData={props.toysData} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />}
     </div>
   );
