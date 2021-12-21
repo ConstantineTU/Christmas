@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import './filters.scss';
 import Sort from './components/1-sorting';
 import Categories from './components/2-categories';
@@ -16,15 +16,19 @@ type Props = {
   toysData: object;
   search: {
     value: string;
-    setValue: Dispatch<React.SetStateAction<string>>;
+    setValue: Dispatch<SetStateAction<string>>;
   };
   sorts: {
     value: string;
-    setValue: Dispatch<React.SetStateAction<string>>;
+    setValue: Dispatch<SetStateAction<string>>;
   };
   shapeFilter: {
     value: string[];
-    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+    setValue: Dispatch<SetStateAction<string[]>>;
+  };
+  colorFilter: {
+    value: string[];
+    setValue: Dispatch<SetStateAction<string[]>>;
   };
 };
 
@@ -41,7 +45,7 @@ export default function Filters(props: Props) {
         <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} />
         <Quantity toysData={props.toysData} />
         <AcquisitionsYear toysData={props.toysData} />
-        <Colors toysData={props.toysData} />
+        <Colors toysData={props.toysData} colorFilter={props.colorFilter} />
         <Size toysData={props.toysData} />
         <Favorite toysData={props.toysData} />
         <DischargeButton toysData={props.toysData} />

@@ -28,7 +28,6 @@ export default function Forms(props: Props) {
         selectedShapes.push(shapeButton.value);
       }
     }
-    console.log(selectedShapes);
     if (selectedShapes.length) {
       props.shapeFilter.setValue(selectedShapes);
     } else {
