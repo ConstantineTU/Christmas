@@ -30,6 +30,10 @@ type Props = {
     value: string[];
     setValue: Dispatch<SetStateAction<string[]>>;
   };
+  sizeFilter: {
+    value: string[];
+    setValue: Dispatch<SetStateAction<string[]>>;
+  };
 };
 
 export default function Filters(props: Props) {
@@ -46,7 +50,7 @@ export default function Filters(props: Props) {
         <Quantity toysData={props.toysData} />
         <AcquisitionsYear toysData={props.toysData} />
         <Colors toysData={props.toysData} colorFilter={props.colorFilter} />
-        <Size toysData={props.toysData} />
+        <Size toysData={props.toysData} sizeFilter={props.sizeFilter} />
         <Favorite toysData={props.toysData} />
         <DischargeButton toysData={props.toysData} />
       </div>

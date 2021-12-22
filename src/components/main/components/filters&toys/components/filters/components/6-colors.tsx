@@ -20,7 +20,7 @@ export default function Colors(props: Props) {
   };
 
   const handleChange = (e) => {
-    const colorButtons = document.querySelectorAll<HTMLButtonElement>('.filters-colors__label');
+    const colorButtons = document.querySelectorAll<HTMLLabelElement>('.filters-colors__label');
     const defaultColors = ['белый', 'желтый', 'красный', 'синий', 'зелёный'];
     const selectedColors = [];
     for (let colorButton of colorButtons) {

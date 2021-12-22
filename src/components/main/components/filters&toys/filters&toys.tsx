@@ -33,6 +33,10 @@ type Props = {
     value: string[];
     setValue: Dispatch<SetStateAction<string[]>>;
   };
+  sizeFilter: {
+    value: string[];
+    setValue: Dispatch<SetStateAction<string[]>>;
+  };
 };
 
 export default function FiltersAndToys(props: Props) {
@@ -45,6 +49,7 @@ export default function FiltersAndToys(props: Props) {
           sorts={props.sorts}
           shapeFilter={props.shapeFilter}
           colorFilter={props.colorFilter}
+          sizeFilter={props.sizeFilter}
         />
       }
       {<Toys toysData={props.toysData} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />}
