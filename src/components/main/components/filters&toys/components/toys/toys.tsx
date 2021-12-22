@@ -16,6 +16,10 @@ type Props = {
   }[];
   favoriteToys: number;
   setFavoriteToys: Dispatch<SetStateAction<number>>;
+  selectedToys: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function Toys(props: Props) {
@@ -28,7 +32,13 @@ export default function Toys(props: Props) {
       {!props.toysData.length && <h3 className="card-items-subtitle">Извините, совпадений не обнаружено</h3>}
       <div className="card-items">
         {props.toysData.map((data, index) => (
-          <CardItem key={index} data={data} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />
+          <CardItem
+            selectedToys={props.selectedToys}
+            key={index}
+            data={data}
+            favoriteToys={props.favoriteToys}
+            setFavoriteToys={props.setFavoriteToys}
+          />
         ))}
       </div>
     </div>

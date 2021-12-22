@@ -20,6 +20,10 @@ type Props = {
   }[];
   favoriteToys: number;
   setFavoriteToys: Dispatch<SetStateAction<number>>;
+  selectedToys: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 type toysDataType = {
@@ -33,7 +37,7 @@ type toysDataType = {
   favorite: boolean;
 };
 
-export default function Main({ activePage, toysData, favoriteToys, setFavoriteToys }: Props) {
+export default function Main({ activePage, toysData, favoriteToys, setFavoriteToys, selectedToys }: Props) {
   const [filters, setFilters] = useState({
     search: '',
     sorting: 'By title(A-Z)',
@@ -134,6 +138,7 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
           favoriteFilter={{ value: favoriteFilter, setValue: setFavoriteFilter }}
           quantityValues={{ value: quantityValues, setValue: setQuantityValues }}
           purchaseYearValues={{ value: purchaseYearValues, setValue: setPurchaseYearValues }}
+          selectedToys={selectedToys}
         />
       )}
       {activePage === pages[2] && <Tree />}

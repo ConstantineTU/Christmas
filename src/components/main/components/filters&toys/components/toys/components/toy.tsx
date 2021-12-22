@@ -15,25 +15,47 @@ type Props = {
   };
   favoriteToys: number;
   setFavoriteToys: Dispatch<SetStateAction<number>>;
+  selectedToys: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
-const getFavoriteCard = (e, setFavoriteToys, favoriteToys) => {
-  if (e.currentTarget.classList.contains('active')) {
+const getFavoriteCard = (e, setFavoriteToys, favoriteToys, selectedToys) => {
+  if (selectedToys.value.includes(e.currentTarget.id)) {
+    selectedToys.setValue(selectedToys.value.filter((toy) => toy !== e.currentTarget.id));
     e.currentTarget.classList.remove('active');
     setFavoriteToys(favoriteToys - 1);
   } else {
     if (favoriteToys >= 20) {
       alert('Извините, все слоты заполнены');
     } else {
+      selectedToys.value.push(e.currentTarget.id);
       e.currentTarget.classList.add('active');
       setFavoriteToys(favoriteToys + 1);
     }
   }
+
+  // if (e.currentTarget.classList.contains('active')) {
+  //   e.currentTarget.classList.remove('active');
+  //   setFavoriteToys(favoriteToys - 1);
+  // } else {
+  //   if (favoriteToys >= 20) {
+  //     alert('Извините, все слоты заполнены');
+  //   } else {
+  //     e.currentTarget.classList.add('active');
+  //     setFavoriteToys(favoriteToys + 1);
+  //   }
+  // }
 };
 
-export default function CardItem({ data, favoriteToys, setFavoriteToys }: Props) {
+export default function CardItem({ data, favoriteToys, setFavoriteToys, selectedToys }: Props) {
   return (
-    <div onClick={(e) => getFavoriteCard(e, setFavoriteToys, favoriteToys)} className="card__item">
+    <div
+      id={data.num}
+      onClick={(e) => getFavoriteCard(e, setFavoriteToys, favoriteToys, selectedToys)}
+      className={selectedToys.value.includes(data.num) ? 'card__item active' : 'card__item'}
+    >
       {<h1 className="card__title">{data.name}</h1>}
       {
         <div className="card__image-wrap">

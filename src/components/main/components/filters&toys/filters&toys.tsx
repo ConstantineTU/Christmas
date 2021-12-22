@@ -49,6 +49,10 @@ type Props = {
     value: number[];
     setValue: Dispatch<SetStateAction<number[]>>;
   };
+  selectedToys: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function FiltersAndToys(props: Props) {
@@ -67,7 +71,14 @@ export default function FiltersAndToys(props: Props) {
           purchaseYearValues={props.purchaseYearValues}
         />
       }
-      {<Toys toysData={props.toysData} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />}
+      {
+        <Toys
+          selectedToys={props.selectedToys}
+          toysData={props.toysData}
+          favoriteToys={props.favoriteToys}
+          setFavoriteToys={props.setFavoriteToys}
+        />
+      }
     </div>
   );
 }

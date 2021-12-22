@@ -7,19 +7,12 @@ import Nav from './nav-link/nav';
 type Props = {
   activePage: string;
   handleChangeActive: Dispatch<SetStateAction<string>>;
-  setFavoriteToys: Dispatch<SetStateAction<number>>;
-  favoriteToys: number;
 };
 
-export default function Header({ activePage, handleChangeActive, setFavoriteToys, favoriteToys }: Props) {
+export default function Header({ activePage, handleChangeActive }: Props) {
   return (
     <header id="Top" className="header">
-      <Nav
-        activePage={activePage}
-        handleChangeActive={handleChangeActive}
-        setFavoriteToys={setFavoriteToys}
-        favoriteToys={favoriteToys}
-      />
+      <Nav activePage={activePage} handleChangeActive={handleChangeActive} />
     </header>
   );
 }
