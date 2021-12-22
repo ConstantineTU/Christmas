@@ -77,6 +77,10 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
   const [colorFilter, setColorFilter] = useState<Array<string>>(['белый', 'желтый', 'красный', 'синий', 'зелёный']);
   const [sizeFilter, setSizeFilter] = useState<Array<string>>(['большой', 'средний', 'малый']);
   const [favoriteFilter, setFavoriteFilter] = useState<boolean>(false);
+  const [quantityFilterMin, setQuantityFilterMin] = useState<string>('1');
+  const [quantityFilterMax, setQuantityFilterMax] = useState<string>('12');
+  const [purchaseYearFilterMin, setPurchaseYearFilterMin] = useState<string>('1940');
+  const [purchaseYearFilterMax, setPurchaseYearFilterMax] = useState<string>('2021');
   const shapeFilterToysData = toysData.filter((toy) => {
     for (let i = 0; i < shapeFilter.length; i++) {
       if (toy.shape.includes(shapeFilter[i])) {
@@ -107,10 +111,15 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
     } else return true;
     return;
   });
-  const newToysData = favoriteFilterToysData
+  const quantityFilterToysData = favoriteFilterToysData.filter(
+    (toy) => +toy.count >= +quantityFilterMin && +toy.count <= +quantityFilterMax
+  );
+  const purchaseFilterToysData = quantityFilterToysData.filter(
+    (toy) => +toy.year >= +purchaseYearFilterMin && +toy.year <= +purchaseYearFilterMax
+  );
+  const newToysData = purchaseFilterToysData
     .filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()))
     .sort(SortArray);
-
   return (
     <main className="main">
       {activePage === pages[0] && <Home />}
@@ -125,6 +134,10 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
           colorFilter={{ value: colorFilter, setValue: setColorFilter }}
           sizeFilter={{ value: sizeFilter, setValue: setSizeFilter }}
           favoriteFilter={{ value: favoriteFilter, setValue: setFavoriteFilter }}
+          quantityFilterMin={{ value: quantityFilterMin, setValue: setQuantityFilterMin }}
+          quantityFilterMax={{ value: quantityFilterMax, setValue: setQuantityFilterMax }}
+          purchaseYearFilterMin={{ value: purchaseYearFilterMin, setValue: setPurchaseYearFilterMin }}
+          purchaseYearFilterMax={{ value: purchaseYearFilterMax, setValue: setPurchaseYearFilterMax }}
         />
       )}
       {activePage === pages[2] && <Tree />}

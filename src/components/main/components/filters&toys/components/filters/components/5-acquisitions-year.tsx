@@ -1,28 +1,28 @@
 import * as React from 'react';
+import { Dispatch, SetStateAction } from 'react';
+import AcquisitionsTwoThumbs from './acqisions-range';
 
 type Props = {
   toysData: object;
+  purchaseYearFilterMin: {
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
+  purchaseYearFilterMax: {
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
 };
 
-export default function AcquisitionsYear({ toysData }: Props) {
+export default function AcquisitionsYear(props: Props) {
   return (
     <div className="filters-acquisitions-container">
       <h3 className="filters-title filters-acquisitions-title">Год приобретения</h3>
-      <div>
-        <input
-          min="1940"
-          max="2021"
-          step="1"
-          className="filters-quantity-range"
-          type="range"
-          name="acquisitionsRange"
-          id="acquisitionsRange"
-        />
-      </div>
-      <div className="filters-acquisitions-count">
-        <div>1940</div>
-        <div>2021</div>
-      </div>
+      <AcquisitionsTwoThumbs
+        rtl={false}
+        purchaseYearFilterMin={props.purchaseYearFilterMin}
+        purchaseYearFilterMax={props.purchaseYearFilterMax}
+      />
     </div>
   );
 }

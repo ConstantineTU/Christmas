@@ -38,6 +38,22 @@ type Props = {
     value: boolean;
     setValue: Dispatch<SetStateAction<boolean>>;
   };
+  quantityFilterMin: {
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
+  quantityFilterMax: {
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
+  purchaseYearFilterMin: {
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
+  purchaseYearFilterMax: {
+    value: string;
+    setValue: Dispatch<SetStateAction<string>>;
+  };
 };
 
 export default function Filters(props: Props) {
@@ -51,8 +67,16 @@ export default function Filters(props: Props) {
           <Search toysData={props.toysData} search={props.search} />
         </div>
         <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} />
-        <Quantity toysData={props.toysData} />
-        <AcquisitionsYear toysData={props.toysData} />
+        <Quantity
+          toysData={props.toysData}
+          quantityFilterMin={props.quantityFilterMin}
+          quantityFilterMax={props.quantityFilterMax}
+        />
+        <AcquisitionsYear
+          toysData={props.toysData}
+          purchaseYearFilterMin={props.purchaseYearFilterMin}
+          purchaseYearFilterMax={props.purchaseYearFilterMax}
+        />
         <Colors toysData={props.toysData} colorFilter={props.colorFilter} />
         <Size toysData={props.toysData} sizeFilter={props.sizeFilter} />
         <Favorite toysData={props.toysData} favoriteFilter={props.favoriteFilter} />
