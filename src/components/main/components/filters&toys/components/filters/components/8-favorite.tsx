@@ -25,6 +25,7 @@ export default function Favorite(props: Props) {
       <div className="filters-favorite-wrap">
         <input id="favoriteToys" type="checkbox" className="filters-favorite__checkbox"></input>
         <label
+          id="favoriteToysLabel"
           htmlFor="favoriteToys"
           className="filters-favorite__label"
           onClick={(e) => {

@@ -4,13 +4,9 @@ import { Range } from 'react-range';
 
 type Props = {
   rtl: boolean;
-  purchaseYearFilterMin: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
-  };
-  purchaseYearFilterMax: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
+  purchaseYearValues: {
+    value: number[];
+    setValue: Dispatch<SetStateAction<number[]>>;
   };
 };
 
@@ -18,13 +14,7 @@ const STEP = 1;
 const MIN = 1940;
 const MAX = 2021;
 
-const AcquisitionsTwoThumbs = ({ rtl, purchaseYearFilterMin, purchaseYearFilterMax }: Props) => {
-  const [values, setValues] = React.useState([1940, 2021]);
-
-  const handleChangeMin = (values) => {
-    purchaseYearFilterMin.setValue(String(values[0]));
-    purchaseYearFilterMax.setValue(String(values[1]));
-  };
+const AcquisitionsTwoThumbs = ({ rtl, purchaseYearValues }: Props) => {
   return (
     <div
       style={{
@@ -35,14 +25,13 @@ const AcquisitionsTwoThumbs = ({ rtl, purchaseYearFilterMin, purchaseYearFilterM
       }}
     >
       <Range
-        values={values}
+        values={purchaseYearValues.value}
         step={STEP}
         min={MIN}
         max={MAX}
         rtl={rtl}
-        onChange={(values) => {
-          setValues(values);
-          handleChangeMin(values);
+        onChange={(value) => {
+          purchaseYearValues.setValue(value);
         }}
         renderTrack={({ props, children }) => (
           <div
@@ -50,7 +39,6 @@ const AcquisitionsTwoThumbs = ({ rtl, purchaseYearFilterMin, purchaseYearFilterM
             onTouchStart={props.onTouchStart}
             style={{
               ...props.style,
-              height: '36px',
               display: 'flex',
               width: '100%',
             }}
@@ -89,7 +77,7 @@ const AcquisitionsTwoThumbs = ({ rtl, purchaseYearFilterMin, purchaseYearFilterM
         )}
       />
       <output className="filters-acquisitions-count" id="output">
-        <div>{values[0].toFixed(0)}</div> <div>{values[1].toFixed(0)}</div>
+        <div>{purchaseYearValues.value[0].toFixed(0)}</div> <div>{purchaseYearValues.value[1].toFixed(0)}</div>
       </output>
     </div>
   );

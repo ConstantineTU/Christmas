@@ -41,21 +41,13 @@ type Props = {
     value: boolean;
     setValue: Dispatch<SetStateAction<boolean>>;
   };
-  quantityFilterMin: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
+  quantityValues: {
+    value: number[];
+    setValue: Dispatch<SetStateAction<number[]>>;
   };
-  quantityFilterMax: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
-  };
-  purchaseYearFilterMin: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
-  };
-  purchaseYearFilterMax: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
+  purchaseYearValues: {
+    value: number[];
+    setValue: Dispatch<SetStateAction<number[]>>;
   };
 };
 
@@ -71,10 +63,8 @@ export default function FiltersAndToys(props: Props) {
           colorFilter={props.colorFilter}
           sizeFilter={props.sizeFilter}
           favoriteFilter={props.favoriteFilter}
-          quantityFilterMin={props.quantityFilterMin}
-          quantityFilterMax={props.quantityFilterMax}
-          purchaseYearFilterMin={props.purchaseYearFilterMin}
-          purchaseYearFilterMax={props.purchaseYearFilterMax}
+          quantityValues={props.quantityValues}
+          purchaseYearValues={props.purchaseYearValues}
         />
       }
       {<Toys toysData={props.toysData} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />}

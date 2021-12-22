@@ -38,21 +38,13 @@ type Props = {
     value: boolean;
     setValue: Dispatch<SetStateAction<boolean>>;
   };
-  quantityFilterMin: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
+  quantityValues: {
+    value: number[];
+    setValue: Dispatch<SetStateAction<number[]>>;
   };
-  quantityFilterMax: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
-  };
-  purchaseYearFilterMin: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
-  };
-  purchaseYearFilterMax: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
+  purchaseYearValues: {
+    value: number[];
+    setValue: Dispatch<SetStateAction<number[]>>;
   };
 };
 
@@ -67,20 +59,21 @@ export default function Filters(props: Props) {
           <Search toysData={props.toysData} search={props.search} />
         </div>
         <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} />
-        <Quantity
-          toysData={props.toysData}
-          quantityFilterMin={props.quantityFilterMin}
-          quantityFilterMax={props.quantityFilterMax}
-        />
-        <AcquisitionsYear
-          toysData={props.toysData}
-          purchaseYearFilterMin={props.purchaseYearFilterMin}
-          purchaseYearFilterMax={props.purchaseYearFilterMax}
-        />
+        <Quantity toysData={props.toysData} quantityValues={props.quantityValues} />
+        <AcquisitionsYear toysData={props.toysData} purchaseYearValues={props.purchaseYearValues} />
         <Colors toysData={props.toysData} colorFilter={props.colorFilter} />
         <Size toysData={props.toysData} sizeFilter={props.sizeFilter} />
         <Favorite toysData={props.toysData} favoriteFilter={props.favoriteFilter} />
-        <DischargeButton toysData={props.toysData} />
+        <DischargeButton
+          toysData={props.toysData}
+          search={props.search}
+          shapeFilter={props.shapeFilter}
+          colorFilter={props.colorFilter}
+          sizeFilter={props.sizeFilter}
+          favoriteFilter={props.favoriteFilter}
+          quantityValues={props.quantityValues}
+          purchaseYearValues={props.purchaseYearValues}
+        />
       </div>
     </div>
   );

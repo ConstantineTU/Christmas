@@ -189,7 +189,7 @@
       }
     }
     &-count {
-      margin: 10px 0px 0px 0px;
+      margin: 20px 0px 0px 0px;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -203,7 +203,7 @@
       margin: 0px 0px 24px 0px;
     }
     &-count {
-      margin: 10px 0px 0px 0px;
+      margin: 20px 0px 0px 0px;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -280,18 +280,18 @@
         background-position: center center;
       }
     }
-    &__checkbox.white:checked + &__label::after {
+    &__label.white.active::after {
       background: #fff url("../../../../../../assets/img/svg/checked.svg") no-repeat;
       background-size: 18px;
       background-position: center center;
       opacity: 1;
     }
-    &__checkbox:checked + &__label::after {
+    &__label.active::after {
       background-size: 18px;
       background-position: center center;
       opacity: 1;
     }
-    &__checkbox:hover + &__label::after {
+    &__label:hover::after {
       opacity: 1;
     }
   }
@@ -362,14 +362,14 @@
         background-position: center center;
       }
     }
-    &__checkbox:checked + &__label::before {
+    &__label.active::before {
       opacity: 1;
       filter: invert(54%) sepia(32%) saturate(369%) brightness(120%) contrast(86%);
     }
-    &__checkbox:hover + &__label::before {
+    &__label:hover::before {
       opacity: 1;
     }
-    &__checkbox:checked + &__label {
+    &__label.active {
       opacity: 1;
       filter: invert(54%) sepia(32%) saturate(369%) brightness(120%) contrast(86%);
     }
@@ -417,20 +417,20 @@
         transition: background 0.3s;
       }
     }
-    &__checkbox:hover + &__label::after {
+    &__label:hover::after {
       background: #9d8665;
       background-size: 18px;
       background-position: center center;
     }
-    &__checkbox:hover + &__label {
+    &__label:hover {
       color: #9d8665;
     }
-    &__checkbox:checked + &__label::after {
+    &__label.active::after {
       background: #9d8665 url("../../../../../../assets/img/svg/checked.svg") no-repeat;
       background-size: 18px;
       background-position: center center;
     }
-    &__checkbox:checked + &__label {
+    &__label.active {
       color: #9d8665;
     }
   }

@@ -8,23 +8,13 @@ const MAX = 12;
 
 type Props = {
   rtl: boolean;
-  quantityFilterMin: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
-  };
-  quantityFilterMax: {
-    value: string;
-    setValue: Dispatch<SetStateAction<string>>;
+  quantityValues: {
+    value: number[];
+    setValue: Dispatch<SetStateAction<number[]>>;
   };
 };
 
-const QuantityTwoThumbs = ({ rtl, quantityFilterMin, quantityFilterMax }: Props) => {
-  const [values, setValues] = React.useState([1, 12]);
-
-  const handleChangeMin = (values) => {
-    quantityFilterMin.setValue(String(values[0]));
-    quantityFilterMax.setValue(String(values[1]));
-  };
+const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
   return (
     <div
       style={{
@@ -35,14 +25,13 @@ const QuantityTwoThumbs = ({ rtl, quantityFilterMin, quantityFilterMax }: Props)
       }}
     >
       <Range
-        values={values}
+        values={quantityValues.value}
         step={STEP}
         min={MIN}
         max={MAX}
         rtl={rtl}
         onChange={(values) => {
-          setValues(values);
-          handleChangeMin(values);
+          quantityValues.setValue(values);
         }}
         renderTrack={({ props, children }) => (
           <div
@@ -50,7 +39,6 @@ const QuantityTwoThumbs = ({ rtl, quantityFilterMin, quantityFilterMax }: Props)
             onTouchStart={props.onTouchStart}
             style={{
               ...props.style,
-              height: '36px',
               display: 'flex',
               width: '100%',
             }}
@@ -89,7 +77,7 @@ const QuantityTwoThumbs = ({ rtl, quantityFilterMin, quantityFilterMax }: Props)
         )}
       />
       <output className="filters-quantity-count" id="output">
-        <div>{values[0].toFixed(0)}</div> <div>{values[1].toFixed(0)}</div>
+        <div>{quantityValues.value[0].toFixed(0)}</div> <div>{quantityValues.value[1].toFixed(0)}</div>
       </output>
     </div>
   );
