@@ -76,6 +76,7 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
   ]);
   const [colorFilter, setColorFilter] = useState<Array<string>>(['белый', 'желтый', 'красный', 'синий', 'зелёный']);
   const [sizeFilter, setSizeFilter] = useState<Array<string>>(['большой', 'средний', 'малый']);
+  const [favoriteFilter, setFavoriteFilter] = useState<boolean>(false);
   const shapeFilterToysData = toysData.filter((toy) => {
     for (let i = 0; i < shapeFilter.length; i++) {
       if (toy.shape.includes(shapeFilter[i])) {
@@ -100,7 +101,13 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
     }
     return;
   });
-  const newToysData = sizeFilterToysData
+  const favoriteFilterToysData = sizeFilterToysData.filter((toy) => {
+    if (favoriteFilter) {
+      if (toy.favorite) return toy.favorite;
+    } else return true;
+    return;
+  });
+  const newToysData = favoriteFilterToysData
     .filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()))
     .sort(SortArray);
 
@@ -117,6 +124,7 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
           shapeFilter={{ value: shapeFilter, setValue: setShapeFilter }}
           colorFilter={{ value: colorFilter, setValue: setColorFilter }}
           sizeFilter={{ value: sizeFilter, setValue: setSizeFilter }}
+          favoriteFilter={{ value: favoriteFilter, setValue: setFavoriteFilter }}
         />
       )}
       {activePage === pages[2] && <Tree />}

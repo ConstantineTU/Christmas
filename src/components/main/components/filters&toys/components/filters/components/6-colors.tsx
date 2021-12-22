@@ -28,7 +28,6 @@ export default function Colors(props: Props) {
         selectedColors.push(colorButton.dataset.value);
       }
     }
-    console.log(selectedColors);
     if (selectedColors.length) {
       props.colorFilter.setValue(selectedColors);
     } else {

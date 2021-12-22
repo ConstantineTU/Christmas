@@ -37,6 +37,10 @@ type Props = {
     value: string[];
     setValue: Dispatch<SetStateAction<string[]>>;
   };
+  favoriteFilter: {
+    value: boolean;
+    setValue: Dispatch<SetStateAction<boolean>>;
+  };
 };
 
 export default function FiltersAndToys(props: Props) {
@@ -50,6 +54,7 @@ export default function FiltersAndToys(props: Props) {
           shapeFilter={props.shapeFilter}
           colorFilter={props.colorFilter}
           sizeFilter={props.sizeFilter}
+          favoriteFilter={props.favoriteFilter}
         />
       }
       {<Toys toysData={props.toysData} favoriteToys={props.favoriteToys} setFavoriteToys={props.setFavoriteToys} />}
