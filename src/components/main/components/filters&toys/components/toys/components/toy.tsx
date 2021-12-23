@@ -35,18 +35,6 @@ const getFavoriteCard = (e, setFavoriteToys, favoriteToys, selectedToys) => {
       setFavoriteToys(favoriteToys + 1);
     }
   }
-
-  // if (e.currentTarget.classList.contains('active')) {
-  //   e.currentTarget.classList.remove('active');
-  //   setFavoriteToys(favoriteToys - 1);
-  // } else {
-  //   if (favoriteToys >= 20) {
-  //     alert('Извините, все слоты заполнены');
-  //   } else {
-  //     e.currentTarget.classList.add('active');
-  //     setFavoriteToys(favoriteToys + 1);
-  //   }
-  // }
 };
 
 export default function CardItem({ data, favoriteToys, setFavoriteToys, selectedToys }: Props) {

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 type Props = {
   toysData: object;
   sorts: {
     value: string;
-    setValue: Dispatch<React.SetStateAction<string>>;
+    setValue: Dispatch<SetStateAction<string>>;
   };
 };
 
@@ -14,11 +14,16 @@ export default function Sort(props: Props) {
     props.sorts.setValue(target.value);
   };
 
+  useEffect(() => {
+    const selectSort = document.getElementById('selectSort') as HTMLSelectElement;
+    selectSort.value = props.sorts.value;
+  }, [props.sorts]);
+
   return (
     <div className="filters-sort-container">
       <div className="filters-sort-wrap">
         <h3 className="filters-title">Сортировать</h3>
-        <select className="filters-sort__select" name="filters-sort" id="" onChange={handleChange}>
+        <select className="filters-sort__select" name="filters-sort" id="selectSort" onChange={handleChange}>
           <option className="filters-sort__option" value="">
             Отсортировать по...
           </option>

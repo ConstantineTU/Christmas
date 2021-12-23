@@ -7,13 +7,19 @@ type Props = {
     value: string[];
     setValue: Dispatch<SetStateAction<string[]>>;
   };
+  selectedSizes: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function Size(props: Props) {
   const toggleActive = (e) => {
-    if (e.currentTarget.classList.contains('active')) {
+    if (props.selectedSizes.value.includes(e.currentTarget.dataset.id)) {
+      props.selectedSizes.setValue(props.selectedSizes.value.filter((toy) => toy !== e.currentTarget.dataset.id));
       e.currentTarget.classList.remove('active');
     } else {
+      props.selectedSizes.value.push(e.currentTarget.dataset.id);
       e.currentTarget.classList.add('active');
     }
     handleChange(e);
@@ -42,8 +48,13 @@ export default function Size(props: Props) {
         <input id="bigToys" type="checkbox" className="filters-size__checkbox bigToys"></input>
         <label
           htmlFor="bigToys"
-          className="filters-size__label bigToys"
+          className={
+            props.selectedSizes.value.includes('1')
+              ? 'filters-size__label bigToys active'
+              : 'filters-size__label bigToys white'
+          }
           data-value={'большой'}
+          data-id={'1'}
           onClick={(e) => {
             toggleActive(e);
           }}
@@ -53,8 +64,13 @@ export default function Size(props: Props) {
         <input id="midToys" type="checkbox" className="filters-size__checkbox midToys"></input>
         <label
           htmlFor="midToys"
-          className="filters-size__label midToys"
+          className={
+            props.selectedSizes.value.includes('2')
+              ? 'filters-size__label midToys active'
+              : 'filters-size__label midToys white'
+          }
           data-value={'средний'}
+          data-id={'2'}
           onClick={(e) => {
             toggleActive(e);
           }}
@@ -64,8 +80,13 @@ export default function Size(props: Props) {
         <input id="smallToys" type="checkbox" className="filters-size__checkbox smallToys"></input>
         <label
           htmlFor="smallToys"
-          className="filters-size__label smallToys"
+          className={
+            props.selectedSizes.value.includes('3')
+              ? 'filters-size__label smallToys active'
+              : 'filters-size__label smallToys white'
+          }
           data-value={'малый'}
+          data-id={'3'}
           onClick={(e) => {
             toggleActive(e);
           }}

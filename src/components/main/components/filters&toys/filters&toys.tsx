@@ -53,6 +53,22 @@ type Props = {
     value: string[];
     setValue: React.Dispatch<React.SetStateAction<string[]>>;
   };
+  selectedShape: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
+  selectedColors: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
+  selectedSizes: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
+  selectedFavoriteFilter: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function FiltersAndToys(props: Props) {
@@ -69,6 +85,10 @@ export default function FiltersAndToys(props: Props) {
           favoriteFilter={props.favoriteFilter}
           quantityValues={props.quantityValues}
           purchaseYearValues={props.purchaseYearValues}
+          selectedShape={props.selectedShape}
+          selectedColors={props.selectedColors}
+          selectedSizes={props.selectedSizes}
+          selectedFavoriteFilter={props.selectedFavoriteFilter}
         />
       }
       {

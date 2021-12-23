@@ -46,6 +46,22 @@ type Props = {
     value: number[];
     setValue: Dispatch<SetStateAction<number[]>>;
   };
+  selectedShape: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
+  selectedColors: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
+  selectedSizes: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
+  selectedFavoriteFilter: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function Filters(props: Props) {
@@ -56,12 +72,16 @@ export default function Filters(props: Props) {
         <div className="filters-container-wrap">
           <Search toysData={props.toysData} search={props.search} />
         </div>
-        <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} />
+        <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} selectedShape={props.selectedShape} />
         <Quantity toysData={props.toysData} quantityValues={props.quantityValues} />
         <AcquisitionsYear toysData={props.toysData} purchaseYearValues={props.purchaseYearValues} />
-        <Colors toysData={props.toysData} colorFilter={props.colorFilter} />
-        <Size toysData={props.toysData} sizeFilter={props.sizeFilter} />
-        <Favorite toysData={props.toysData} favoriteFilter={props.favoriteFilter} />
+        <Colors toysData={props.toysData} colorFilter={props.colorFilter} selectedColors={props.selectedColors} />
+        <Size toysData={props.toysData} sizeFilter={props.sizeFilter} selectedSizes={props.selectedSizes} />
+        <Favorite
+          toysData={props.toysData}
+          favoriteFilter={props.favoriteFilter}
+          selectedFavoriteFilter={props.selectedFavoriteFilter}
+        />
         <DischargeButton
           toysData={props.toysData}
           search={props.search}

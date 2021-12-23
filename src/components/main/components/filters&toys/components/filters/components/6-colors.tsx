@@ -7,13 +7,19 @@ type Props = {
     value: string[];
     setValue: Dispatch<SetStateAction<string[]>>;
   };
+  selectedColors: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function Colors(props: Props) {
   const toggleActive = (e) => {
-    if (e.currentTarget.classList.contains('active')) {
+    if (props.selectedColors.value.includes(e.currentTarget.dataset.id)) {
+      props.selectedColors.setValue(props.selectedColors.value.filter((toy) => toy !== e.currentTarget.dataset.id));
       e.currentTarget.classList.remove('active');
     } else {
+      props.selectedColors.value.push(e.currentTarget.dataset.id);
       e.currentTarget.classList.add('active');
     }
     handleChange(e);
@@ -42,8 +48,13 @@ export default function Colors(props: Props) {
         <input id="white" type="checkbox" className="filters-colors__checkbox white"></input>
         <label
           htmlFor="white"
-          className="filters-colors__label white"
+          className={
+            props.selectedColors.value.includes('1')
+              ? 'filters-colors__label white active'
+              : 'filters-colors__label white'
+          }
           data-value={'белый'}
+          data-id={'1'}
           onClick={(e) => {
             toggleActive(e);
           }}
@@ -51,8 +62,13 @@ export default function Colors(props: Props) {
         <input id="yelow" type="checkbox" className="filters-colors__checkbox yellow"></input>
         <label
           htmlFor="yelow"
-          className="filters-colors__label yellow"
+          className={
+            props.selectedColors.value.includes('2')
+              ? 'filters-colors__label yellow active'
+              : 'filters-colors__label yellow'
+          }
           data-value={'желтый'}
+          data-id={'2'}
           onClick={(e) => {
             toggleActive(e);
           }}
@@ -60,8 +76,11 @@ export default function Colors(props: Props) {
         <input id="red" type="checkbox" className="filters-colors__checkbox red"></input>
         <label
           htmlFor="red"
-          className="filters-colors__label red"
+          className={
+            props.selectedColors.value.includes('3') ? 'filters-colors__label red active' : 'filters-colors__label red'
+          }
           data-value={'красный'}
+          data-id={'3'}
           onClick={(e) => {
             toggleActive(e);
           }}
@@ -69,8 +88,13 @@ export default function Colors(props: Props) {
         <input id="blue" type="checkbox" className="filters-colors__checkbox blue"></input>
         <label
           htmlFor="blue"
-          className="filters-colors__label blue"
+          className={
+            props.selectedColors.value.includes('4')
+              ? 'filters-colors__label blue active'
+              : 'filters-colors__label blue'
+          }
           data-value={'синий'}
+          data-id={'4'}
           onClick={(e) => {
             toggleActive(e);
           }}
@@ -78,8 +102,13 @@ export default function Colors(props: Props) {
         <input id="green" type="checkbox" className="filters-colors__checkbox green"></input>
         <label
           htmlFor="green"
-          className="filters-colors__label green"
+          className={
+            props.selectedColors.value.includes('5')
+              ? 'filters-colors__label green active'
+              : 'filters-colors__label green'
+          }
           data-value={'зелёный'}
+          data-id={'5'}
           onClick={(e) => {
             toggleActive(e);
           }}

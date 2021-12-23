@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, useState, SetStateAction } from 'react';
+import { Dispatch, useState, SetStateAction, useEffect } from 'react';
 import './main.scss';
 
 import Home from './components/home/home';
@@ -38,16 +38,18 @@ type toysDataType = {
 };
 
 export default function Main({ activePage, toysData, favoriteToys, setFavoriteToys, selectedToys }: Props) {
-  const [filters, setFilters] = useState({
-    search: '',
-    sorting: 'By title(A-Z)',
-    shapeFilter: ['Ball'],
-    colourFilter: ['Red'],
-    sizeFilter: ['Big'],
-    quantityFilter: { min: '', max: '' },
-    purchaseYearFilter: { min: '', max: '' },
-    favoriteFilter: true,
-  });
+  // Позже переделать все состояния в объект ниже
+
+  // const [filters, setFilters] = useState({
+  //   search: '',
+  //   sorting: 'By title(A-Z)',
+  //   shapeFilter: ['Ball'],
+  //   colourFilter: ['Red'],
+  //   sizeFilter: ['Big'],
+  //   quantityFilter: { min: '', max: '' },
+  //   purchaseYearFilter: { min: '', max: '' },
+  //   favoriteFilter: true,
+  // });
 
   function SortArray(a: toysDataType, b: toysDataType): number {
     if (sorts === 'AZ') {
@@ -59,29 +61,97 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
       if (a.name > b.name) return -1;
       return 0;
     } else if (sorts === 'yearAscending') {
-      return +a.year - +b.year;
+      return Number(a.year) - Number(b.year);
     } else if (sorts === 'yearDescending') {
-      return +b.year - +a.year;
+      return Number(b.year) - Number(a.year);
     } else {
       return 0;
     }
   }
 
   const pages = ['домашняя', 'игрушки', 'ёлка'];
-  const [search, setSearch] = useState<string>('');
-  const [sorts, setSorts] = useState<string>('');
-  const [shapeFilter, setShapeFilter] = useState<Array<string>>([
-    'колокольчик',
-    'шар',
-    'шишка',
-    'звезда',
-    'снежинка',
-    'фигурка',
-  ]);
-  const [colorFilter, setColorFilter] = useState<Array<string>>(['белый', 'желтый', 'красный', 'синий', 'зелёный']);
-  const [sizeFilter, setSizeFilter] = useState<Array<string>>(['большой', 'средний', 'малый']);
-  const [favoriteFilter, setFavoriteFilter] = useState<boolean>(false);
+  // search
+  const [search, setSearch] = useState<string>(() => {
+    const saved = localStorage.getItem('search');
+    const initialValue = saved ? saved : undefined;
+    return initialValue || '';
+  });
+  useEffect(() => {
+    localStorage.setItem('search', search);
+  }, [search]);
+  // sorts
+  const [sorts, setSorts] = useState<string>(() => {
+    const saved = localStorage.getItem('sorts');
+    const initialValue = saved ? saved : undefined;
+    return initialValue || '';
+  });
+  useEffect(() => {
+    localStorage.setItem('sorts', sorts);
+  }, [sorts]);
+  // shapeFilter
+  const [shapeFilter, setShapeFilter] = useState<Array<string>>(() => {
+    const saved = localStorage.getItem('shapeFilter');
+    const initialValue = saved ? saved.split(',') : undefined;
+    return initialValue || ['колокольчик', 'шар', 'шишка', 'звезда', 'снежинка', 'фигурка'];
+  });
+  const [selectedShape, setSelectedShape] = useState<Array<string>>(() => {
+    const saved = localStorage.getItem('selectedShape');
+    const initialValue = saved ? saved.split(',') : undefined;
+    return initialValue || [];
+  });
+  useEffect(() => {
+    localStorage.setItem('selectedShape', selectedShape.join());
+    localStorage.setItem('shapeFilter', shapeFilter.join());
+  }, [selectedShape.length]);
+  // ColorFilter
+  const [colorFilter, setColorFilter] = useState<Array<string>>(() => {
+    const saved = localStorage.getItem('colorFilter');
+    const initialValue = saved ? saved.split(',') : undefined;
+    return initialValue || ['белый', 'желтый', 'красный', 'синий', 'зелёный'];
+  });
+  const [selectedColors, setSelectedColors] = useState<Array<string>>(() => {
+    const saved = localStorage.getItem('selectedColors');
+    const initialValue = saved ? saved.split(',') : undefined;
+    return initialValue || [];
+  });
+  useEffect(() => {
+    localStorage.setItem('selectedColors', selectedColors.join());
+    localStorage.setItem('colorFilter', colorFilter.join());
+  }, [selectedColors.length]);
+  // sizeFilter
+  const [sizeFilter, setSizeFilter] = useState<Array<string>>(() => {
+    const saved = localStorage.getItem('sizeFilter');
+    const initialValue = saved ? saved.split(',') : undefined;
+    return initialValue || ['большой', 'средний', 'малый'];
+  });
+  const [selectedSizes, setSelectedSizes] = useState<Array<string>>(() => {
+    const saved = localStorage.getItem('selectedSizes');
+    const initialValue = saved ? saved.split(',') : undefined;
+    return initialValue || [];
+  });
+  useEffect(() => {
+    localStorage.setItem('selectedSizes', selectedSizes.join());
+    localStorage.setItem('sizeFilter', sizeFilter.join());
+  }, [sizeFilter.length]);
+  // favoriteFilter
+  const [favoriteFilter, setFavoriteFilter] = useState<boolean>(() => {
+    const saved = localStorage.getItem('favoriteFilter');
+    const initialValue = saved === 'true' ? true : false;
+    return initialValue || false;
+  });
+  const [selectedFavoriteFilter, setSelectedFavoriteFilter] = useState<Array<string>>(() => {
+    const saved = localStorage.getItem('selectedFavoriteFilter');
+    console.log(saved);
+    const initialValue = saved ? saved.split(',') : undefined;
+    return initialValue || [];
+  });
+  useEffect(() => {
+    localStorage.setItem('favoriteFilter', String(favoriteFilter));
+    localStorage.setItem('selectedFavoriteFilter', selectedFavoriteFilter.join());
+  }, [favoriteFilter]);
+  // quantityValues
   const [quantityValues, setQuantityValues] = useState<Array<number>>([1, 12]);
+  // purchaseYearValues
   const [purchaseYearValues, setPurchaseYearValues] = useState<Array<number>>([1940, 2021]);
   const shapeFilterToysData = toysData.filter((toy) => {
     for (let i = 0; i < shapeFilter.length; i++) {
@@ -139,6 +209,10 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
           quantityValues={{ value: quantityValues, setValue: setQuantityValues }}
           purchaseYearValues={{ value: purchaseYearValues, setValue: setPurchaseYearValues }}
           selectedToys={selectedToys}
+          selectedShape={{ value: selectedShape, setValue: setSelectedShape }}
+          selectedColors={{ value: selectedColors, setValue: setSelectedColors }}
+          selectedSizes={{ value: selectedSizes, setValue: setSelectedSizes }}
+          selectedFavoriteFilter={{ value: selectedFavoriteFilter, setValue: setSelectedFavoriteFilter }}
         />
       )}
       {activePage === pages[2] && <Tree />}

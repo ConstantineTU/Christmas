@@ -7,13 +7,19 @@ type Props = {
     value: string[];
     setValue: React.Dispatch<React.SetStateAction<string[]>>;
   };
+  selectedShape: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function Forms(props: Props) {
   const toggleActive = (e) => {
-    if (e.currentTarget.classList.contains('active')) {
+    if (props.selectedShape.value.includes(e.currentTarget.id)) {
+      props.selectedShape.setValue(props.selectedShape.value.filter((toy) => toy !== e.currentTarget.id));
       e.currentTarget.classList.remove('active');
     } else {
+      props.selectedShape.value.push(e.currentTarget.id);
       e.currentTarget.classList.add('active');
     }
     handleChange(e);
@@ -40,8 +46,8 @@ export default function Forms(props: Props) {
       <h3 className="filters-title filters-forms-title">Форма</h3>
       <div className="filters-forms-wrap">
         <button
-          id="shapeBell"
-          className="filters-forms__button"
+          id="1"
+          className={props.selectedShape.value.includes('1') ? 'filters-forms__button active' : 'filters-forms__button'}
           value={'колокольчик'}
           onClick={(e) => {
             toggleActive(e);
@@ -51,8 +57,8 @@ export default function Forms(props: Props) {
           Колокол
         </button>
         <button
-          id="shapeBell"
-          className="filters-forms__button"
+          id="2"
+          className={props.selectedShape.value.includes('2') ? 'filters-forms__button active' : 'filters-forms__button'}
           value={'шар'}
           onClick={(e) => {
             toggleActive(e);
@@ -62,8 +68,8 @@ export default function Forms(props: Props) {
           Шар
         </button>
         <button
-          id="shapeBell"
-          className="filters-forms__button"
+          id="3"
+          className={props.selectedShape.value.includes('3') ? 'filters-forms__button active' : 'filters-forms__button'}
           value={'шишка'}
           onClick={(e) => {
             toggleActive(e);
@@ -73,8 +79,8 @@ export default function Forms(props: Props) {
           Шишка
         </button>
         <button
-          id="shapeBell"
-          className="filters-forms__button"
+          id="4"
+          className={props.selectedShape.value.includes('4') ? 'filters-forms__button active' : 'filters-forms__button'}
           value={'звезда'}
           onClick={(e) => {
             toggleActive(e);
@@ -84,8 +90,8 @@ export default function Forms(props: Props) {
           Звезда
         </button>
         <button
-          id="shapeBell"
-          className="filters-forms__button"
+          id="5"
+          className={props.selectedShape.value.includes('5') ? 'filters-forms__button active' : 'filters-forms__button'}
           value={'снежинка'}
           onClick={(e) => {
             toggleActive(e);
@@ -95,8 +101,8 @@ export default function Forms(props: Props) {
           Снежинка
         </button>
         <button
-          id="shapeBell"
-          className="filters-forms__button"
+          id="6"
+          className={props.selectedShape.value.includes('6') ? 'filters-forms__button active' : 'filters-forms__button'}
           value={'фигурка'}
           onClick={(e) => {
             toggleActive(e);
