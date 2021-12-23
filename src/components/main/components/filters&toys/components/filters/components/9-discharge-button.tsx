@@ -36,6 +36,8 @@ type Props = {
 export default function DischargeButton(props: Props) {
   const handleChange = () => {
     const favoriteToysLabel = document.getElementById('favoriteToysLabel');
+    const quantityRange = document.getElementById('quantityRange');
+    const acquisitionsRange = document.getElementById('acquisitionsRange');
     const sizeButtons = document.querySelectorAll<HTMLLabelElement>('.filters-size__label');
     const colorButtons = document.querySelectorAll<HTMLLabelElement>('.filters-colors__label');
     const shapeButtons = document.querySelectorAll<HTMLButtonElement>('.filters-forms__button');
@@ -59,6 +61,12 @@ export default function DischargeButton(props: Props) {
     props.shapeFilter.setValue(defaultShapes);
     props.quantityValues.setValue([1, 12]);
     props.purchaseYearValues.setValue([1940, 2021]);
+    quantityRange.style.background = `rgba(0, 0, 0, 0) linear-gradient(to right, rgb(196, 196, 196) 0%, rgb(196, 196, 196)
+                0%, rgb(36, 198, 219) 0%, rgb(36, 198, 219) 100%, rgb(196, 196, 196) 100%, 
+                rgb(196, 196, 196) 100%) repeat scroll 0% 0%`;
+    acquisitionsRange.style.background = `rgba(0, 0, 0, 0) linear-gradient(to right, rgb(196, 196, 196) 0%, rgb(196, 196, 196)
+                0%, rgb(36, 198, 219) 0%, rgb(36, 198, 219) 100%, rgb(196, 196, 196) 100%, 
+                rgb(196, 196, 196) 100%) repeat scroll 0% 0%`;
   };
 
   return (

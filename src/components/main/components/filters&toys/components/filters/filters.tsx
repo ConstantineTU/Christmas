@@ -54,8 +54,6 @@ export default function Filters(props: Props) {
       <div className="filters-container">
         <Sort toysData={props.toysData} sorts={props.sorts} />
         <div className="filters-container-wrap">
-          <Categories toysData={props.toysData} />
-
           <Search toysData={props.toysData} search={props.search} />
         </div>
         <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Range } from 'react-range';
 
 const STEP = 1;
@@ -15,6 +15,15 @@ type Props = {
 };
 
 const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
+  const handleChangeBackground = (value) => {
+    const quantityRange = document.getElementById('quantityRange');
+    const minValue = ((100 / (MAX - MIN)) * (value[1] - MIN)).toFixed(0);
+    const maxValue = ((100 / (MAX - MIN)) * (MAX - MIN - (MAX - value[0]))).toFixed(0);
+    quantityRange.style.background = `rgba(0, 0, 0, 0) linear-gradient(to right, rgb(196, 196, 196) 0%, rgb(196, 196, 196)
+                ${maxValue}%, rgb(36, 198, 219) ${maxValue}%, rgb(36, 198, 219) ${minValue}%, rgb(196, 196, 196) ${minValue}%, 
+                rgb(196, 196, 196) 100%) repeat scroll 0% 0%`;
+  };
+
   return (
     <div
       style={{
@@ -30,8 +39,9 @@ const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
         min={MIN}
         max={MAX}
         rtl={rtl}
-        onChange={(values) => {
-          quantityValues.setValue(values);
+        onChange={(value) => {
+          quantityValues.setValue(value);
+          handleChangeBackground(value);
         }}
         renderTrack={({ props, children }) => (
           <div
@@ -43,7 +53,14 @@ const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
               width: '100%',
             }}
           >
-            <div ref={props.ref} className="filters-quantity-range" id="quantityRange">
+            <div
+              ref={props.ref}
+              className="filters-quantity-range"
+              id="quantityRange"
+              // style={{
+              //   background: rangeBackground,
+              // }}
+            >
               {children}
             </div>
           </div>
