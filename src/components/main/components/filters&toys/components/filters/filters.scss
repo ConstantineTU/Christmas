@@ -45,8 +45,16 @@
       max-width: 178px;
       background: radial-gradient(118.88% 606.86% at 0% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(157, 243, 255, 0.2) 100%);
       border-radius: 30px;
-      border: 1px solid;
-      border: rgba(36, 197, 219, 0.26);
+      border: 1px solid transparent;
+      transition: border 0.25s, box-shadow 0.25s;
+      &:hover {
+        border: 1px solid #9d8665;
+        opacity: 1;
+      }
+      &:active {
+        border: 1px solid rgb(36, 198, 219);
+        box-shadow: 0px 0px 10px 0.5px rgb(36, 198, 219);
+      }
     }
     &__option {
       color: #000;
@@ -466,7 +474,12 @@
       transition: opacity 0.3s;
       margin: 0px 0px 10px 0px;
       &:hover {
+        border: 1px solid #9d8665;
         opacity: 1;
+      }
+      &:active {
+        border: 1px solid rgb(36, 198, 219);
+        box-shadow: 0px 0px 10px 0.5px rgb(36, 198, 219);
       }
     }
   }
@@ -500,6 +513,9 @@
       border-image-source: radial-gradient(104.22% 230.94% at -4.22% 0%, #24c5db 3.62%, rgba(36, 197, 219, 0.26) 55.1%),
         radial-gradient(57.23% 248.2% at 107.17% 104.02%, rgba(34, 153, 235, 0.92) 0%, rgba(34, 153, 235, 0.07) 100%);
       transition: border 0.25s, box-shadow 0.25s;
+      &:hover {
+        border: 1px solid #9d8665;
+      }
       &:focus {
         border: 1px solid rgb(36, 198, 219);
         box-shadow: 0px 0px 10px 0.5px rgb(36, 198, 219);

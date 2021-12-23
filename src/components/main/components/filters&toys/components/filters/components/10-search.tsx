@@ -21,8 +21,10 @@ export default function Search(props: Props) {
   }, [props.activePage]);
 
   const resetSearch = () => {
-    props.search.setValue('')
-  }
+    const searchInput = document.getElementById('search');
+    props.search.setValue('');
+    searchInput.focus();
+  };
 
   return (
     <div className="filters-search-container">
@@ -38,9 +40,8 @@ export default function Search(props: Props) {
         />
         <div
           className={props.search.value ? 'filters-search__label active' : 'filters-search__label'}
-          onClick={resetSearch}>
-
-        </div>
+          onClick={resetSearch}
+        ></div>
       </div>
     </div>
   );

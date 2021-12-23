@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Dispatch, SetStateAction } from 'react';
-
+import './btn-to-top.scss';
 import Filters from './components/filters/filters';
 import Toys from './components/toys/toys';
+import BtnToTop from './btn-to-top';
 
 type Props = {
   activePage: string;
@@ -75,6 +76,7 @@ type Props = {
 export default function FiltersAndToys(props: Props) {
   return (
     <div className="toys section">
+      <BtnToTop activePage={props.activePage} />
       {
         <Filters
           activePage={props.activePage}
