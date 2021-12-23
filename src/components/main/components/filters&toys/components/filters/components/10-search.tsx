@@ -20,20 +20,27 @@ export default function Search(props: Props) {
     searchInput.focus();
   }, [props.activePage]);
 
+  const resetSearch = () => {
+    props.search.setValue('')
+  }
+
   return (
     <div className="filters-search-container">
       <div className="filters-search-wrap">
-        <label htmlFor="search" className="filters-search__label">
-          <input
-            className="filters-search__input"
-            type="search"
-            name="search"
-            id="search"
-            placeholder="Поиск"
-            value={props.search.value}
-            onChange={handleChange}
-          />
-        </label>
+        <input
+          className={props.search.value ? 'filters-search__input active' : 'filters-search__input'}
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Поиск"
+          value={props.search.value}
+          onChange={handleChange}
+        />
+        <div
+          className={props.search.value ? 'filters-search__label active' : 'filters-search__label'}
+          onClick={resetSearch}>
+
+        </div>
       </div>
     </div>
   );

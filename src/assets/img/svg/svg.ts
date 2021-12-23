@@ -14,6 +14,7 @@ import toy from './toy.svg'
 import tree from './tree.svg'
 import star from './star.svg'
 import checked from './checked.svg'
+import close from './close.svg'
 
 const SvgImages = {
 	arrowDown,
@@ -32,6 +33,7 @@ const SvgImages = {
 	tree,
 	star,
 	checked,
+	close,
 }
 
 export default SvgImages

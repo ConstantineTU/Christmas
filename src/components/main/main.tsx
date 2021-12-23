@@ -141,7 +141,6 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
   });
   const [selectedFavoriteFilter, setSelectedFavoriteFilter] = useState<Array<string>>(() => {
     const saved = localStorage.getItem('selectedFavoriteFilter');
-    console.log(saved);
     const initialValue = saved ? saved.split(',') : undefined;
     return initialValue || [];
   });

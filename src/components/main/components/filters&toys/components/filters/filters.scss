@@ -472,6 +472,7 @@
   }
   &-search {
     &-wrap {
+      position: relative;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -498,22 +499,38 @@
       border: 1px solid;
       border-image-source: radial-gradient(104.22% 230.94% at -4.22% 0%, #24c5db 3.62%, rgba(36, 197, 219, 0.26) 55.1%),
         radial-gradient(57.23% 248.2% at 107.17% 104.02%, rgba(34, 153, 235, 0.92) 0%, rgba(34, 153, 235, 0.07) 100%);
+      transition: border 0.25s, box-shadow 0.25s;
+      &:focus {
+        border: 1px solid rgb(36, 198, 219);
+        box-shadow: 0px 0px 10px 0.5px rgb(36, 198, 219);
+      }
     }
+
     &__label {
-      width: 100%;
-      max-width: 254px;
-      position: relative;
-      height: 40px;
-      &::before {
-        content: "";
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        width: 18px;
-        height: 18px;
-        background: url("../../../../../../assets/img/svg/search.svg");
-        background-size: 18px;
+      position: absolute;
+      cursor: pointer;
+      z-index: 3;
+      position: absolute;
+      right: 5px;
+      top: 2px;
+      width: 36px;
+      height: 36px;
+      background: url("../../../../../../assets/img/svg/search.svg") no-repeat;
+      background-size: 18px;
+      background-position: center center;
+      transition: background 0.1s, filter 0.3s, opacity 0.3s;
+      opacity: 0.7;
+      &.active {
+        cursor: pointer;
+        background: url("../../../../../../assets/img/svg/close.svg") no-repeat;
+        background-size: 30px;
         background-position: center center;
+        opacity: 0.7;
+        transition: background 0.3s, filter 0.3s, opacity 0.3s;
+      }
+      &.active:hover {
+        filter: invert(54%) sepia(32%) saturate(369%) brightness(120%) contrast(86%);
+        opacity: 1;
       }
     }
   }
