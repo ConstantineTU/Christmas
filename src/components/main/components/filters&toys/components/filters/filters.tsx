@@ -13,6 +13,7 @@ import DischargeButton from './components/9-discharge-button';
 import Search from './components/10-search';
 
 type Props = {
+  activePage: string;
   toysData: object;
   search: {
     value: string;
@@ -70,7 +71,7 @@ export default function Filters(props: Props) {
       <div className="filters-container">
         <Sort toysData={props.toysData} sorts={props.sorts} />
         <div className="filters-container-wrap">
-          <Search toysData={props.toysData} search={props.search} />
+          <Search toysData={props.toysData} search={props.search} activePage={props.activePage} />
         </div>
         <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} selectedShape={props.selectedShape} />
         <Quantity toysData={props.toysData} quantityValues={props.quantityValues} />

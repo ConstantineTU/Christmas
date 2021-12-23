@@ -5,6 +5,7 @@ import Filters from './components/filters/filters';
 import Toys from './components/toys/toys';
 
 type Props = {
+  activePage: string;
   toysData: {
     num: string;
     name: string;
@@ -76,6 +77,7 @@ export default function FiltersAndToys(props: Props) {
     <div className="toys section">
       {
         <Filters
+          activePage={props.activePage}
           toysData={props.toysData}
           search={props.search}
           sorts={props.sorts}

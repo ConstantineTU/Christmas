@@ -234,6 +234,7 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
           selectedColors={{ value: selectedColors, setValue: setSelectedColors }}
           selectedSizes={{ value: selectedSizes, setValue: setSelectedSizes }}
           selectedFavoriteFilter={{ value: selectedFavoriteFilter, setValue: setSelectedFavoriteFilter }}
+          activePage={activePage}
         />
       )}
       {activePage === pages[2] && <Tree />}

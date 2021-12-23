@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Dispatch } from 'react';
+import { Dispatch, useEffect } from 'react';
 
 type Props = {
+  activePage: string;
   toysData: object;
   search: {
     value: string;
@@ -13,6 +14,11 @@ export default function Search(props: Props) {
   const handleChange = ({ target }: { target: HTMLInputElement }) => {
     props.search.setValue(target.value);
   };
+
+  useEffect(() => {
+    const searchInput = document.getElementById('search');
+    searchInput.focus();
+  }, [props.activePage]);
 
   return (
     <div className="filters-search-container">
