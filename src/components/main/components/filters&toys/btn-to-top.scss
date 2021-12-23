@@ -1,7 +1,7 @@
 .top__btn {
   &-container {
     position: fixed;
-    background: hsla(175, 31%, 14%, 0.993);
+    background: #9d8665;
     border-radius: 50%;
     bottom: 12%;
     right: -200px;
@@ -14,34 +14,41 @@
     border-radius: 50%;
     z-index: 2;
     position: absolute;
-    animation: expansion-attenuation 2.5s infinite;
+    animation: expansion-attenuation ease-in-out 2.5s infinite;
     pointer-events: none;
   }
 }
 
 .header__btn {
-  background-color: hsla(175, 31%, 14%, 0.993);
+  position: relative;
+  background-color: #9d8665;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
-  opacity: 0.3;
-  transition: opacity 0.4s;
-  border: solid #e8e8e8 0.5px;
+  z-index: 6;
+  opacity: 1;
+  transition: opacity 0.4s, border-color 0.3s;
+  border: solid rgb(25, 47, 45) 1.5px;
   &:hover {
     opacity: 0.9;
-    border: 1px solid #9d8665;
+    border: 1px solid hsla(175, 31%, 14%, 0.993);
     & .arrow__top {
-      background-color: #9d8665;
+      transition: opacity 0.4s, border-color 0.3s;
+      background-color: #000;
     }
     & .arrow__top::after {
-      background-color: #9d8665;
+      transition: opacity 0.4s, border-color 0.3s;
+      background-color: #000;
     }
     & .arrow__top::before {
-      background-color: #9d8665;
+      transition: opacity 0.4s, border-color 0.3s;
+      background-color: #000;
+    }
+    & .top__btn-wrap {
+      animation: expansion-attenuation-black ease-in-out 2.5s infinite;
     }
   }
 }
@@ -54,8 +61,9 @@
   position: relative;
   width: 2px;
   height: 15px;
-  background-color: #fff;
+  background-color: hsla(175, 31%, 14%, 0.993);
   z-index: 5;
+  transition: opacity 0.4s, border-color 0.3s;
   &::before {
     content: "";
     position: absolute;
@@ -63,8 +71,9 @@
     right: 2.5px;
     width: 2px;
     height: 8px;
-    background-color: #fff;
+    background-color: hsla(175, 31%, 14%, 0.993);
     transform: rotate(45deg);
+    transition: opacity 0.4s, border-color 0.3s;
   }
   &::after {
     content: "";
@@ -74,18 +83,29 @@
     left: 2.5px;
     width: 2px;
     height: 8px;
-    background-color: #fff;
+    background-color: hsla(175, 31%, 14%, 0.993);
     transform: rotate(135deg);
+    transition: opacity 0.4s, border-color 0.3s;
   }
 }
 
 @keyframes expansion-attenuation {
   0% {
-    background: hsla(175, 31%, 14%, 1);
+    background: #9d8665;
+    padding: 0px;
+  }
+  100% {
+    background: #9d866500;
+    padding: 40px;
+  }
+}
+@keyframes expansion-attenuation-black {
+  0% {
+    background: hsla(175, 31%, 14%, 0.534);
     padding: 0px;
   }
   100% {
     background: hsla(175, 31%, 14%, 0);
-    padding: 50px;
+    padding: 40px;
   }
 }

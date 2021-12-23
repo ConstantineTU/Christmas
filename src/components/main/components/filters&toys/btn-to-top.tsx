@@ -7,7 +7,6 @@ type Props = {
 export default function BtnToTop(props: Props) {
   React.useEffect(() => {
     const toTopBtn = document.getElementById('top__btn') as HTMLElement;
-    console.log(toTopBtn);
     window.addEventListener('scroll', () => {
       if (window.pageYOffset >= 300) {
         toTopBtn.classList.add('show');

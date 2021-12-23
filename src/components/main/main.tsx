@@ -24,6 +24,7 @@ type Props = {
     value: string[];
     setValue: React.Dispatch<React.SetStateAction<string[]>>;
   };
+  handleChangeActive: React.Dispatch<React.SetStateAction<string>>;
 };
 
 type toysDataType = {
@@ -37,7 +38,14 @@ type toysDataType = {
   favorite: boolean;
 };
 
-export default function Main({ activePage, toysData, favoriteToys, setFavoriteToys, selectedToys }: Props) {
+export default function Main({
+  activePage,
+  toysData,
+  favoriteToys,
+  setFavoriteToys,
+  selectedToys,
+  handleChangeActive,
+}: Props) {
   // Позже переделать все состояния в объект ниже
 
   // const [filters, setFilters] = useState({
@@ -214,7 +222,7 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
     .sort(SortArray);
   return (
     <main className="main">
-      {activePage === pages[0] && <Home />}
+      {activePage === pages[0] && <Home activePage={{ value: activePage, setValue: handleChangeActive }} />}
       {activePage === pages[1] && (
         <FiltersAndToys
           toysData={newToysData}

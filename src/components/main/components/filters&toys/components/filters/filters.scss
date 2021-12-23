@@ -455,6 +455,9 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      @media (max-width: 414px) {
+        justify-content: center;
+      }
     }
     &__button {
       cursor: pointer;

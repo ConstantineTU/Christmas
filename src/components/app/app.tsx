@@ -8,7 +8,7 @@ const App = () => {
   const [activePage, setActivePage] = useState<string>(() => {
     const saved = localStorage.getItem('activePage');
     const initialValue = saved ? saved : undefined;
-    return initialValue || 'игрушки';
+    return initialValue || 'домашняя';
   });
   const [selectedToys, setSelectedToys] = useState<Array<string>>(() => {
     const saved = localStorage.getItem('selectedToys');
@@ -34,6 +34,7 @@ const App = () => {
       <Header activePage={activePage} handleChangeActive={setActivePage} />
       <Main
         activePage={activePage}
+        handleChangeActive={setActivePage}
         toysData={toysData}
         favoriteToys={favoriteToys}
         setFavoriteToys={setFavoriteToys}
