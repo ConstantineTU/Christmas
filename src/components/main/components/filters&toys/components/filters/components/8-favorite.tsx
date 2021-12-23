@@ -38,7 +38,7 @@ export default function Favorite(props: Props) {
           className={
             props.selectedFavoriteFilter.value.includes('1')
               ? 'filters-favorite__label active'
-              : 'filters-favorite__label white'
+              : 'filters-favorite__label'
           }
           data-id={'1'}
           onClick={(e) => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { Range } from 'react-range';
 
 type Props = {
@@ -15,15 +15,15 @@ const MIN = 1940;
 const MAX = 2021;
 
 const AcquisitionsTwoThumbs = ({ rtl, purchaseYearValues }: Props) => {
-  const handleChangeBackground = (value) => {
+  const handleChangeBackground = (value) => {};
+  useEffect(() => {
     const acquisitionsRange = document.getElementById('acquisitionsRange');
-    const minValue = ((100 / (MAX - MIN)) * (value[1] - MIN)).toFixed(0);
-    const maxValue = ((100 / (MAX - MIN)) * (MAX - MIN - (MAX - value[0]))).toFixed(0);
+    const minValue = ((100 / (MAX - MIN)) * (purchaseYearValues.value[1] - MIN)).toFixed(0);
+    const maxValue = ((100 / (MAX - MIN)) * (MAX - MIN - (MAX - purchaseYearValues.value[0]))).toFixed(0);
     acquisitionsRange.style.background = `rgba(0, 0, 0, 0) linear-gradient(to right, rgb(196, 196, 196) 0%, rgb(196, 196, 196)
           ${maxValue}%, rgb(36, 198, 219) ${maxValue}%, rgb(36, 198, 219) ${minValue}%, rgb(196, 196, 196) ${minValue}%, 
           rgb(196, 196, 196) 100%) repeat scroll 0% 0%`;
-  };
-
+  }, [purchaseYearValues]);
   return (
     <div
       style={{

@@ -69,11 +69,18 @@ export default function DischargeButton(props: Props) {
                 rgb(196, 196, 196) 100%) repeat scroll 0% 0%`;
   };
 
+  const getClearLocalStorage = () => {
+    localStorage.clear();
+  };
+
   return (
     <div className="filters-discharge-container">
       <div className="filters-discharge-wrap">
         <button id="dischargeFilters" className="filters-discharge__button" onClick={handleChange}>
           Сбросить фильтры
+        </button>
+        <button id="resetSettings" className="filters-discharge__button" onClick={getClearLocalStorage}>
+          Сбросить настройки
         </button>
       </div>
     </div>

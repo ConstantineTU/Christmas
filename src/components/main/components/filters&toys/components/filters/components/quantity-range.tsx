@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 import { Range } from 'react-range';
 
 const STEP = 1;
@@ -15,15 +15,15 @@ type Props = {
 };
 
 const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
-  const handleChangeBackground = (value) => {
+  const handleChangeBackground = (value) => {};
+  useEffect(() => {
     const quantityRange = document.getElementById('quantityRange');
-    const minValue = ((100 / (MAX - MIN)) * (value[1] - MIN)).toFixed(0);
-    const maxValue = ((100 / (MAX - MIN)) * (MAX - MIN - (MAX - value[0]))).toFixed(0);
+    const minValue = ((100 / (MAX - MIN)) * (quantityValues.value[1] - MIN)).toFixed(0);
+    const maxValue = ((100 / (MAX - MIN)) * (MAX - MIN - (MAX - quantityValues.value[0]))).toFixed(0);
     quantityRange.style.background = `rgba(0, 0, 0, 0) linear-gradient(to right, rgb(196, 196, 196) 0%, rgb(196, 196, 196)
                 ${maxValue}%, rgb(36, 198, 219) ${maxValue}%, rgb(36, 198, 219) ${minValue}%, rgb(196, 196, 196) ${minValue}%, 
                 rgb(196, 196, 196) 100%) repeat scroll 0% 0%`;
-  };
-
+  }, [quantityValues]);
   return (
     <div
       style={{

@@ -150,9 +150,30 @@ export default function Main({ activePage, toysData, favoriteToys, setFavoriteTo
     localStorage.setItem('selectedFavoriteFilter', selectedFavoriteFilter.join());
   }, [favoriteFilter]);
   // quantityValues
-  const [quantityValues, setQuantityValues] = useState<Array<number>>([1, 12]);
+  const [quantityValues, setQuantityValues] = useState<Array<number>>(() => {
+    const saved = localStorage.getItem('quantityValues');
+    const initialValue = saved ? saved.split(',').map(parseFloat) : undefined;
+    return initialValue || [1, 12];
+  });
+  // const [selectedQuantityValues, setSelectedQuantityValues] = useState<Array<string>>(() => {
+  //   const saved = localStorage.getItem('selectedQuantityValues');
+  //   const initialValue = saved ? saved.split(',') : undefined;
+  //   return initialValue || [];
+  // });
+  useEffect(() => {
+    // localStorage.setItem('selectedSizes', selectedSizes.join());
+    localStorage.setItem('quantityValues', quantityValues.join());
+  }, [quantityValues]);
   // purchaseYearValues
-  const [purchaseYearValues, setPurchaseYearValues] = useState<Array<number>>([1940, 2021]);
+  const [purchaseYearValues, setPurchaseYearValues] = useState<Array<number>>(() => {
+    const saved = localStorage.getItem('purchaseYearValues');
+    const initialValue = saved ? saved.split(',').map(parseFloat) : undefined;
+    return initialValue || [1940, 2021];
+  });
+  useEffect(() => {
+    // localStorage.setItem('selectedSizes', selectedSizes.join());
+    localStorage.setItem('purchaseYearValues', purchaseYearValues.join());
+  }, [purchaseYearValues]);
   const shapeFilterToysData = toysData.filter((toy) => {
     for (let i = 0; i < shapeFilter.length; i++) {
       if (toy.shape.includes(shapeFilter[i])) {
