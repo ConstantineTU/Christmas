@@ -31,7 +31,6 @@
   z-index: 6;
   opacity: 1;
   transition: opacity 0.4s, border-color 0.3s;
-  border: solid rgb(25, 47, 45) 1.5px;
   &:hover {
     opacity: 0.9;
     border: 1px solid hsla(175, 31%, 14%, 0.993);
@@ -90,22 +89,31 @@
 }
 
 @keyframes expansion-attenuation {
+  // 0% {
+  //   background: rgb(157, 134, 101, 0.8);
+  //   padding: 0px;
+  // }
+  // 100% {
+  //   background: #9d866500;
+  //   padding: 40px;
+  // }
   0% {
-    background: #9d8665;
-    padding: 0px;
+    box-shadow: rgb(157, 134, 101, 0.8) 0px 0px 0px 0px;
+  }
+  70% {
+    box-shadow: rgba(115, 183, 195, 0) 0px 0px 0px 30px;
   }
   100% {
-    background: #9d866500;
-    padding: 40px;
+    box-shadow: rgba(115, 183, 195, 0) 0px 0px 0px 0px;
   }
 }
 @keyframes expansion-attenuation-black {
   0% {
-    background: hsla(175, 31%, 14%, 0.534);
+    background: rgba(25, 47, 45, 0.534);
     padding: 0px;
   }
   100% {
-    background: hsla(175, 31%, 14%, 0);
+    background: rgba(25, 47, 45, 0);
     padding: 40px;
   }
 }
