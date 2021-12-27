@@ -93,12 +93,15 @@ export default function FiltersAndToys(props: Props) {
           selectedColors={props.selectedColors}
           selectedSizes={props.selectedSizes}
           selectedFavoriteFilter={props.selectedFavoriteFilter}
+          selectedToys={props.selectedToys}
+          favoriteToys={props.favoriteToys}
+          setFavoriteToys={props.setFavoriteToys}
         />
       }
       {
         <Toys
-          selectedToys={props.selectedToys}
           toysData={props.toysData}
+          selectedToys={props.selectedToys}
           favoriteToys={props.favoriteToys}
           setFavoriteToys={props.setFavoriteToys}
         />

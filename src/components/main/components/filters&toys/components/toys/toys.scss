@@ -1,5 +1,7 @@
 .toys {
 	display: flex;
+	flex: 1 1 auto;
+
 	@media (max-width: (480px)) {
 		flex-direction: column;
 	}

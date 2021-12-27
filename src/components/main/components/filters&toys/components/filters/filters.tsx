@@ -63,6 +63,12 @@ type Props = {
     value: string[];
     setValue: React.Dispatch<React.SetStateAction<string[]>>;
   };
+  favoriteToys: number;
+  setFavoriteToys: Dispatch<SetStateAction<number>>;
+  selectedToys: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function Filters(props: Props) {
@@ -90,6 +96,9 @@ export default function Filters(props: Props) {
           favoriteFilter={props.favoriteFilter}
           quantityValues={props.quantityValues}
           purchaseYearValues={props.purchaseYearValues}
+          selectedToys={props.selectedToys}
+          favoriteToys={props.favoriteToys}
+          setFavoriteToys={props.setFavoriteToys}
         />
       </div>
     </div>

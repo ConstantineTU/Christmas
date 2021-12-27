@@ -31,10 +31,16 @@ type Props = {
     value: number[];
     setValue: Dispatch<SetStateAction<number[]>>;
   };
+  favoriteToys: number;
+  setFavoriteToys: Dispatch<SetStateAction<number>>;
+  selectedToys: {
+    value: string[];
+    setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  };
 };
 
 export default function DischargeButton(props: Props) {
-  const handleChange = () => {
+  const handleChangeReset = () => {
     const favoriteToysLabel = document.getElementById('favoriteToysLabel');
     const quantityRange = document.getElementById('quantityRange');
     const acquisitionsRange = document.getElementById('acquisitionsRange');
@@ -70,17 +76,24 @@ export default function DischargeButton(props: Props) {
   };
 
   const getClearLocalStorage = () => {
-    localStorage.clear();
+
+    if (confirm('Вы уверены? Будут удалены все сохранённые настройки включая выбранные игрушки')) {
+      localStorage.clear();
+      handleChangeReset()
+      props.setFavoriteToys(0)
+      props.selectedToys.setValue([])
+    }
+
   };
 
   return (
     <div className="filters-discharge-container">
       <div className="filters-discharge-wrap">
-        <button id="dischargeFilters" className="filters-discharge__button" onClick={handleChange}>
+        <button id="dischargeFilters" className="filters-discharge__button" onClick={handleChangeReset}>
           Сбросить фильтры
         </button>
         <button id="resetSettings" className="filters-discharge__button" onClick={getClearLocalStorage}>
-          Сбросить настройки
+          Сбросить все настройки
         </button>
       </div>
     </div>
