@@ -16,5 +16,8 @@ declare module "react-range" {
 	export default class Range extends React.Component<SliderProps> { }
 	export class Range extends React.Component<RangeProps> { }
 	export class getTrackBackground extends React.Component<Void> { }
-
+}
+declare module "react-snowfall" {
+	import * as React from "react";
+	export default class Snowfall extends React.Component { }
 }

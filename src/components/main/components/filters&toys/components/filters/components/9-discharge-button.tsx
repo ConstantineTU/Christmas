@@ -76,14 +76,12 @@ export default function DischargeButton(props: Props) {
   };
 
   const getClearLocalStorage = () => {
-
     if (confirm('Вы уверены? Будут удалены все сохранённые настройки включая выбранные игрушки')) {
       localStorage.clear();
-      handleChangeReset()
-      props.setFavoriteToys(0)
-      props.selectedToys.setValue([])
+      handleChangeReset();
+      props.setFavoriteToys(0);
+      props.selectedToys.setValue([]);
     }
-
   };
 
   return (

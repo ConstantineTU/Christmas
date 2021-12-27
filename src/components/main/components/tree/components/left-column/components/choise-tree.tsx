@@ -2,10 +2,9 @@ import * as React from 'react';
 import { Component, Dispatch, SetStateAction } from 'react';
 
 type Props = {
-  trees: Array<string>
-  index: number
-}
-
+  trees: Array<string>;
+  index: number;
+};
 
 export default function TreeCard(props: Props) {
   return (
@@ -20,6 +19,6 @@ export default function TreeCard(props: Props) {
           </div>
         </div>
       }
-    </div >
+    </div>
   );
 }

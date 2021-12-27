@@ -2,10 +2,9 @@ import * as React from 'react';
 import { Component, Dispatch, SetStateAction } from 'react';
 
 type Props = {
-  bg: Array<string>
-  index: number
-}
-
+  bg: Array<string>;
+  index: number;
+};
 
 export default function BgCard(props: Props) {
   return (
@@ -20,6 +19,6 @@ export default function BgCard(props: Props) {
           </div>
         </div>
       }
-    </div >
+    </div>
   );
 }

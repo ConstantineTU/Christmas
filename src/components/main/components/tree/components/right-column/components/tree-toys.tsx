@@ -29,22 +29,27 @@ export default function TreeToys(props: Props) {
         <div className="column-card-items-favorite">{props.favoriteToys}</div>
       </div>
       <div className="column-card-items">
-        {props.toysData.map((data, index) => (
-          props.selectedToys.value.length !== 0 ? props.selectedToys.value.includes(data.num) && <ToyItem
-            selectedToys={props.selectedToys}
-            key={index}
-            data={data}
-            favoriteToys={props.favoriteToys}
-            setFavoriteToys={props.setFavoriteToys}
-          />
-            : index <= 19 && < ToyItem
-              selectedToys={props.selectedToys}
-              key={index}
-              data={data}
-              favoriteToys={props.favoriteToys}
-              setFavoriteToys={props.setFavoriteToys}
-            />
-        ))}
+        {props.toysData.map((data, index) =>
+          props.selectedToys.value.length !== 0
+            ? props.selectedToys.value.includes(data.num) && (
+                <ToyItem
+                  selectedToys={props.selectedToys}
+                  key={index}
+                  data={data}
+                  favoriteToys={props.favoriteToys}
+                  setFavoriteToys={props.setFavoriteToys}
+                />
+              )
+            : index <= 19 && (
+                <ToyItem
+                  selectedToys={props.selectedToys}
+                  key={index}
+                  data={data}
+                  favoriteToys={props.favoriteToys}
+                  setFavoriteToys={props.setFavoriteToys}
+                />
+              )
+        )}
       </div>
     </div>
   );

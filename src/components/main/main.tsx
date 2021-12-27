@@ -245,10 +245,8 @@ export default function Main({
         />
       )}
       {activePage === pages[2] && (
-        <Tree
-          favoriteToys={favoriteToys}
-          setFavoriteToys={setFavoriteToys}
-          selectedToys={selectedToys} />)}
+        <Tree favoriteToys={favoriteToys} setFavoriteToys={setFavoriteToys} selectedToys={selectedToys} />
+      )}
     </main>
   );
 }
