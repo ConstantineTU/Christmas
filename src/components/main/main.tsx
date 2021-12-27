@@ -244,7 +244,11 @@ export default function Main({
           activePage={activePage}
         />
       )}
-      {activePage === pages[2] && <Tree />}
+      {activePage === pages[2] && (
+        <Tree
+          favoriteToys={favoriteToys}
+          setFavoriteToys={setFavoriteToys}
+          selectedToys={selectedToys} />)}
     </main>
   );
 }

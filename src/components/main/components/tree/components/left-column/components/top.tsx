@@ -22,15 +22,17 @@ export default function TopButtons(props: Props) {
 
   return (
     <div className='column-left__top-buttons'>
-      <div className='top-buttons-container'>
-        <button id='volumeBtn' className='top-buttons__button volume' onClick={handleChange}>
-          {!volumeIsActive ? <img className="top-buttons__img" src={SvgImages.mute} alt="audio" />
-            : <img className="top-buttons__img" src={SvgImages.audio} alt="audio" />}
-        </button>
-        <button className='top-buttons__button snow' onClick={handleChange}>
-          {!snowIsActive ? <img className="top-buttons__img" src={SvgImages.snow} alt="snow" />
-            : <img className="top-buttons__img" src={SvgImages.snow} alt="snow" />}
-        </button>
+      <div className='column-left-wrap'>
+        <div className='top-buttons-container'>
+          <button id='volumeBtn' className='top-buttons__button volume' onClick={handleChange}>
+            {!volumeIsActive ? <img className="top-buttons__img" src={SvgImages.mute} alt="audio" />
+              : <img className="top-buttons__img" src={SvgImages.audio} alt="audio" />}
+          </button>
+          <button className='top-buttons__button snow' onClick={handleChange}>
+            {!snowIsActive ? <img className="top-buttons__img" src={SvgImages.snow} alt="snow" />
+              : <img className="top-buttons__img" src={SvgImages.snow} alt="snow" />}
+          </button>
+        </div>
       </div>
     </div>
   );
