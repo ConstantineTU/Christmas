@@ -70,9 +70,7 @@ export default function Filters(props: Props) {
     <div className="filters">
       <div className="filters-container">
         <Sort toysData={props.toysData} sorts={props.sorts} />
-        <div className="filters-container-wrap">
-          <Search toysData={props.toysData} search={props.search} activePage={props.activePage} />
-        </div>
+        <Search toysData={props.toysData} search={props.search} activePage={props.activePage} />
         <Forms toysData={props.toysData} shapeFilter={props.shapeFilter} selectedShape={props.selectedShape} />
         <Quantity toysData={props.toysData} quantityValues={props.quantityValues} />
         <AcquisitionsYear toysData={props.toysData} purchaseYearValues={props.purchaseYearValues} />

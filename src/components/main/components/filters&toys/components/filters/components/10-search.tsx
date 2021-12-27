@@ -27,21 +27,23 @@ export default function Search(props: Props) {
   };
 
   return (
-    <div className="filters-search-container">
-      <div className="filters-search-wrap">
-        <input
-          className={props.search.value ? 'filters-search__input active' : 'filters-search__input'}
-          type="search"
-          name="search"
-          id="search"
-          placeholder="Поиск"
-          value={props.search.value}
-          onChange={handleChange}
-        />
-        <div
-          className={props.search.value ? 'filters-search__label active' : 'filters-search__label'}
-          onClick={resetSearch}
-        ></div>
+    <div className="filters-container-wrap">
+      <div className="filters-search-container">
+        <div className="filters-search-wrap">
+          <input
+            className={props.search.value ? 'filters-search__input active' : 'filters-search__input'}
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Поиск"
+            value={props.search.value}
+            onChange={handleChange}
+          />
+          <div
+            className={props.search.value ? 'filters-search__label active' : 'filters-search__label'}
+            onClick={resetSearch}
+          ></div>
+        </div>
       </div>
     </div>
   );
