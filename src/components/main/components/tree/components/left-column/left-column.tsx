@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Component, Dispatch, SetStateAction } from 'react';
+import { Component, Dispatch, SetStateAction, useEffect } from 'react';
 import './left-column.scss';
+import audio from '../../../../../../assets/audio/audio.mp3'
 
 import TopButtons from './components/top';
 import TreeCard from './components/choise-tree';
@@ -22,6 +23,8 @@ type Props = {
 };
 
 export default function ColumnLeft(props: Props) {
+
+
   return (
     <div className="column-left">
       <TopButtons snowIsActive={props.snowIsActive} volumeIsActive={props.volumeIsActive} />

@@ -10,6 +10,10 @@ declare module "*.svg" {
 	const value: any;
 	export = value;
 }
+declare module "*.mp3" {
+	const value: any;
+	export = value;
+}
 // HadleProps
 declare module "react-range" {
 	import * as React from "react";

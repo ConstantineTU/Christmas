@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Dispatch, useState, SetStateAction, useEffect } from 'react';
 import './main.scss';
+import audioSrc from '../../assets/audio/audio.mp3'
 
 import Home from './components/home/home';
 import FiltersAndToys from './components/filters&toys/filters&toys';
@@ -76,7 +77,20 @@ export default function Main({
       return 0;
     }
   }
+  // Audio
+  const [volumeIsActive, setVolumeIsActive] = useState<boolean>(false);
+  const [audio] = useState(new Audio)
+  audio.src = audioSrc
+  useEffect(() => {
 
+    if (volumeIsActive) {
+      audio.currentTime = 0
+      audio.play()
+    } else {
+      audio.currentTime = 0
+      audio.pause()
+    }
+  }, [volumeIsActive]);
   const pages = ['домашняя', 'игрушки', 'ёлка'];
   // search
   const [search, setSearch] = useState<string>(() => {
@@ -245,7 +259,8 @@ export default function Main({
         />
       )}
       {activePage === pages[2] && (
-        <Tree favoriteToys={favoriteToys} setFavoriteToys={setFavoriteToys} selectedToys={selectedToys} />
+        <Tree favoriteToys={favoriteToys} setFavoriteToys={setFavoriteToys} selectedToys={selectedToys}
+          volumeIsActive={{ value: volumeIsActive, setValue: setVolumeIsActive }} />
       )}
     </main>
   );
