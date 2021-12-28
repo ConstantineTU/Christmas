@@ -7,7 +7,7 @@ type Props = {
   treeChosen: {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
-  }
+  };
 };
 
 export default function TreeCard(props: Props) {
@@ -18,7 +18,7 @@ export default function TreeCard(props: Props) {
       e.currentTarget.classList.add('active');
       props.treeChosen.setValue(`${e.currentTarget.dataset.src}`);
     }
-  }
+  };
 
   return (
     <div

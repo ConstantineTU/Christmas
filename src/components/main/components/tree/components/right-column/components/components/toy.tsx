@@ -22,12 +22,16 @@ type Props = {
 };
 
 export default function CardItem({ data, favoriteToys, setFavoriteToys, selectedToys }: Props) {
+  const handleChange = () => {
+
+  }
+
   return (
     <div id={data.num} className={'column-card__item'}>
       {
         <div className="column-card__image-wrap">
           <div className="column-card__image-container">
-            <img src={Images[data.num]} alt="Изображение игрушки" className="column-card__image" />
+            <img src={Images[data.num]} alt="Изображение игрушки" className="column-card__image" draggable='true' />
             <div className="column-card__count">
               <span id="toysCount">{data.count}</span>
             </div>

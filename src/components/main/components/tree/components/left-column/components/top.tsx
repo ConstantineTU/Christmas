@@ -33,9 +33,8 @@ export default function TopButtons(props: Props) {
     }
   };
   useEffect(() => {
-    const snowBtn = document.getElementById('snowBtn')
-    props.snowIsActive.value ? snowBtn.classList.add('active')
-      : snowBtn.classList.remove('active')
+    const snowBtn = document.getElementById('snowBtn');
+    props.snowIsActive.value ? snowBtn.classList.add('active') : snowBtn.classList.remove('active');
   }, [props.snowIsActive]);
   return (
     <div className="column-left__top-buttons">
@@ -48,7 +47,7 @@ export default function TopButtons(props: Props) {
               <img className="top-buttons__img" src={SvgImages.audio} alt="audio" />
             )}
           </button>
-          <button id='snowBtn' className="top-buttons__button snow" onClick={handleChangeSnow}>
+          <button id="snowBtn" className="top-buttons__button snow" onClick={handleChangeSnow}>
             <img className="top-buttons__img" src={SvgImages.snow} alt="snow" />
           </button>
         </div>

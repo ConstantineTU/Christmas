@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component, Dispatch, SetStateAction, useEffect } from 'react';
 import './left-column.scss';
-import audio from '../../../../../../assets/audio/audio.mp3'
+import audio from '../../../../../../assets/audio/audio.mp3';
 
 import TopButtons from './components/top';
 import TreeCard from './components/choise-tree';
@@ -23,24 +23,22 @@ type Props = {
   treeChosen: {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
-  }
+  };
   bgChosen: {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
-  }
+  };
   colorGarland: {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
-  }
+  };
   garlandIsOn: {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
-  }
+  };
 };
 
 export default function ColumnLeft(props: Props) {
-
-
   return (
     <div className="column-left">
       <TopButtons snowIsActive={props.snowIsActive} volumeIsActive={props.volumeIsActive} />

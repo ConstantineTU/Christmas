@@ -7,7 +7,7 @@ type Props = {
   bgChosen: {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
-  }
+  };
 };
 
 export default function BgCard(props: Props) {
@@ -18,7 +18,7 @@ export default function BgCard(props: Props) {
       e.currentTarget.classList.add('active');
       props.bgChosen.setValue(`${e.currentTarget.dataset.src}`);
     }
-  }
+  };
 
   return (
     <div
