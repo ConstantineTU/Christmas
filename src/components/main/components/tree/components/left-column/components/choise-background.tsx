@@ -17,7 +17,6 @@ export default function BgCard(props: Props) {
     } else {
       e.currentTarget.classList.add('active');
       props.bgChosen.setValue(`${e.currentTarget.dataset.src}`);
-      console.log(props.bgChosen.value);
     }
   }
 

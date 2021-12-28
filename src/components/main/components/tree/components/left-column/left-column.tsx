@@ -28,6 +28,14 @@ type Props = {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
   }
+  colorGarland: {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+  }
+  garlandIsOn: {
+    value: boolean;
+    setValue: React.Dispatch<React.SetStateAction<boolean>>;
+  }
 };
 
 export default function ColumnLeft(props: Props) {
@@ -59,7 +67,7 @@ export default function ColumnLeft(props: Props) {
         </div>
       </div>
 
-      <Garland />
+      <Garland colorGarland={props.colorGarland} garlandIsOn={props.garlandIsOn} />
       <BottomButtons />
     </div>
   );

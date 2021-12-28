@@ -48,7 +48,21 @@ export default function Tree(props: Props) {
   useEffect(() => {
     localStorage.setItem('bgChosen', bgChosen);
   }, [bgChosen]);
-
+  // ColorGarland
+  const [garlandIsOn, setGarlandIsOn] = useState<boolean>(() => {
+    const saved = localStorage.getItem('garlandIsOn');
+    const initialValue = saved === 'true' ? true : undefined;
+    return initialValue || false;
+  });
+  const [colorGarland, setColorGarland] = useState<string>(() => {
+    const saved = localStorage.getItem('colorGarland');
+    const initialValue = saved ? saved : undefined;
+    return initialValue || '';
+  });
+  useEffect(() => {
+    localStorage.setItem('colorGarland', colorGarland);
+    localStorage.setItem('garlandIsOn', String(garlandIsOn));
+  }, [colorGarland]);
   return (
     <div className="tree section">
       <ColumnLeft
@@ -58,7 +72,8 @@ export default function Tree(props: Props) {
         snowIsActive={{ value: snowIsActive, setValue: setSnowIsActive }}
         treeChosen={{ value: treeChosen, setValue: setTreeChosen }}
         bgChosen={{ value: bgChosen, setValue: setBgChosen }}
-
+        colorGarland={{ value: colorGarland, setValue: setColorGarland }}
+        garlandIsOn={{ value: garlandIsOn, setValue: setGarlandIsOn }}
       />
       <ColumnMain
         trees={trees}
@@ -67,6 +82,8 @@ export default function Tree(props: Props) {
         snowIsActive={{ value: snowIsActive, setValue: setSnowIsActive }}
         treeChosen={{ value: treeChosen, setValue: setTreeChosen }}
         bgChosen={{ value: bgChosen, setValue: setBgChosen }}
+        colorGarland={{ value: colorGarland, setValue: setColorGarland }}
+        garlandIsOn={{ value: garlandIsOn, setValue: setGarlandIsOn }}
       />
       <ColumnRight
         trees={trees}

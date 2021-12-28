@@ -17,7 +17,6 @@ export default function TreeCard(props: Props) {
     } else {
       e.currentTarget.classList.add('active');
       props.treeChosen.setValue(`${e.currentTarget.dataset.src}`);
-      console.log(props.treeChosen.value);
     }
   }
 
