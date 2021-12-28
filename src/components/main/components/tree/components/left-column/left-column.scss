@@ -72,24 +72,31 @@
   }
 }
 
-.tree-card__image {
-  width: 100%;
-  max-width: 130px;
-  object-fit: contain;
-  &-wrap {
-    background: #b3f6ff80;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-    &:hover {
-      background: rgba(157, 134, 101, 0.7);
-    }
-    &.active {
-      background: rgba(157, 134, 101, 1);
-    }
+.tree-card {
+  background: #b3f6ff80;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, border 0.3s;
+  border: 2px #00000000 solid;
+
+  &:hover {
+    border: 2px #9d8665 solid;
+    background: rgba(157, 134, 101, 0.7);
   }
-  &-container {
-    padding: 7px 21px;
+  &.active {
+    background: rgb(36, 198, 219);
+    border: 2px rgb(36, 198, 219) solid;
+    opacity: 1;
+  }
+  &__image {
+    width: 100%;
+    max-width: 130px;
+    object-fit: contain;
+    &-wrap {
+    }
+    &-container {
+      padding: 7px 21px;
+    }
   }
 }
 

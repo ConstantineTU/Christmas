@@ -14,6 +14,10 @@ type Props = {
     value: boolean;
     setValue: Dispatch<SetStateAction<boolean>>;
   };
+  treeChosen: {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+  }
 };
 
 export default function ColumnMain(props: Props) {
@@ -25,7 +29,7 @@ export default function ColumnMain(props: Props) {
           background: `Url(${props.bg[0]}) no-repeat center 100%`,
         }}
       >
-        <img src={props.trees[`${0}`]} alt="Изображение игрушки" className="column-main__image" />
+        <img src={props.treeChosen.value} alt="Изображение ёлки`" className="column-main__image" />
       </div>
 
       {props.snowIsActive.value && <Snowfall />}

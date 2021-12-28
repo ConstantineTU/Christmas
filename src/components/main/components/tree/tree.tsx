@@ -30,6 +30,24 @@ export default function Tree(props: Props) {
   useEffect(() => {
     localStorage.setItem('snowIsActive', String(snowIsActive));
   }, [snowIsActive]);
+  // TreeChoise
+  const [treeChosen, setTreeChosen] = useState<string>(() => {
+    const saved = localStorage.getItem('treeChosen');
+    const initialValue = saved ? saved : undefined;
+    return initialValue || trees[0];
+  });
+  useEffect(() => {
+    localStorage.setItem('treeChosen', treeChosen);
+  }, [treeChosen]);
+  //BackgrounChoise
+  const [bgChosen, setBgChosen] = useState<string>(() => {
+    const saved = localStorage.getItem('bgChosen');
+    const initialValue = saved ? saved : undefined;
+    return initialValue || bg[0];
+  });
+  useEffect(() => {
+    localStorage.setItem('bgChosen', bgChosen);
+  }, [bgChosen]);
 
   return (
     <div className="tree section">
@@ -38,12 +56,15 @@ export default function Tree(props: Props) {
         bg={bg}
         volumeIsActive={props.volumeIsActive}
         snowIsActive={{ value: snowIsActive, setValue: setSnowIsActive }}
+        treeChosen={{ value: treeChosen, setValue: setTreeChosen }}
+
       />
       <ColumnMain
         trees={trees}
         bg={bg}
         volumeIsActive={props.volumeIsActive}
         snowIsActive={{ value: snowIsActive, setValue: setSnowIsActive }}
+        treeChosen={{ value: treeChosen, setValue: setTreeChosen }}
       />
       <ColumnRight
         trees={trees}

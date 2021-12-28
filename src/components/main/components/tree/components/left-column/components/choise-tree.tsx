@@ -4,13 +4,29 @@ import { Component, Dispatch, SetStateAction } from 'react';
 type Props = {
   trees: Array<string>;
   index: number;
+  treeChosen: {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+  }
 };
 
 export default function TreeCard(props: Props) {
+  const handleChange = (e) => {
+    if (e.currentTarget.classList.contains('active')) {
+      e.currentTarget.classList.remove('active');
+    } else {
+      e.currentTarget.classList.add('active');
+      props.treeChosen.setValue(`${e.currentTarget.dataset.src}`);
+      console.log(props.treeChosen.value);
+    }
+  }
+
   return (
     <div
-    // id={`card-tree${props.index}`}
-    // className={selectedToys.value.includes(data.num) ? 'card__tree active' : 'card__tree'}
+      id={`tree-card${props.index}`}
+      onClick={handleChange}
+      data-src={props.trees[`${props.index}`]}
+      className={props.treeChosen.value.includes(props.trees[`${props.index}`]) ? 'tree-card active' : 'tree-card'}
     >
       {
         <div className="tree-card__image-wrap">

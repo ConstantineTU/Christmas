@@ -20,6 +20,10 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
+  treeChosen: {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+  }
 };
 
 export default function ColumnLeft(props: Props) {
@@ -34,7 +38,7 @@ export default function ColumnLeft(props: Props) {
           <h3 className="column-left__title">Выберите ёлку</h3>
           <div className="choise-tree-container">
             {props.trees.map((data, index) => (
-              <TreeCard trees={props.trees} index={index} key={index} />
+              <TreeCard trees={props.trees} index={index} key={index} treeChosen={props.treeChosen} />
             ))}
           </div>
         </div>
