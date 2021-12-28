@@ -24,6 +24,10 @@ type Props = {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
   }
+  bgChosen: {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+  }
 };
 
 export default function ColumnLeft(props: Props) {
@@ -49,7 +53,7 @@ export default function ColumnLeft(props: Props) {
           <h3 className="column-left__title">Выберите фон</h3>
           <div className="choise-bg-container">
             {props.bg.map((data, index) => (
-              <BgCard bg={props.bg} index={index} key={index} />
+              <BgCard bg={props.bg} index={index} key={index} bgChosen={props.bgChosen} />
             ))}
           </div>
         </div>

@@ -57,6 +57,7 @@ export default function Tree(props: Props) {
         volumeIsActive={props.volumeIsActive}
         snowIsActive={{ value: snowIsActive, setValue: setSnowIsActive }}
         treeChosen={{ value: treeChosen, setValue: setTreeChosen }}
+        bgChosen={{ value: bgChosen, setValue: setBgChosen }}
 
       />
       <ColumnMain
@@ -65,6 +66,7 @@ export default function Tree(props: Props) {
         volumeIsActive={props.volumeIsActive}
         snowIsActive={{ value: snowIsActive, setValue: setSnowIsActive }}
         treeChosen={{ value: treeChosen, setValue: setTreeChosen }}
+        bgChosen={{ value: bgChosen, setValue: setBgChosen }}
       />
       <ColumnRight
         trees={trees}

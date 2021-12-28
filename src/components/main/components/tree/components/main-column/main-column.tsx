@@ -18,6 +18,10 @@ type Props = {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
   }
+  bgChosen: {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+  }
 };
 
 export default function ColumnMain(props: Props) {
@@ -26,7 +30,7 @@ export default function ColumnMain(props: Props) {
       <div
         className="column-main-container"
         style={{
-          background: `Url(${props.bg[0]}) no-repeat center 100%`,
+          background: `Url(${props.bgChosen.value}) 50% 50% / cover no-repeat`,
         }}
       >
         <img src={props.treeChosen.value} alt="Изображение ёлки`" className="column-main__image" />
