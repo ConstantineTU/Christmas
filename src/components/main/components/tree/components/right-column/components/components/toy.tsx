@@ -50,9 +50,9 @@ export default function CardItem(props: Props) {
       props.currentToy.value.style.top =
         props.elementPageXY.value[1] -
         props.mainContainer.current.getBoundingClientRect().top -
-        window.scrollY +
-        10 +
-        'px';
+        window.scrollY + 10 + 'px';
+
+
     } else {
       document.getElementById(`${props.currentToy.value.id.split('-', 1)}`).append(props.currentToy.value);
       props.currentToy.value.style.left = 'calc(50% - 24px)';

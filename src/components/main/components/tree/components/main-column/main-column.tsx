@@ -51,7 +51,7 @@ export default function ColumnMain(props: Props) {
   const [width, setWidth] = useState(120);
   const [count, setCount] = useState(4);
 
-  function dragEndHandler(e: React.DragEvent<HTMLAreaElement>): void {}
+  function dragEndHandler(e: React.DragEvent<HTMLAreaElement>): void { }
 
   function dragOverHandler(e: React.DragEvent<HTMLAreaElement>): void {
     e.preventDefault();
@@ -85,7 +85,7 @@ export default function ColumnMain(props: Props) {
             );
           })}
         </div>
-        <map name="image-map">
+        <map name="image-map" className="image-map">
           <area
             id="image-map"
             data-drop-target="true"
