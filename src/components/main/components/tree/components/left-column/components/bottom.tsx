@@ -28,11 +28,12 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  mainContainer: React.MutableRefObject<any>;
+  mainContainer: React.MutableRefObject<HTMLElement>;
 };
 
 export default function BottomButtons(props: Props) {
   const handleChange = () => {
+    const toysOnTree = props.mainContainer.current.childNodes;
     localStorage.removeItem('snowIsActive');
     props.snowIsActive.setValue(false);
     props.volumeIsActive.setValue(false);
@@ -45,9 +46,18 @@ export default function BottomButtons(props: Props) {
     localStorage.removeItem('colorGarland');
     props.colorGarland.setValue('');
 
-    // const selectToyContainer = document.getElementById(`${currentToy.id.split('-', 1)}`);
-    // const selectToyCount = document.getElementById(`${currentToy.id.split('-', 1)}-toysCount`);
-    // selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
+    for (let i = 0; i < toysOnTree.length; i++) {
+      const toy = toysOnTree[i] as HTMLImageElement;
+      if (toy.id !== 'image-map') {
+        i--;
+        const selectToyContainer = document.getElementById(`${toy.id.split('-', 1)}`);
+        selectToyContainer.append(toy);
+        const selectToyCount = document.getElementById(`${toy.id.split('-', 1)}-toysCount`);
+        selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
+        toy.style.left = 'calc(50% - 24px)';
+        toy.style.top = 'calc(50% - 24px)';
+      }
+    }
   };
 
   return (
