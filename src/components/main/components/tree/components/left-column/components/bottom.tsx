@@ -36,6 +36,7 @@ export default function BottomButtons(props: Props) {
     const toysOnTree = props.mainContainer.current.childNodes;
     localStorage.removeItem('snowIsActive');
     props.snowIsActive.setValue(false);
+    localStorage.removeItem('volumeIsActive');
     props.volumeIsActive.setValue(false);
     localStorage.removeItem('treeChosen');
     props.treeChosen.setValue(props.trees[0]);

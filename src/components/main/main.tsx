@@ -80,14 +80,13 @@ export default function Main({
   // Audio
   const [audio] = useState(new Audio());
   let isLoadAudio = false;
-
   const [volumeIsActive, setVolumeIsActive] = useState<boolean>(() => {
     const saved = localStorage.getItem('volumeIsActive');
     const initialValue = saved === 'true' ? true : undefined;
     return initialValue || false;
   });
   window.onload = () => {
-    if (localStorage.getItem('volumeIsActive') === 'true') {
+    if (localStorage.getItem('volumeIsActive') === 'true' && activePage === 'ёлка') {
       isLoadAudio = true;
     } else {
       isLoadAudio = false;
@@ -111,6 +110,13 @@ export default function Main({
     }
     localStorage.setItem('volumeIsActive', String(volumeIsActive));
   }, [volumeIsActive]);
+
+  useEffect(() => {
+    if (volumeIsActive && activePage === 'ёлка') {
+      console.log(activePage);
+      audio.play();
+    }
+  }, [activePage]);
   const pages = ['домашняя', 'игрушки', 'ёлка'];
   // search
   const [search, setSearch] = useState<string>(() => {
