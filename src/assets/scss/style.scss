@@ -126,3 +126,18 @@ body {
 		background-size: cover;
 	}
 }
+*::-webkit-scrollbar {
+	width: 15px; /* ширина scrollbar */
+}
+*::-webkit-scrollbar-track {
+	background: #00000055; /* цвет дорожки */
+}
+*::-webkit-scrollbar-thumb {
+	background-color: #9d8665; /* цвет плашки */
+	border-radius: 10px; /* закругления плашки */
+	border: 3px solid #9d8665; /* padding вокруг плашки */
+}
+* {
+	scrollbar-width: thin; /* "auto" или "thin"  */
+	scrollbar-color: #9d8665 #192f2d44; /* плашка скролла и дорожка */
+}

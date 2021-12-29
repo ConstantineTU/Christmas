@@ -4,32 +4,14 @@
     flex-direction: column;
     width: 100%;
     max-width: 440px;
-    padding: 0px 0px 0px 20px;
-    padding: 0px 20px 0px 0px;
+    padding: 0px 10px;
+    margin: 10px 10px;
+    border-radius: 20px;
+    background-color: rgba(15, 56, 63, 0.4);
+    backdrop-filter: blur(6px);
     @media (max-width: 1130px) {
       max-width: 900px;
     }
-  }
-}
-
-.tree-card__image {
-  width: 100%;
-  max-width: 130px;
-  object-fit: contain;
-  &-wrap {
-    background: #b3f6ff80;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-    &:hover {
-      background: rgba(157, 134, 101, 0.7);
-    }
-    &.active {
-      background: rgba(157, 134, 101, 1);
-    }
-  }
-  &-container {
-    padding: 7px 21px;
   }
 }
 
@@ -48,7 +30,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    @media (max-width: 1222px) {
+    @media (max-width: 1300px) {
       overflow-y: scroll;
       max-height: 432px;
     }
@@ -178,7 +160,7 @@
     max-width: 350px;
     overflow-x: scroll;
     margin-left: 10px;
-    @media (max-width: 1220px) {
+    @media (max-width: 1300px) {
       max-width: 250px;
     }
     @media (max-width: 1130px) {
@@ -189,9 +171,10 @@
   &-container {
     display: flex;
     gap: 10px;
-    height: 180px;
+    max-height: 180px;
     min-width: max-content;
     overflow-x: auto;
+    padding-bottom: 5px;
   }
   &__image {
     display: flex;

@@ -4,7 +4,16 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px 10px;
+    min-width: 535px;
+    @media (max-width: 1130px) {
+      padding: 0px 10px;
+    }
     &-container {
+      border-radius: 25px;
+
       position: relative;
       display: flex;
       align-items: center;
