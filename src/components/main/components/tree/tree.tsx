@@ -87,6 +87,7 @@ export default function Tree(props: Props) {
         bgChosen={{ value: bgChosen, setValue: setBgChosen }}
         colorGarland={{ value: colorGarland, setValue: setColorGarland }}
         garlandIsOn={{ value: garlandIsOn, setValue: setGarlandIsOn }}
+        mainContainer={mainContainer}
       />
       <ColumnMain
         trees={trees}

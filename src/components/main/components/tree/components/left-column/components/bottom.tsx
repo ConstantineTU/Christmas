@@ -28,6 +28,7 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
+  mainContainer: React.MutableRefObject<any>;
 };
 
 export default function BottomButtons(props: Props) {
@@ -43,6 +44,10 @@ export default function BottomButtons(props: Props) {
     props.garlandIsOn.setValue(false);
     localStorage.removeItem('colorGarland');
     props.colorGarland.setValue('');
+
+    // const selectToyContainer = document.getElementById(`${currentToy.id.split('-', 1)}`);
+    // const selectToyCount = document.getElementById(`${currentToy.id.split('-', 1)}-toysCount`);
+    // selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
   };
 
   return (

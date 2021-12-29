@@ -54,8 +54,8 @@ export default function ColumnRight(props: Props) {
         elementPageXY={props.elementPageXY}
       />
       <div className="trees-saved column-section">
+        <h3 className="column-left__title">Вы нарядили</h3>
         <div className="trees-saved-wrap">
-          <h3 className="column-left__title">Вы нарядили</h3>
           <div className="trees-saved-container">
             {props.trees.map((data, index) => (
               <TreesSaved trees={props.trees} index={index} key={index} />

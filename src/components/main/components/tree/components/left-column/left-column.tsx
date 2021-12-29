@@ -36,6 +36,7 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
+  mainContainer: React.MutableRefObject<any>;
 };
 
 export default function ColumnLeft(props: Props) {
@@ -75,6 +76,7 @@ export default function ColumnLeft(props: Props) {
         treeChosen={props.treeChosen}
         snowIsActive={props.snowIsActive}
         volumeIsActive={props.volumeIsActive}
+        mainContainer={props.mainContainer}
       />
     </div>
   );
