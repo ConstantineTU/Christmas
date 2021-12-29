@@ -85,13 +85,13 @@ export default function ColumnMain(props: Props) {
             );
           })}
         </div>
-        <map name="image-map" className="image-map">
+
+        <map name="image-map" className="image-map" ref={props.mainContainer}>
           <area
             id="image-map"
             data-drop-target="true"
             alt="areaForToys"
             className="image-map-container"
-            ref={props.mainContainer}
             onDragLeave={(e) => dragEndHandler(e)}
             onDragEnd={(e) => dragEndHandler(e)}
             onDragOver={(e) => dragOverHandler(e)}

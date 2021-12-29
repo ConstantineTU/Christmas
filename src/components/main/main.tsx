@@ -78,8 +78,28 @@ export default function Main({
     }
   }
   // Audio
-  const [volumeIsActive, setVolumeIsActive] = useState<boolean>(false);
   const [audio] = useState(new Audio());
+  let isLoadAudio = false;
+
+  const [volumeIsActive, setVolumeIsActive] = useState<boolean>(() => {
+    const saved = localStorage.getItem('volumeIsActive');
+    const initialValue = saved === 'true' ? true : undefined;
+    return initialValue || false;
+  });
+  window.onload = () => {
+    if (localStorage.getItem('volumeIsActive') === 'true') {
+      isLoadAudio = true;
+    } else {
+      isLoadAudio = false;
+    }
+    document.addEventListener('click', () => {
+      if (volumeIsActive && isLoadAudio) {
+        isLoadAudio = false;
+        audio.currentTime = 0;
+        audio.play();
+      }
+    });
+  };
   audio.src = audioSrc;
   useEffect(() => {
     if (volumeIsActive) {
@@ -89,6 +109,7 @@ export default function Main({
       audio.currentTime = 0;
       audio.pause();
     }
+    localStorage.setItem('volumeIsActive', String(volumeIsActive));
   }, [volumeIsActive]);
   const pages = ['домашняя', 'игрушки', 'ёлка'];
   // search
@@ -234,7 +255,7 @@ export default function Main({
     .filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()))
     .sort(SortArray);
   return (
-    <main className="main">
+    <main className="main" id="main">
       {activePage === pages[0] && <Home activePage={{ value: activePage, setValue: handleChangeActive }} />}
       {activePage === pages[1] && (
         <FiltersAndToys

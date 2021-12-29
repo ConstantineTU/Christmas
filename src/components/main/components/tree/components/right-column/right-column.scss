@@ -161,6 +161,7 @@
     position: absolute;
     top: calc(50% - 24px);
     left: calc(50% - 24px);
+    z-index: 0;
     &-wrap {
       display: flex;
       align-items: center;
