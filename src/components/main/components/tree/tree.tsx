@@ -69,9 +69,9 @@ export default function Tree(props: Props) {
   const mainContainer = useRef(null);
 
   function dragEndHandler(e: React.DragEvent<HTMLDivElement>): void {
-    const selectToyContainer = document.getElementById(`${currentToy.id.split('-', 1)}`)
-    const selectToyCount = document.getElementById(`${currentToy.id.split('-', 1)}-toysCount`)
-    selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1)
+    const selectToyContainer = document.getElementById(`${currentToy.id.split('-', 1)}`);
+    const selectToyCount = document.getElementById(`${currentToy.id.split('-', 1)}-toysCount`);
+    selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
   }
 
   const [elementPageXY, setElementPageXY] = useState<Array<number>>([]);

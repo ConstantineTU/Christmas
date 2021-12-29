@@ -50,12 +50,12 @@ export default function CardItem(props: Props) {
       props.currentToy.value.style.top =
         props.elementPageXY.value[1] -
         props.mainContainer.current.getBoundingClientRect().top -
-        window.scrollY + 10 + 'px';
-
-
+        window.scrollY +
+        10 +
+        'px';
     } else {
-      const selectToyContainer = document.getElementById(`${props.currentToy.value.id.split('-', 1)}`)
-      const selectToyCount = document.getElementById(`${props.currentToy.value.id.split('-', 1)}-toysCount`)
+      const selectToyContainer = document.getElementById(`${props.currentToy.value.id.split('-', 1)}`);
+      const selectToyCount = document.getElementById(`${props.currentToy.value.id.split('-', 1)}-toysCount`);
       selectToyContainer.append(props.currentToy.value);
 
       props.currentToy.value.style.left = 'calc(50% - 24px)';

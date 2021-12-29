@@ -28,7 +28,6 @@ export default function Garland(props: Props) {
           return (
             <li
               key={index}
-              id={String(index)}
               className={`garland-color ${props.colorGarland.value}`}
               style={{ transform: transformLi }}
             ></li>
@@ -43,13 +42,12 @@ export default function Garland(props: Props) {
           return (
             <li
               key={index}
-              id={String(index)}
               className={`garland-color ${props.colorGarland.value}`}
               style={{ transform: transformLi }}
             ></li>
           );
         })}
-        {[...Array(props.count)].map((data, index) => {
+        {/* {[...Array(props.count)].map((data, index) => {
           const transformLi = `rotate(${radiusTop}deg) translate(${Math.floor(
             props.width / 1
           )}px) rotate(-${radiusTop}deg)`;
@@ -58,12 +56,11 @@ export default function Garland(props: Props) {
           return (
             <li
               key={index}
-              id={String(index)}
               className={`garland-color ${props.colorGarland.value}`}
               style={{ transform: transformLi }}
             ></li>
           );
-        })}
+        })} */}
       </ul>
     )
   );

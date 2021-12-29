@@ -51,7 +51,7 @@ export default function ColumnMain(props: Props) {
   const [width, setWidth] = useState(120);
   const [count, setCount] = useState(4);
 
-  function dragEndHandler(e: React.DragEvent<HTMLAreaElement>): void { }
+  function dragEndHandler(e: React.DragEvent<HTMLAreaElement>): void {}
 
   function dragOverHandler(e: React.DragEvent<HTMLAreaElement>): void {
     e.preventDefault();
