@@ -43,23 +43,25 @@ type Props = {
 export default function ColumnRight(props: Props) {
   return (
     <div className="column-right">
-      <TreeToys
-        toysData={props.toysData}
-        favoriteToys={props.favoriteToys}
-        setFavoriteToys={props.setFavoriteToys}
-        selectedToys={props.selectedToys}
-        currentToy={props.currentToy}
-        isArea={props.isArea}
-        mainContainer={props.mainContainer}
-        elementPageXY={props.elementPageXY}
-      />
-      <div className="trees-saved column-section">
-        <h3 className="column-left__title">Вы нарядили</h3>
-        <div className="trees-saved-wrap">
-          <div className="trees-saved-container">
-            {props.trees.map((data, index) => (
-              <TreesSaved trees={props.trees} index={index} key={index} />
-            ))}
+      <div className="column-wrap-container">
+        <TreeToys
+          toysData={props.toysData}
+          favoriteToys={props.favoriteToys}
+          setFavoriteToys={props.setFavoriteToys}
+          selectedToys={props.selectedToys}
+          currentToy={props.currentToy}
+          isArea={props.isArea}
+          mainContainer={props.mainContainer}
+          elementPageXY={props.elementPageXY}
+        />
+        <div className="trees-saved column-section">
+          <h3 className="column-left__title">Вы нарядили</h3>
+          <div className="trees-saved-wrap">
+            <div className="trees-saved-container">
+              {props.trees.map((data, index) => (
+                <TreesSaved trees={props.trees} index={index} key={index} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

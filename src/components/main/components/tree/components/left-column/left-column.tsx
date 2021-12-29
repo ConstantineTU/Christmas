@@ -42,42 +42,44 @@ type Props = {
 export default function ColumnLeft(props: Props) {
   return (
     <div className="column-left">
-      <TopButtons snowIsActive={props.snowIsActive} volumeIsActive={props.volumeIsActive} />
+      <div className="column-wrap-container">
+        <TopButtons snowIsActive={props.snowIsActive} volumeIsActive={props.volumeIsActive} />
 
-      <div className="choise-tree column-section">
-        <div className="column-left-wrap">
-          <h3 className="column-left__title">Выберите ёлку</h3>
-          <div className="choise-tree-container">
-            {props.trees.map((data, index) => (
-              <TreeCard trees={props.trees} index={index} key={index} treeChosen={props.treeChosen} />
-            ))}
+        <div className="choise-tree column-section">
+          <div className="column-left-wrap">
+            <h3 className="column-left__title">Выберите ёлку</h3>
+            <div className="choise-tree-container">
+              {props.trees.map((data, index) => (
+                <TreeCard trees={props.trees} index={index} key={index} treeChosen={props.treeChosen} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="choise-bg column-section">
-        <div className="column-left-wrap">
-          <h3 className="column-left__title">Выберите фон</h3>
-          <div className="choise-bg-container">
-            {props.bg.map((data, index) => (
-              <BgCard bg={props.bg} index={index} key={index} bgChosen={props.bgChosen} />
-            ))}
+        <div className="choise-bg column-section">
+          <div className="column-left-wrap">
+            <h3 className="column-left__title">Выберите фон</h3>
+            <div className="choise-bg-container">
+              {props.bg.map((data, index) => (
+                <BgCard bg={props.bg} index={index} key={index} bgChosen={props.bgChosen} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <Garland colorGarland={props.colorGarland} garlandIsOn={props.garlandIsOn} />
-      <BottomButtons
-        trees={props.trees}
-        bg={props.bg}
-        colorGarland={props.colorGarland}
-        garlandIsOn={props.garlandIsOn}
-        bgChosen={props.bgChosen}
-        treeChosen={props.treeChosen}
-        snowIsActive={props.snowIsActive}
-        volumeIsActive={props.volumeIsActive}
-        mainContainer={props.mainContainer}
-      />
+        <Garland colorGarland={props.colorGarland} garlandIsOn={props.garlandIsOn} />
+        <BottomButtons
+          trees={props.trees}
+          bg={props.bg}
+          colorGarland={props.colorGarland}
+          garlandIsOn={props.garlandIsOn}
+          bgChosen={props.bgChosen}
+          treeChosen={props.treeChosen}
+          snowIsActive={props.snowIsActive}
+          volumeIsActive={props.volumeIsActive}
+          mainContainer={props.mainContainer}
+        />
+      </div>
     </div>
   );
 }

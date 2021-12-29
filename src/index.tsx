@@ -26,7 +26,10 @@ const selfTest = () => {
   );
   console.log('	%cИтого 210 баллов из 200', 'color: green');
 
-  console.log('%cМой дискорд - https://discordapp.com/users/414360051101466624', 'color: blue');
+  console.log(
+    '%cПрошу Вас добавить мою работу в лучшие, если она вам понравилась. Мой дискорд - https://discordapp.com/users/414360051101466624',
+    'color: blue'
+  );
   console.log('%cСпасибо за проверку, с Наступающим Вас новым годом и успехов!', 'color: green');
 
   console.groupEnd();

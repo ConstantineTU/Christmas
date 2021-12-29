@@ -9,15 +9,19 @@
 }
 
 .column {
+  &-wrap {
+    &-container {
+      border-radius: 20px;
+      background-color: rgba(15, 56, 63, 0.4);
+      backdrop-filter: blur(6px);
+      padding: 0px 10px;
+    }
+  }
   &-left {
     width: 100%;
     min-width: 260px;
     max-width: 344px;
     padding: 0px 10px;
-    margin: 10px 10px;
-    border-radius: 20px;
-    background-color: rgba(15, 56, 63, 0.4);
-    backdrop-filter: blur(6px);
     @media (max-width: 1130px) {
       max-width: 950px;
     }

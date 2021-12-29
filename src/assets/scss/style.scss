@@ -58,6 +58,10 @@ body {
 	text-align: center;
 	background: rgba(25, 47, 45, 1);
 	height: 100%;
+	// overflow-x: hidden;
+	// @media (max-width: 319px) {
+	// 	overflow-x: visible;
+	// }
 	&._lock {
 		overflow: hidden;
 	}
