@@ -19,6 +19,19 @@ type Props = {
     value: string[];
     setValue: React.Dispatch<React.SetStateAction<string[]>>;
   };
+  currentToy: {
+    value: HTMLImageElement;
+    setValue: React.Dispatch<React.SetStateAction<HTMLImageElement>>;
+  };
+  isArea: {
+    value: boolean;
+    setValue: React.Dispatch<React.SetStateAction<boolean>>;
+  };
+  mainContainer: React.MutableRefObject<any>;
+  elementPageXY: {
+    value: number[];
+    setValue: React.Dispatch<React.SetStateAction<number[]>>;
+  };
 };
 
 export default function TreeToys(props: Props) {
@@ -34,19 +47,29 @@ export default function TreeToys(props: Props) {
             ? props.selectedToys.value.includes(data.num) && (
                 <ToyItem
                   selectedToys={props.selectedToys}
+                  index={index}
                   key={index}
                   data={data}
                   favoriteToys={props.favoriteToys}
                   setFavoriteToys={props.setFavoriteToys}
+                  currentToy={props.currentToy}
+                  isArea={props.isArea}
+                  mainContainer={props.mainContainer}
+                  elementPageXY={props.elementPageXY}
                 />
               )
             : index <= 19 && (
                 <ToyItem
                   selectedToys={props.selectedToys}
+                  index={index}
                   key={index}
                   data={data}
                   favoriteToys={props.favoriteToys}
                   setFavoriteToys={props.setFavoriteToys}
+                  currentToy={props.currentToy}
+                  isArea={props.isArea}
+                  mainContainer={props.mainContainer}
+                  elementPageXY={props.elementPageXY}
                 />
               )
         )}

@@ -158,7 +158,10 @@
     // }
   }
   &__image {
-    width: 100%;
+    width: 48px;
+    position: absolute;
+    top: calc(50% - 24px);
+    left: calc(50% - 24px);
     &-wrap {
       display: flex;
       align-items: center;

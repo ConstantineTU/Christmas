@@ -25,6 +25,19 @@ type Props = {
     value: string[];
     setValue: React.Dispatch<React.SetStateAction<string[]>>;
   };
+  currentToy: {
+    value: HTMLImageElement;
+    setValue: React.Dispatch<React.SetStateAction<HTMLImageElement>>;
+  };
+  isArea: {
+    value: boolean;
+    setValue: React.Dispatch<React.SetStateAction<boolean>>;
+  };
+  mainContainer: React.MutableRefObject<any>;
+  elementPageXY: {
+    value: number[];
+    setValue: React.Dispatch<React.SetStateAction<number[]>>;
+  };
 };
 
 export default function ColumnRight(props: Props) {
@@ -35,6 +48,10 @@ export default function ColumnRight(props: Props) {
         favoriteToys={props.favoriteToys}
         setFavoriteToys={props.setFavoriteToys}
         selectedToys={props.selectedToys}
+        currentToy={props.currentToy}
+        isArea={props.isArea}
+        mainContainer={props.mainContainer}
+        elementPageXY={props.elementPageXY}
       />
       <div className="trees-saved column-section">
         <div className="trees-saved-wrap">

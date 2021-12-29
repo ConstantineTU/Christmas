@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, useState, useEffect } from 'react';
+import { Dispatch, SetStateAction, useState, useEffect, useRef } from 'react';
 import ColumnLeft from './components/left-column/left-column';
 import ColumnMain from './components/main-column/main-column';
 import ColumnRight from './components/right-column/right-column';
@@ -63,8 +63,22 @@ export default function Tree(props: Props) {
     localStorage.setItem('colorGarland', colorGarland);
     localStorage.setItem('garlandIsOn', String(garlandIsOn));
   }, [colorGarland]);
+
+  const [currentToy, setCurrentToy] = useState<HTMLImageElement>(null);
+  const [isArea, setIsArea] = useState<boolean>(false);
+  const mainContainer = useRef(null);
+
+  function dragEndHandler(e: React.DragEvent<HTMLDivElement>): void {
+    // e.preventDefault()
+    // document.getElementById(`${currentToy.id.split('-', 1)}`).append(currentToy)
+    console.log(e);
+    console.log(isArea);
+  }
+
+  const [elementPageXY, setElementPageXY] = useState<Array<number>>([]);
+
   return (
-    <div className="tree section">
+    <div id="treeSection" className="tree section" onDragEnd={(e) => dragEndHandler(e)}>
       <ColumnLeft
         trees={trees}
         bg={bg}
@@ -84,6 +98,10 @@ export default function Tree(props: Props) {
         bgChosen={{ value: bgChosen, setValue: setBgChosen }}
         colorGarland={{ value: colorGarland, setValue: setColorGarland }}
         garlandIsOn={{ value: garlandIsOn, setValue: setGarlandIsOn }}
+        currentToy={{ value: currentToy, setValue: setCurrentToy }}
+        isArea={{ value: isArea, setValue: setIsArea }}
+        mainContainer={mainContainer}
+        elementPageXY={{ value: elementPageXY, setValue: setElementPageXY }}
       />
       <ColumnRight
         trees={trees}
@@ -92,6 +110,10 @@ export default function Tree(props: Props) {
         favoriteToys={props.favoriteToys}
         setFavoriteToys={props.setFavoriteToys}
         selectedToys={props.selectedToys}
+        currentToy={{ value: currentToy, setValue: setCurrentToy }}
+        isArea={{ value: isArea, setValue: setIsArea }}
+        mainContainer={mainContainer}
+        elementPageXY={{ value: elementPageXY, setValue: setElementPageXY }}
       />
     </div>
   );
