@@ -132,7 +132,6 @@
   }
   &__item {
     position: relative;
-    padding: 18px 16px;
     overflow: hidden;
     border-radius: 10px;
     cursor: grab;
@@ -167,7 +166,6 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      padding: 0px 0px 10px 0px;
     }
     &-container {
       height: 100%;
@@ -196,8 +194,12 @@
     align-content: flex-start;
     gap: 10px;
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     overflow-x: scroll;
+    margin-left: 10px;
+    @media (max-width: 1220px) {
+      max-width: 250px;
+    }
   }
 
   &-container {

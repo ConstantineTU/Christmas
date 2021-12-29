@@ -66,7 +66,11 @@ export default function ColumnLeft(props: Props) {
       </div>
 
       <Garland colorGarland={props.colorGarland} garlandIsOn={props.garlandIsOn} />
-      <BottomButtons />
+      <BottomButtons
+        trees={props.trees} bg={props.bg}
+        colorGarland={props.colorGarland} garlandIsOn={props.garlandIsOn}
+        bgChosen={props.bgChosen} treeChosen={props.treeChosen}
+        snowIsActive={props.snowIsActive} volumeIsActive={props.volumeIsActive} />
     </div>
   );
 }

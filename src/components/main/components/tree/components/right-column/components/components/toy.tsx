@@ -54,7 +54,10 @@ export default function CardItem(props: Props) {
 
 
     } else {
-      document.getElementById(`${props.currentToy.value.id.split('-', 1)}`).append(props.currentToy.value);
+      const selectToyContainer = document.getElementById(`${props.currentToy.value.id.split('-', 1)}`)
+      const selectToyCount = document.getElementById(`${props.currentToy.value.id.split('-', 1)}-toysCount`)
+      selectToyContainer.append(props.currentToy.value);
+
       props.currentToy.value.style.left = 'calc(50% - 24px)';
       props.currentToy.value.style.top = 'calc(50% - 24px)';
     }

@@ -36,6 +36,10 @@ export default function TopButtons(props: Props) {
     const snowBtn = document.getElementById('snowBtn');
     props.snowIsActive.value ? snowBtn.classList.add('active') : snowBtn.classList.remove('active');
   }, [props.snowIsActive]);
+  useEffect(() => {
+    const volumeBtn = document.getElementById('volumeBtn');
+    props.volumeIsActive.value ? volumeBtn.classList.add('active') : volumeBtn.classList.remove('active');
+  }, [props.volumeIsActive]);
   return (
     <div className="column-left__top-buttons">
       <div className="column-left-wrap">

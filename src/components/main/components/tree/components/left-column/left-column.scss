@@ -1,6 +1,11 @@
 .tree {
   display: flex;
   flex: 1 1 auto;
+  @media (max-width: 1020px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .column {
@@ -245,6 +250,12 @@
     &:active {
       border: 1px solid rgb(36, 198, 219);
       box-shadow: 0px 0px 10px 0.5px rgb(36, 198, 219);
+    }
+    @media (max-width: 1242px) {
+      max-width: 90px;
+    }
+    @media (max-width: 1128px) {
+      max-width: 140px;
     }
   }
 }
