@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import './filters.scss';
 import Sort from './components/1-sorting';
-import Categories from './components/2-categories';
 import Forms from './components/3-forms';
 import Quantity from './components/4-quantity';
 import AcquisitionsYear from './components/5-acquisitions-year';

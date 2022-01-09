@@ -1,13 +1,13 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, FC } from 'react';
 import Header from '../header/header';
 import Main from '../main/main';
 import Footer from '../footer/footer';
 import toysData from '../../assets/data/data';
 
-const App = () => {
+const App: FC = () => {
   const [activePage, setActivePage] = useState<string>(() => {
     const saved = localStorage.getItem('activePage');
-    const initialValue = saved ? saved : undefined;
+    const initialValue = saved || undefined;
     return initialValue || 'домашняя';
   });
   const [selectedToys, setSelectedToys] = useState<Array<string>>(() => {

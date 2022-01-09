@@ -44,17 +44,17 @@ export default function DischargeButton(props: Props) {
     const favoriteToysLabel = document.getElementById('favoriteToysLabel');
     const quantityRange = document.getElementById('quantityRange');
     const acquisitionsRange = document.getElementById('acquisitionsRange');
-    const sizeButtons = document.querySelectorAll<HTMLLabelElement>('.filters-size__label');
-    const colorButtons = document.querySelectorAll<HTMLLabelElement>('.filters-colors__label');
+    const sizeButtons = document.querySelectorAll<HTMLButtonElement>('.filters-size__button');
+    const colorButtons = document.querySelectorAll<HTMLButtonElement>('.filters-colors__button');
     const shapeButtons = document.querySelectorAll<HTMLButtonElement>('.filters-forms__button');
-    for (let sizeButton of sizeButtons) {
-      sizeButton.classList.remove('active');
+    for (let i = 0; i < sizeButtons.length; i += 1) {
+      sizeButtons[i].classList.remove('active');
     }
-    for (let colorButton of colorButtons) {
-      colorButton.classList.remove('active');
+    for (let i = 0; i < colorButtons.length; i += 1) {
+      colorButtons[i].classList.remove('active');
     }
-    for (let shapeButton of shapeButtons) {
-      shapeButton.classList.remove('active');
+    for (let i = 0; i < shapeButtons.length; i += 1) {
+      shapeButtons[i].classList.remove('active');
     }
     const defaultColors = ['белый', 'желтый', 'красный', 'синий', 'зелёный'];
     const defaultCizes = ['большой', 'средний', 'малый'];
@@ -76,7 +76,7 @@ export default function DischargeButton(props: Props) {
   };
 
   const getClearLocalStorage = () => {
-    if (confirm('Вы уверены? Будут удалены все сохранённые настройки включая выбранные игрушки')) {
+    if (window.confirm('Вы уверены? Будут удалены все сохранённые настройки включая выбранные игрушки')) {
       localStorage.clear();
       handleChangeReset();
       props.setFavoriteToys(0);

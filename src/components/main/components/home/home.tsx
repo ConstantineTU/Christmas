@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Fragment } from 'react';
 import './home.scss';
+
 type Props = {
   activePage: {
     value: string;

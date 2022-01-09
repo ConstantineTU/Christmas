@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import QuantityTwoThumbs from './quantity-range';
 
 type Props = {

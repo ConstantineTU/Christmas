@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Component, Dispatch, SetStateAction, useEffect } from 'react';
 import './left-column.scss';
-import audio from '../../../../../../assets/audio/audio.mp3';
 
 import TopButtons from './components/top';
 import TreeCard from './components/choise-tree';
@@ -36,7 +34,7 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  mainContainer: React.MutableRefObject<any>;
+  mainContainer: React.MutableRefObject<HTMLMapElement | null>;
 };
 
 export default function ColumnLeft(props: Props) {

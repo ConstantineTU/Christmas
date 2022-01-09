@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import ToyItem from './components/toy';
 
 type Props = {
@@ -27,7 +27,7 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  mainContainer: React.MutableRefObject<any>;
+  mainContainer: React.MutableRefObject<HTMLMapElement | null>;
   elementPageXY: {
     value: number[];
     setValue: React.Dispatch<React.SetStateAction<number[]>>;

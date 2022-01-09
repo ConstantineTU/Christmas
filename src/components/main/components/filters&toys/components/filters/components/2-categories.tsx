@@ -1,10 +1,6 @@
 import * as React from 'react';
 
-type Props = {
-  toysData: object;
-};
-
-export default function Categories({ toysData }: Props) {
+export default function Categories() {
   return (
     <div className="filters-categories-container">
       <h3 className="filters-title filters-categories-title">Категории</h3>

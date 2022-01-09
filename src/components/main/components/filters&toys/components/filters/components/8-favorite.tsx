@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function Favorite(props: Props) {
-  const handleChange = (e) => {
+  const handleChange = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (props.selectedFavoriteFilter.value.includes(e.currentTarget.dataset.id)) {
       props.selectedFavoriteFilter.setValue(
         props.selectedFavoriteFilter.value.filter((toy) => toy !== e.currentTarget.dataset.id)
@@ -31,14 +31,12 @@ export default function Favorite(props: Props) {
   return (
     <div className="filters-favorite-container">
       <div className="filters-favorite-wrap">
-        <input id="favoriteToys" type="checkbox" className="filters-favorite__checkbox"></input>
-        <label
+        <button
           id="favoriteToysLabel"
-          htmlFor="favoriteToys"
           className={
             props.selectedFavoriteFilter.value.includes('1')
-              ? 'filters-favorite__label active'
-              : 'filters-favorite__label'
+              ? 'filters-favorite__button active'
+              : 'filters-favorite__button'
           }
           data-id={'1'}
           onClick={(e) => {
@@ -46,7 +44,7 @@ export default function Favorite(props: Props) {
           }}
         >
           Только любимые
-        </label>
+        </button>
       </div>
     </div>
   );

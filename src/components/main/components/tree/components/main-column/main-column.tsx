@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, useState, useEffect, useRef } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Snowfall from 'react-snowfall';
 import './main-column.scss';
 
@@ -40,7 +40,7 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  mainContainer: React.MutableRefObject<any>;
+  mainContainer: React.MutableRefObject<HTMLMapElement | null>;
   elementPageXY: {
     value: number[];
     setValue: React.Dispatch<React.SetStateAction<number[]>>;
@@ -48,10 +48,10 @@ type Props = {
 };
 
 export default function ColumnMain(props: Props) {
-  const [width, setWidth] = useState(120);
-  const [count, setCount] = useState(4);
+  const width = 120;
+  const count = 4;
 
-  function dragEndHandler(e: React.DragEvent<HTMLAreaElement>): void {}
+  function dragEndHandler(): void { }
 
   function dragOverHandler(e: React.DragEvent<HTMLAreaElement>): void {
     e.preventDefault();
@@ -72,7 +72,7 @@ export default function ColumnMain(props: Props) {
         }}
       >
         <div className="garland-tree-container">
-          {[...Array(8)].map((data, index) => {
+          {[...Array<undefined[]>(8)].map((data, index) => {
             return (
               <Garland
                 index={index}
@@ -92,8 +92,8 @@ export default function ColumnMain(props: Props) {
             data-drop-target="true"
             alt="areaForToys"
             className="image-map-container"
-            onDragLeave={(e) => dragEndHandler(e)}
-            onDragEnd={(e) => dragEndHandler(e)}
+            onDragLeave={() => dragEndHandler()}
+            onDragEnd={() => dragEndHandler()}
             onDragOver={(e) => dragOverHandler(e)}
             onDrop={(e) => dropHandler(e)}
             coords="240,0,197,72,157,151,139,202,139,245,125,267,94,311,119,305,119,324,107,328,93,349,116,351,116,364,89,367,88,

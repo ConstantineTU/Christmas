@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Dispatch, SetStateAction } from 'react';
-import SvgImages from 'src/assets/img/svg/svg';
 import './right-column.scss';
 
 import TreeToys from './components/tree-toys';
@@ -33,7 +32,7 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  mainContainer: React.MutableRefObject<any>;
+  mainContainer: React.MutableRefObject<HTMLMapElement | null>;
   elementPageXY: {
     value: number[];
     setValue: React.Dispatch<React.SetStateAction<number[]>>;

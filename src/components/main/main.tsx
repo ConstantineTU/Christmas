@@ -28,7 +28,7 @@ type Props = {
   handleChangeActive: React.Dispatch<React.SetStateAction<string>>;
 };
 
-type toysDataType = {
+type ToysDataType = {
   num: string;
   name: string;
   count: string;
@@ -59,23 +59,33 @@ export default function Main({
   //   purchaseYearFilter: { min: '', max: '' },
   //   favoriteFilter: true,
   // });
-
-  function SortArray(a: toysDataType, b: toysDataType): number {
+  // sorts
+  const [sorts, setSorts] = useState<string>(() => {
+    const saved = localStorage.getItem('sorts');
+    const initialValue = saved || undefined;
+    return initialValue || '';
+  });
+  useEffect(() => {
+    localStorage.setItem('sorts', sorts);
+  }, [sorts]);
+  function SortArray(a: ToysDataType, b: ToysDataType): number {
     if (sorts === 'AZ') {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;
       return 0;
-    } else if (sorts === 'ZA') {
+    }
+    if (sorts === 'ZA') {
       if (a.name < b.name) return 1;
       if (a.name > b.name) return -1;
       return 0;
-    } else if (sorts === 'yearAscending') {
-      return Number(a.year) - Number(b.year);
-    } else if (sorts === 'yearDescending') {
-      return Number(b.year) - Number(a.year);
-    } else {
-      return 0;
     }
+    if (sorts === 'yearAscending') {
+      return Number(a.year) - Number(b.year);
+    }
+    if (sorts === 'yearDescending') {
+      return Number(b.year) - Number(a.year);
+    }
+    return 0;
   }
   // Audio
   const [audio] = useState(new Audio());
@@ -113,7 +123,6 @@ export default function Main({
 
   useEffect(() => {
     if (volumeIsActive && activePage === 'ёлка') {
-      console.log(activePage);
       audio.play();
     }
   }, [activePage]);
@@ -121,21 +130,12 @@ export default function Main({
   // search
   const [search, setSearch] = useState<string>(() => {
     const saved = localStorage.getItem('search');
-    const initialValue = saved ? saved : undefined;
+    const initialValue = saved || undefined;
     return initialValue || '';
   });
   useEffect(() => {
     localStorage.setItem('search', search);
   }, [search]);
-  // sorts
-  const [sorts, setSorts] = useState<string>(() => {
-    const saved = localStorage.getItem('sorts');
-    const initialValue = saved ? saved : undefined;
-    return initialValue || '';
-  });
-  useEffect(() => {
-    localStorage.setItem('sorts', sorts);
-  }, [sorts]);
   // shapeFilter
   const [shapeFilter, setShapeFilter] = useState<Array<string>>(() => {
     const saved = localStorage.getItem('shapeFilter');
@@ -184,7 +184,7 @@ export default function Main({
   // favoriteFilter
   const [favoriteFilter, setFavoriteFilter] = useState<boolean>(() => {
     const saved = localStorage.getItem('favoriteFilter');
-    const initialValue = saved === 'true' ? true : false;
+    const initialValue = saved === 'true';
     return initialValue || false;
   });
   const [selectedFavoriteFilter, setSelectedFavoriteFilter] = useState<Array<string>>(() => {
@@ -222,34 +222,34 @@ export default function Main({
     localStorage.setItem('purchaseYearValues', purchaseYearValues.join());
   }, [purchaseYearValues]);
   const shapeFilterToysData = toysData.filter((toy) => {
-    for (let i = 0; i < shapeFilter.length; i++) {
+    for (let i = 0; i < shapeFilter.length; i += 1) {
       if (toy.shape.includes(shapeFilter[i])) {
         return toy.shape.includes(shapeFilter[i]);
       }
     }
-    return;
+    return false;
   });
   const colorFilterToysData = shapeFilterToysData.filter((toy) => {
-    for (let i = 0; i < colorFilter.length; i++) {
+    for (let i = 0; i < colorFilter.length; i += 1) {
       if (toy.color.includes(colorFilter[i])) {
         return toy.color.includes(colorFilter[i]);
       }
     }
-    return;
+    return false;
   });
   const sizeFilterToysData = colorFilterToysData.filter((toy) => {
-    for (let i = 0; i < sizeFilter.length; i++) {
+    for (let i = 0; i < sizeFilter.length; i += 1) {
       if (toy.size.includes(sizeFilter[i])) {
         return toy.size.includes(sizeFilter[i]);
       }
     }
-    return;
+    return false;
   });
   const favoriteFilterToysData = sizeFilterToysData.filter((toy) => {
     if (favoriteFilter) {
       if (toy.favorite) return toy.favorite;
     } else return true;
-    return;
+    return false;
   });
   const quantityFilterToysData = favoriteFilterToysData.filter(
     (toy) => +toy.count >= quantityValues[0] && +toy.count <= quantityValues[1]

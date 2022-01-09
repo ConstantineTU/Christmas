@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Component, Dispatch, SetStateAction } from 'react';
 
 type Props = {
   bg: Array<string>;
@@ -11,12 +10,12 @@ type Props = {
 };
 
 export default function BgCard(props: Props) {
-  const handleChange = (e) => {
+  const handleChange = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.currentTarget.classList.contains('active')) {
       e.currentTarget.classList.remove('active');
     } else {
       e.currentTarget.classList.add('active');
-      props.bgChosen.setValue(`${e.currentTarget.dataset.src}`);
+      props.bgChosen.setValue(`${String(e.currentTarget.dataset.src)}`);
     }
   };
 
@@ -24,13 +23,13 @@ export default function BgCard(props: Props) {
     <div
       id={`bg-card${props.index}`}
       onClick={handleChange}
-      data-src={props.bg[`${props.index}`]}
+      data-src={String(props.bg[`${props.index}`])}
       className={props.bgChosen.value.includes(props.bg[`${props.index}`]) ? 'bg-card active' : 'bg-card'}
     >
       {
         <div className="bg-card__image-wrap">
           <div className="bg-card__image-container">
-            <img src={props.bg[`${props.index}`]} alt="Изображение игрушки" className="bg-card__image" />
+            <img src={String(props.bg[`${props.index}`])} alt="Изображение игрушки" className="bg-card__image" />
           </div>
         </div>
       }

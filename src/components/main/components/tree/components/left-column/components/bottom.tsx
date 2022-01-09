@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Component, Dispatch, SetStateAction } from 'react';
 
 type Props = {
   trees: Array<string>;
@@ -47,13 +46,13 @@ export default function BottomButtons(props: Props) {
     localStorage.removeItem('colorGarland');
     props.colorGarland.setValue('');
 
-    for (let i = 0; i < toysOnTree.length; i++) {
+    for (let i = 0; i < toysOnTree.length; i += 1) {
       const toy = toysOnTree[i] as HTMLImageElement;
       if (toy.id !== 'image-map') {
-        i--;
-        const selectToyContainer = document.getElementById(`${toy.id.split('-', 1)}`);
+        i -= 1;
+        const selectToyContainer = document.getElementById(`${String(toy.id.split('-', 1))}`);
         selectToyContainer.append(toy);
-        const selectToyCount = document.getElementById(`${toy.id.split('-', 1)}-toysCount`);
+        const selectToyCount = document.getElementById(`${String(toy.id.split('-', 1))}-toysCount`);
         selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
         toy.style.left = 'calc(50% - 24px)';
         toy.style.top = 'calc(50% - 24px)';

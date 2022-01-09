@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Component, Dispatch, SetStateAction } from 'react';
 
 type Props = {
   trees: Array<string>;
@@ -11,12 +10,12 @@ type Props = {
 };
 
 export default function TreeCard(props: Props) {
-  const handleChange = (e) => {
+  const handleChange = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.currentTarget.classList.contains('active')) {
       e.currentTarget.classList.remove('active');
     } else {
       e.currentTarget.classList.add('active');
-      props.treeChosen.setValue(`${e.currentTarget.dataset.src}`);
+      props.treeChosen.setValue(`${String(e.currentTarget.dataset.src)}`);
     }
   };
 
@@ -24,13 +23,13 @@ export default function TreeCard(props: Props) {
     <div
       id={`tree-card${props.index}`}
       onClick={handleChange}
-      data-src={props.trees[`${props.index}`]}
-      className={props.treeChosen.value.includes(props.trees[`${props.index}`]) ? 'tree-card active' : 'tree-card'}
+      data-src={String(props.trees[`${props.index}`])}
+      className={props.treeChosen.value.includes(props.trees[`${(props.index)}`]) ? 'tree-card active' : 'tree-card'}
     >
       {
         <div className="tree-card__image-wrap">
           <div className="tree-card__image-container">
-            <img src={props.trees[`${props.index}`]} alt="Изображение игрушки" className="tree-card__image" />
+            <img src={String(props.trees[`${props.index}`])} alt="Изображение игрушки" className="tree-card__image" />
           </div>
         </div>
       }

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Component, Fragment } from 'react';
+import { Component, ReactNode } from 'react';
 import './footer.scss';
 
 class Footer extends Component {
-  render(): React.ReactNode {
+  render(): ReactNode {
     return (
       <footer className="footer">
         <div className="footer-container">

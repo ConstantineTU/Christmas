@@ -173,6 +173,18 @@
       transition: background 450ms ease-in;
       appearance: none;
       cursor: ew-resize;
+      &-thumb {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+          radial-gradient(57.23% 248.2% at 107.17% 104.02%, rgba(34, 153, 235, 0.92) 0%, rgba(34, 153, 235, 0.07) 100%),
+          radial-gradient(104.22% 230.94% at -4.22% 0%, #24c5db 3.62%, rgba(36, 197, 219, 0.26) 55.1%);
+        border: 1px solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       &::-webkit-slider-thumb {
         width: 15px;
         height: 15px;
@@ -246,9 +258,10 @@
       height: 24px;
       background: none;
     }
-    &__label {
+    &__button {
       display: inline-block;
       position: relative;
+      background: transparent;
       cursor: pointer;
       height: 24px;
       width: 24px;
@@ -256,7 +269,6 @@
       font-size: 18px;
       line-height: 24px;
       letter-spacing: 0em;
-      padding: 0px 0px 0px 41px;
       text-align: left;
       margin: 0px 0px 10px 0px;
       &::after {
@@ -296,18 +308,18 @@
         background-position: center center;
       }
     }
-    &__label.white.active::after {
+    &__button.white.active::after {
       background: #fff url("../../../../../../assets/img/svg/checked.svg") no-repeat;
       background-size: 18px;
       background-position: center center;
       opacity: 1;
     }
-    &__label.active::after {
+    &__button.active::after {
       background-size: 18px;
       background-position: center center;
       opacity: 1;
     }
-    &__label:hover::after {
+    &__button:hover::after {
       opacity: 1;
     }
   }
@@ -332,7 +344,7 @@
       height: 24px;
       background: none;
     }
-    &__label {
+    &__button {
       display: flex;
       align-items: center;
       position: relative;
@@ -345,6 +357,8 @@
       transition: 0.3s, filter 0.3s;
       text-align: left;
       margin: 0px 15px 0px 0px;
+      background: transparent;
+      color: #fff;
       &:hover {
         opacity: 1;
       }
@@ -378,14 +392,14 @@
         background-position: center center;
       }
     }
-    &__label.active::before {
+    &__button.active::before {
       opacity: 1;
       filter: invert(54%) sepia(32%) saturate(369%) brightness(120%) contrast(86%);
     }
-    &__label:hover::before {
+    &__button:hover::before {
       opacity: 1;
     }
-    &__label.active {
+    &__button.active {
       opacity: 1;
       filter: invert(54%) sepia(32%) saturate(369%) brightness(120%) contrast(86%);
     }
@@ -407,7 +421,7 @@
         justify-content: flex-start;
       }
     }
-    &__label {
+    &__button {
       display: inline-block;
       position: relative;
       cursor: pointer;
@@ -420,10 +434,11 @@
       padding: 0px 0px 0px 41px;
       transition: background 0.3s, color 0.3s;
       text-align: left;
+      background: transparent;
+      color: #fff;
       &::after {
         content: "";
         border-radius: 2px;
-
         position: absolute;
         height: 24px;
         width: 24px;
@@ -433,20 +448,20 @@
         transition: background 0.3s;
       }
     }
-    &__label:hover::after {
+    &__button:hover::after {
       background: #9d8665;
       background-size: 18px;
       background-position: center center;
     }
-    &__label:hover {
+    &__button:hover {
       color: #9d8665;
     }
-    &__label.active::after {
+    &__button.active::after {
       background: #9d8665 url("../../../../../../assets/img/svg/checked.svg") no-repeat;
       background-size: 18px;
       background-position: center center;
     }
-    &__label.active {
+    &__button.active {
       color: #9d8665;
     }
   }

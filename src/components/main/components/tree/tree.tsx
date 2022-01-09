@@ -33,16 +33,16 @@ export default function Tree(props: Props) {
   // TreeChoise
   const [treeChosen, setTreeChosen] = useState<string>(() => {
     const saved = localStorage.getItem('treeChosen');
-    const initialValue = saved ? saved : undefined;
+    const initialValue = saved || undefined;
     return initialValue || trees[0];
   });
   useEffect(() => {
     localStorage.setItem('treeChosen', treeChosen);
   }, [treeChosen]);
-  //BackgrounChoise
+  // BackgrounChoise
   const [bgChosen, setBgChosen] = useState<string>(() => {
     const saved = localStorage.getItem('bgChosen');
-    const initialValue = saved ? saved : undefined;
+    const initialValue = saved || undefined;
     return initialValue || bg[0];
   });
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Tree(props: Props) {
   });
   const [colorGarland, setColorGarland] = useState<string>(() => {
     const saved = localStorage.getItem('colorGarland');
-    const initialValue = saved ? saved : undefined;
+    const initialValue = saved || undefined;
     return initialValue || '';
   });
   useEffect(() => {
@@ -64,20 +64,23 @@ export default function Tree(props: Props) {
     localStorage.setItem('garlandIsOn', String(garlandIsOn));
   }, [colorGarland]);
 
-  const [currentToy, setCurrentToy] = useState<HTMLImageElement>(null);
+  const [currentToy, setCurrentToy] = useState<HTMLImageElement | null>(null);
   const [isArea, setIsArea] = useState<boolean>(false);
-  const mainContainer = useRef(null);
+  const mainContainer = useRef<HTMLMapElement | null>(null);
 
-  function dragEndHandler(e: React.DragEvent<HTMLDivElement>): void {
-    const selectToyContainer = document.getElementById(`${currentToy.id.split('-', 1)}`);
-    const selectToyCount = document.getElementById(`${currentToy.id.split('-', 1)}-toysCount`);
+  console.log(mainContainer);
+  function dragEndHandler(): void {
+    const selectToyContainer = document.getElementById(`${String(currentToy.id.split('-', 1))}`) as HTMLDivElement;
+    const selectToyCount = document.getElementById(
+      `${String(currentToy.id.split('-', 1))}-toysCount`
+    ) as HTMLDivElement;
     selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
   }
 
   const [elementPageXY, setElementPageXY] = useState<Array<number>>([]);
 
   return (
-    <div id="treeSection" className="tree section" onDragEnd={(e) => dragEndHandler(e)}>
+    <div id="treeSection" className="tree section" onDragEnd={() => dragEndHandler()}>
       <ColumnLeft
         trees={trees}
         bg={bg}

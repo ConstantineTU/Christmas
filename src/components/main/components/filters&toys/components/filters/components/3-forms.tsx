@@ -14,24 +14,13 @@ type Props = {
 };
 
 export default function Forms(props: Props) {
-  const toggleActive = (e) => {
-    if (props.selectedShape.value.includes(e.currentTarget.id)) {
-      props.selectedShape.setValue(props.selectedShape.value.filter((toy) => toy !== e.currentTarget.id));
-      e.currentTarget.classList.remove('active');
-    } else {
-      props.selectedShape.value.push(e.currentTarget.id);
-      e.currentTarget.classList.add('active');
-    }
-    handleChange(e);
-  };
-
-  const handleChange = (e) => {
+  const handleChange = () => {
     const shapeButtons = document.querySelectorAll<HTMLButtonElement>('.filters-forms__button');
     const defaultShapes = ['колокольчик', 'шар', 'шишка', 'звезда', 'снежинка', 'фигурка'];
     const selectedShapes = [];
-    for (let shapeButton of shapeButtons) {
-      if (shapeButton.classList.contains('active')) {
-        selectedShapes.push(shapeButton.value);
+    for (let i = 0; i < shapeButtons.length; i += 1) {
+      if (shapeButtons[i].classList.contains('active')) {
+        selectedShapes.push(shapeButtons[i].value);
       }
     }
     if (selectedShapes.length) {
@@ -39,6 +28,17 @@ export default function Forms(props: Props) {
     } else {
       props.shapeFilter.setValue(defaultShapes);
     }
+  };
+
+  const toggleActive = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (props.selectedShape.value.includes(e.currentTarget.id)) {
+      props.selectedShape.setValue(props.selectedShape.value.filter((toy) => toy !== e.currentTarget.id));
+      e.currentTarget.classList.remove('active');
+    } else {
+      props.selectedShape.value.push(e.currentTarget.id);
+      e.currentTarget.classList.add('active');
+    }
+    handleChange();
   };
 
   return (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, Component } from 'react';
 import Images from '../../../../../../../assets/img/toys/images';
 
 type Props = {
@@ -21,43 +21,50 @@ type Props = {
   };
 };
 
-const getFavoriteCard = (e, setFavoriteToys, favoriteToys, selectedToys) => {
-  if (selectedToys.value.includes(e.currentTarget.id)) {
+const getFavoriteCard = (
+  e: React.MouseEvent<HTMLDivElement>,
+  setFavoriteToys: Props['setFavoriteToys'],
+  favoriteToys: Props['favoriteToys'],
+  selectedToys: Props['selectedToys']
+) => {
+  if (selectedToys.value.includes(String(e.currentTarget.id))) {
     selectedToys.setValue(selectedToys.value.filter((toy) => toy !== e.currentTarget.id));
     e.currentTarget.classList.remove('active');
     setFavoriteToys(favoriteToys - 1);
+  } else if (favoriteToys >= 20) {
+    window.alert('Извините, все слоты заполнены');
   } else {
-    if (favoriteToys >= 20) {
-      alert('Извините, все слоты заполнены');
-    } else {
-      selectedToys.value.push(e.currentTarget.id);
-      e.currentTarget.classList.add('active');
-      setFavoriteToys(favoriteToys + 1);
-    }
+    selectedToys.value.push(e.currentTarget.id);
+    e.currentTarget.classList.add('active');
+    setFavoriteToys(favoriteToys + 1);
   }
 };
 
-export default function CardItem({ data, favoriteToys, setFavoriteToys, selectedToys }: Props) {
-  return (
-    <div
-      id={data.num}
-      onClick={(e) => getFavoriteCard(e, setFavoriteToys, favoriteToys, selectedToys)}
-      className={selectedToys.value.includes(data.num) ? 'card__item active' : 'card__item'}
-    >
-      {<h1 className="card__title">{data.name}</h1>}
-      {
-        <div className="card__image-wrap">
-          <div className="card__image-container">
-            <img src={Images[data.num]} alt="Изображение игрушки" className="card__image" />
+export default class CardItem extends Component<Props> {
+  render() {
+    return (
+      <div
+        id={this.props.data.num}
+        onClick={(e) =>
+          getFavoriteCard(e, this.props.setFavoriteToys, this.props.favoriteToys, this.props.selectedToys)
+        }
+        className={this.props.selectedToys.value.includes(this.props.data.num) ? 'card__item active' : 'card__item'}
+      >
+        {<h1 className="card__title">{this.props.data.name}</h1>}
+        {
+          <div className="card__image-wrap">
+            <div className="card__image-container">
+              <img src={String(Images[this.props.data.num])} alt="Изображение игрушки" className="card__image" />
+            </div>
           </div>
-        </div>
-      }
-      {<p className="card__text">Количество: {data.count}</p>}
-      {<p className="card__text">Год покупки: {data.year}</p>}
-      {<p className="card__text">Форма игрушки: {data.shape}</p>}
-      {<p className="card__text">Цвет игрушки: {data.color}</p>}
-      {<p className="card__text">Размер игрушки: {data.size}</p>}
-      {<p className="card__text">Любимая: {data.favorite ? 'да' : 'нет'}</p>}
-    </div>
-  );
+        }
+        {<p className="card__text">Количество: {this.props.data.count}</p>}
+        {<p className="card__text">Год покупки: {this.props.data.year}</p>}
+        {<p className="card__text">Форма игрушки: {this.props.data.shape}</p>}
+        {<p className="card__text">Цвет игрушки: {this.props.data.color}</p>}
+        {<p className="card__text">Размер игрушки: {this.props.data.size}</p>}
+        {<p className="card__text">Любимая: {this.props.data.favorite ? 'да' : 'нет'}</p>}
+      </div>
+    );
+  }
 }

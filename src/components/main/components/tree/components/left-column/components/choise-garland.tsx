@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Component, Dispatch, SetStateAction } from 'react';
 
 type Props = {
   colorGarland: {
@@ -13,15 +12,15 @@ type Props = {
 };
 
 export default function Garland(props: Props) {
-  const handleChange = (e) => {
+  const handleChange = (e: React.MouseEvent<HTMLButtonElement>) => {
     const garlandButton = document.querySelectorAll('.garland__button');
 
     if (e.currentTarget.classList.contains('active')) {
-      for (let btn of garlandButton) btn.classList.remove('active');
+      for (let i = 0; i < garlandButton.length; i += 1) garlandButton[i].classList.remove('active');
       props.garlandIsOn.setValue(false);
       props.colorGarland.setValue('');
     } else {
-      for (let btn of garlandButton) btn.classList.remove('active');
+      for (let i = 0; i < garlandButton.length; i += 1) garlandButton[i].classList.remove('active');
       e.currentTarget.classList.add('active');
       props.garlandIsOn.setValue(true);
       props.colorGarland.setValue(e.currentTarget.dataset.color);

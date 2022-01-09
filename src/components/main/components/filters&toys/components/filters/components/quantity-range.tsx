@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction, useState, useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { Range } from 'react-range';
+import * as CSS from 'csstype';
 
 const STEP = 1;
 const MIN = 1;
 const MAX = 12;
+
+interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
 
 type Props = {
   rtl: boolean;
@@ -14,8 +17,18 @@ type Props = {
   };
 };
 
+type PropsRange = {
+  props: {
+    onMouseDown: React.MouseEventHandler<HTMLDivElement>;
+    onTouchStart: React.TouchEventHandler<HTMLDivElement>;
+    style: Style;
+    ref: React.LegacyRef<HTMLDivElement | null>;
+  };
+  children: Element;
+};
+
 const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
-  const handleChangeBackground = (value) => {};
+  const handleChangeBackground = () => {};
   useEffect(() => {
     const quantityRange = document.getElementById('quantityRange');
     const minValue = ((100 / (MAX - MIN)) * (quantityValues.value[1] - MIN)).toFixed(0);
@@ -41,9 +54,9 @@ const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
         rtl={rtl}
         onChange={(value) => {
           quantityValues.setValue(value);
-          handleChangeBackground(value);
+          handleChangeBackground();
         }}
-        renderTrack={({ props, children }) => (
+        renderTrack={({ props, children }: PropsRange) => (
           <div
             onMouseDown={props.onMouseDown}
             onTouchStart={props.onTouchStart}
@@ -66,22 +79,7 @@ const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
           </div>
         )}
         renderThumb={({ props, isDragged }) => (
-          <div
-            {...props}
-            style={{
-              ...props.style,
-              height: '20px',
-              width: '20px',
-              borderRadius: '50%',
-              background: `linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-              radial-gradient(57.23% 248.2% at 107.17% 104.02%, rgba(34, 153, 235, 0.92) 0%, rgba(34, 153, 235, 0.07) 100%),
-              radial-gradient(104.22% 230.94% at -4.22% 0%, #24c5db 3.62%, rgba(36, 197, 219, 0.26) 55.1%)`,
-              border: '1px solid',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
+          <div className="filters-quantity-range-thumb" {...props}>
             <div
               style={{
                 height: '4px',

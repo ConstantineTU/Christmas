@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, Component } from 'react';
 import Images from '../../../../../../../../assets/img/toys/images';
 
 type Props = {
@@ -28,66 +28,67 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  mainContainer: React.MutableRefObject<any>;
+  mainContainer: React.MutableRefObject<HTMLMapElement | null>;
   elementPageXY: {
     value: number[];
     setValue: React.Dispatch<React.SetStateAction<number[]>>;
   };
 };
 
-export default function CardItem(props: Props) {
-  function dragStartHandler(e: React.DragEvent<HTMLImageElement>): void {
-    props.currentToy.setValue(e.currentTarget);
-    props.isArea.setValue(false);
+export default class CardItem extends Component<Props> {
+  dragStartHandler(e: React.DragEvent<HTMLImageElement>): void {
+    this.props.currentToy.setValue(e.currentTarget);
+    this.props.isArea.setValue(false);
   }
 
-  function dragEndHandler(e: React.DragEvent<HTMLImageElement>): void {
-    if (props.isArea.value && props.currentToy.value) {
+  dragEndHandler(): void {
+    if (this.props.isArea.value && this.props.currentToy.value) {
       const imageMap = document.getElementById('image-map');
-      imageMap.after(props.currentToy.value);
-      props.currentToy.value.style.left =
-        props.elementPageXY.value[0] - props.mainContainer.current.getBoundingClientRect().left - 24 + 'px';
-      props.currentToy.value.style.top =
-        props.elementPageXY.value[1] -
-        props.mainContainer.current.getBoundingClientRect().top -
+      imageMap.after(this.props.currentToy.value);
+      this.props.currentToy.value.style.left = `${this.props.elementPageXY.value[0] - this.props.mainContainer.current.getBoundingClientRect().left - 24
+        }px`;
+      this.props.currentToy.value.style.top = `${this.props.elementPageXY.value[1] -
+        this.props.mainContainer.current.getBoundingClientRect().top -
         window.scrollY -
-        24 +
-        'px';
+        24
+        }px`;
     } else {
-      const selectToyContainer = document.getElementById(`${props.currentToy.value.id.split('-', 1)}`);
-      selectToyContainer.append(props.currentToy.value);
+      const selectToyContainer = document.getElementById(`${String(this.props.currentToy.value.id.split('-', 1))}`) as HTMLDivElement;
+      selectToyContainer.append(this.props.currentToy.value);
 
-      props.currentToy.value.style.left = 'calc(50% - 24px)';
-      props.currentToy.value.style.top = 'calc(50% - 24px)';
+      this.props.currentToy.value.style.left = 'calc(50% - 24px)';
+      this.props.currentToy.value.style.top = 'calc(50% - 24px)';
     }
   }
 
-  return (
-    <div id={`toyContainer${props.index}`} className={'column-card__item'}>
-      {
-        <div className="column-card__image-wrap">
-          <div id={`${props.index}`} className="column-card__image-container">
-            {[...Array(Number(props.data.count))].map((data, index) => {
-              return (
-                <img
-                  key={index}
-                  src={Images[props.data.num]}
-                  id={`${props.index}-${Number(props.data.count) - index}`}
-                  alt="Изображение игрушки"
-                  className="column-card__image"
-                  draggable="true"
-                  onDragStart={(e) => dragStartHandler(e)}
-                  onDragLeave={(e) => dragEndHandler(e)}
-                  onDragEnd={(e) => dragEndHandler(e)}
-                />
-              );
-            })}
-            <div id={`${props.index}-toysCount`} className="column-card__count">
-              {props.data.count}
+  render() {
+    return (
+      <div id={`toyContainer${this.props.index}`} className={'column-card__item'}>
+        {
+          <div className="column-card__image-wrap">
+            <div id={`${this.props.index}`} className="column-card__image-container">
+              {[...Array<undefined[]>(Number(this.props.data.count))].map((data, index) => {
+                return (
+                  <img
+                    key={index}
+                    src={String(Images[this.props.data.num])}
+                    id={`${this.props.index}-${Number(this.props.data.count) - index}`}
+                    alt="Изображение игрушки"
+                    className="column-card__image"
+                    draggable="true"
+                    onDragStart={(e) => this.dragStartHandler(e)}
+                    onDragLeave={() => this.dragEndHandler()}
+                    onDragEnd={() => this.dragEndHandler()}
+                  />
+                );
+              })}
+              <div id={`${this.props.index}-toysCount`} className="column-card__count">
+                {this.props.data.count}
+              </div>
             </div>
           </div>
-        </div>
-      }
-    </div>
-  );
+        }
+      </div>
+    );
+  }
 }

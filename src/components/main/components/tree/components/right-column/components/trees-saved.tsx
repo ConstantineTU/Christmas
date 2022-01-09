@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Component, Dispatch, SetStateAction } from 'react';
 
 type Props = {
   trees: Array<string>;
@@ -15,7 +14,7 @@ export default function TreesSaved(props: Props) {
       {
         <div className="trees-saved__image-wrap">
           <div className="trees-saved__image-container">
-            <img src={props.trees[`${props.index}`]} alt="Изображение игрушки" className="trees-saved__image" />
+            <img src={String(props.trees[`${String(props.index)}`])} alt="Изображение игрушки" className="trees-saved__image" />
           </div>
         </div>
       }
