@@ -54,7 +54,11 @@ export default class CardItem extends Component<Props> {
         {
           <div className="card__image-wrap">
             <div className="card__image-container">
-              <img src={String(Images[this.props.data.num])} alt="Изображение игрушки" className="card__image" />
+              <img
+                src={String(Images[Number(this.props.data.num) - 1])}
+                alt="Изображение игрушки"
+                className="card__image"
+              />
             </div>
           </div>
         }

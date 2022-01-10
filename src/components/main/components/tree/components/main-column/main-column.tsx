@@ -32,10 +32,6 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  currentToy: {
-    value: HTMLImageElement;
-    setValue: React.Dispatch<React.SetStateAction<HTMLImageElement>>;
-  };
   isArea: {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
@@ -51,7 +47,7 @@ export default function ColumnMain(props: Props) {
   const width = 120;
   const count = 4;
 
-  function dragEndHandler(): void { }
+  function dragEndHandler(): void {}
 
   function dragOverHandler(e: React.DragEvent<HTMLAreaElement>): void {
     e.preventDefault();

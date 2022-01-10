@@ -27,12 +27,12 @@ type Props = {
     value: boolean;
     setValue: React.Dispatch<React.SetStateAction<boolean>>;
   };
-  mainContainer: React.MutableRefObject<HTMLElement>;
+  mainContainer: React.MutableRefObject<HTMLElement | null>;
 };
 
 export default function BottomButtons(props: Props) {
   const handleChange = () => {
-    const toysOnTree = props.mainContainer.current.childNodes;
+    const toysOnTree = props.mainContainer.current && props.mainContainer.current.childNodes;
     localStorage.removeItem('snowIsActive');
     props.snowIsActive.setValue(false);
     localStorage.removeItem('volumeIsActive');
@@ -46,16 +46,18 @@ export default function BottomButtons(props: Props) {
     localStorage.removeItem('colorGarland');
     props.colorGarland.setValue('');
 
-    for (let i = 0; i < toysOnTree.length; i += 1) {
-      const toy = toysOnTree[i] as HTMLImageElement;
-      if (toy.id !== 'image-map') {
-        i -= 1;
-        const selectToyContainer = document.getElementById(`${String(toy.id.split('-', 1))}`);
-        selectToyContainer.append(toy);
-        const selectToyCount = document.getElementById(`${String(toy.id.split('-', 1))}-toysCount`);
-        selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
-        toy.style.left = 'calc(50% - 24px)';
-        toy.style.top = 'calc(50% - 24px)';
+    if (toysOnTree) {
+      for (let i = 0; i < toysOnTree.length; i += 1) {
+        const toy = toysOnTree[i] as HTMLImageElement;
+        if (toy.id !== 'image-map') {
+          i -= 1;
+          const selectToyContainer = document.getElementById(`${String(toy.id.split('-', 1))}`) as HTMLDivElement;
+          selectToyContainer.append(toy);
+          const selectToyCount = document.getElementById(`${String(toy.id.split('-', 1))}-toysCount`);
+          if (selectToyCount) selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
+          toy.style.left = 'calc(50% - 24px)';
+          toy.style.top = 'calc(50% - 24px)';
+        }
       }
     }
   };

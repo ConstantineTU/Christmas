@@ -13,7 +13,7 @@ type Props = {
 
 export default function Garland(props: Props) {
   const handleChange = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const garlandButton = document.querySelectorAll('.garland__button');
+    const garlandButton = document.querySelectorAll<HTMLButtonElement>('.garland__button');
 
     if (e.currentTarget.classList.contains('active')) {
       for (let i = 0; i < garlandButton.length; i += 1) garlandButton[i].classList.remove('active');
@@ -23,7 +23,7 @@ export default function Garland(props: Props) {
       for (let i = 0; i < garlandButton.length; i += 1) garlandButton[i].classList.remove('active');
       e.currentTarget.classList.add('active');
       props.garlandIsOn.setValue(true);
-      props.colorGarland.setValue(e.currentTarget.dataset.color);
+      if (e.currentTarget.dataset.color) props.colorGarland.setValue(e.currentTarget.dataset.color);
     }
   };
 

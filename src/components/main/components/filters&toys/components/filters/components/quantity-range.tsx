@@ -22,15 +22,16 @@ type PropsRange = {
     onMouseDown: React.MouseEventHandler<HTMLDivElement>;
     onTouchStart: React.TouchEventHandler<HTMLDivElement>;
     style: Style;
-    ref: React.LegacyRef<HTMLDivElement | null>;
+    ref: React.LegacyRef<HTMLDivElement>;
   };
-  children: Element;
+  children?: HTMLDivElement;
+  isDragged?: React.DragEventHandler<HTMLDivElement>;
 };
 
 const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
   const handleChangeBackground = () => {};
   useEffect(() => {
-    const quantityRange = document.getElementById('quantityRange');
+    const quantityRange = document.getElementById('quantityRange') as HTMLDivElement;
     const minValue = ((100 / (MAX - MIN)) * (quantityValues.value[1] - MIN)).toFixed(0);
     const maxValue = ((100 / (MAX - MIN)) * (MAX - MIN - (MAX - quantityValues.value[0]))).toFixed(0);
     quantityRange.style.background = `rgba(0, 0, 0, 0) linear-gradient(to right, rgb(196, 196, 196) 0%, rgb(196, 196, 196)
@@ -52,7 +53,7 @@ const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
         min={MIN}
         max={MAX}
         rtl={rtl}
-        onChange={(value) => {
+        onChange={(value: number[]) => {
           quantityValues.setValue(value);
           handleChangeBackground();
         }}
@@ -66,19 +67,12 @@ const QuantityTwoThumbs = ({ rtl, quantityValues }: Props) => {
               width: '100%',
             }}
           >
-            <div
-              ref={props.ref}
-              className="filters-quantity-range"
-              id="quantityRange"
-              // style={{
-              //   background: rangeBackground,
-              // }}
-            >
+            <div ref={props.ref} className="filters-quantity-range" id="quantityRange">
               {children}
             </div>
           </div>
         )}
-        renderThumb={({ props, isDragged }) => (
+        renderThumb={({ props, isDragged }: PropsRange) => (
           <div className="filters-quantity-range-thumb" {...props}>
             <div
               style={{

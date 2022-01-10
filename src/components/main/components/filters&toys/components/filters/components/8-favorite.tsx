@@ -15,13 +15,13 @@ type Props = {
 
 export default function Favorite(props: Props) {
   const handleChange = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (props.selectedFavoriteFilter.value.includes(e.currentTarget.dataset.id)) {
+    if (e.currentTarget.dataset.id && props.selectedFavoriteFilter.value.includes(e.currentTarget.dataset.id)) {
       props.selectedFavoriteFilter.setValue(
         props.selectedFavoriteFilter.value.filter((toy) => toy !== e.currentTarget.dataset.id)
       );
       e.currentTarget.classList.remove('active');
       props.favoriteFilter.setValue(false);
-    } else {
+    } else if (e.currentTarget.dataset.id) {
       props.selectedFavoriteFilter.value.push(e.currentTarget.dataset.id);
       e.currentTarget.classList.add('active');
       props.favoriteFilter.setValue(true);

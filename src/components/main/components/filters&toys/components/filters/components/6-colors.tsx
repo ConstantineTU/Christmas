@@ -17,10 +17,10 @@ export default function Colors(props: Props) {
   const handleChange = () => {
     const colorButtons = document.querySelectorAll<HTMLLabelElement>('.filters-colors__button');
     const defaultColors = ['белый', 'желтый', 'красный', 'синий', 'зелёный'];
-    const selectedColors = [];
+    const selectedColors: string[] = [];
     for (let i = 0; i < colorButtons.length; i += 1) {
       if (colorButtons[i].classList.contains('active')) {
-        selectedColors.push(colorButtons[i].dataset.value);
+        selectedColors.push(String(colorButtons[i].dataset.value));
       }
     }
     if (selectedColors.length) {
@@ -31,11 +31,11 @@ export default function Colors(props: Props) {
   };
 
   const toggleActive = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (props.selectedColors.value.includes(e.currentTarget.dataset.id)) {
+    if (props.selectedColors.value.includes(String(e.currentTarget.dataset.id))) {
       props.selectedColors.setValue(props.selectedColors.value.filter((toy) => toy !== e.currentTarget.dataset.id));
       e.currentTarget.classList.remove('active');
     } else {
-      props.selectedColors.value.push(e.currentTarget.dataset.id);
+      props.selectedColors.value.push(String(e.currentTarget.dataset.id));
       e.currentTarget.classList.add('active');
     }
     handleChange();

@@ -15,12 +15,12 @@ type Props = {
 
 export default function Size(props: Props) {
   const handleChange = () => {
-    const sizeButtons = document.querySelectorAll<HTMLLabelElement>('.filters-size__button');
+    const sizeButtons = document.querySelectorAll<HTMLButtonElement>('.filters-size__button');
     const defaultCizes = ['большой', 'средний', 'малый'];
-    const selectedSizes = [];
+    const selectedSizes: string[] = [];
     for (let i = 0; i < sizeButtons.length; i += 1) {
       if (sizeButtons[i].classList.contains('active')) {
-        selectedSizes.push(sizeButtons[i].dataset.value);
+        selectedSizes.push(String(sizeButtons[i].dataset.value));
       }
     }
     if (selectedSizes.length) {
@@ -31,11 +31,11 @@ export default function Size(props: Props) {
   };
 
   const toggleActive = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (props.selectedSizes.value.includes(e.currentTarget.dataset.id)) {
+    if (props.selectedSizes.value.includes(String(e.currentTarget.dataset.id))) {
       props.selectedSizes.setValue(props.selectedSizes.value.filter((toy) => toy !== e.currentTarget.dataset.id));
       e.currentTarget.classList.remove('active');
     } else {
-      props.selectedSizes.value.push(e.currentTarget.dataset.id);
+      props.selectedSizes.value.push(String(e.currentTarget.dataset.id));
       e.currentTarget.classList.add('active');
     }
     handleChange();

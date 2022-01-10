@@ -20,8 +20,8 @@ type Props = {
     setValue: React.Dispatch<React.SetStateAction<string[]>>;
   };
   currentToy: {
-    value: HTMLImageElement;
-    setValue: React.Dispatch<React.SetStateAction<HTMLImageElement>>;
+    value: HTMLImageElement | null;
+    setValue: React.Dispatch<React.SetStateAction<HTMLImageElement | null>>;
   };
   isArea: {
     value: boolean;

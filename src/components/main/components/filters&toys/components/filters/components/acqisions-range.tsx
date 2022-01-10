@@ -18,9 +18,10 @@ type PropsRange = {
     onMouseDown: React.MouseEventHandler<HTMLDivElement>;
     onTouchStart: React.TouchEventHandler<HTMLDivElement>;
     style: Style;
-    ref: React.LegacyRef<HTMLDivElement | null>;
+    ref: React.LegacyRef<HTMLDivElement>;
   };
-  children: Element;
+  children?: HTMLDivElement;
+  isDragged?: React.DragEventHandler<HTMLDivElement>;
 };
 
 const STEP = 1;
@@ -30,7 +31,7 @@ const MAX = 2021;
 const AcquisitionsTwoThumbs = ({ rtl, purchaseYearValues }: Props) => {
   const handleChangeBackground = () => {};
   useEffect(() => {
-    const acquisitionsRange = document.getElementById('acquisitionsRange');
+    const acquisitionsRange = document.getElementById('acquisitionsRange') as HTMLDivElement;
     const minValue = ((100 / (MAX - MIN)) * (purchaseYearValues.value[1] - MIN)).toFixed(0);
     const maxValue = ((100 / (MAX - MIN)) * (MAX - MIN - (MAX - purchaseYearValues.value[0]))).toFixed(0);
     acquisitionsRange.style.background = `rgba(0, 0, 0, 0) linear-gradient(to right, rgb(196, 196, 196) 0%, rgb(196, 196, 196)
@@ -52,7 +53,7 @@ const AcquisitionsTwoThumbs = ({ rtl, purchaseYearValues }: Props) => {
         min={MIN}
         max={MAX}
         rtl={rtl}
-        onChange={(value) => {
+        onChange={(value: number[]) => {
           purchaseYearValues.setValue(value);
           handleChangeBackground();
         }}
@@ -71,7 +72,7 @@ const AcquisitionsTwoThumbs = ({ rtl, purchaseYearValues }: Props) => {
             </div>
           </div>
         )}
-        renderThumb={({ props, isDragged }) => (
+        renderThumb={({ props, isDragged }: PropsRange) => (
           <div {...props} className="filters-quantity-range-thumb">
             <div
               style={{

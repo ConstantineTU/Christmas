@@ -23,13 +23,17 @@ export default function BgCard(props: Props) {
     <div
       id={`bg-card${props.index}`}
       onClick={handleChange}
-      data-src={String(props.bg[`${props.index}`])}
-      className={props.bgChosen.value.includes(props.bg[`${props.index}`]) ? 'bg-card active' : 'bg-card'}
+      data-src={String(props.bg[Number(`${props.index}`)])}
+      className={props.bgChosen.value.includes(props.bg[Number(`${props.index}`)]) ? 'bg-card active' : 'bg-card'}
     >
       {
         <div className="bg-card__image-wrap">
           <div className="bg-card__image-container">
-            <img src={String(props.bg[`${props.index}`])} alt="Изображение игрушки" className="bg-card__image" />
+            <img
+              src={String(props.bg[Number(`${props.index}`)])}
+              alt="Изображение игрушки"
+              className="bg-card__image"
+            />
           </div>
         </div>
       }

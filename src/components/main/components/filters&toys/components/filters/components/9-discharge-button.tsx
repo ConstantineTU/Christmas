@@ -41,9 +41,9 @@ type Props = {
 
 export default function DischargeButton(props: Props) {
   const handleChangeReset = () => {
-    const favoriteToysLabel = document.getElementById('favoriteToysLabel');
-    const quantityRange = document.getElementById('quantityRange');
-    const acquisitionsRange = document.getElementById('acquisitionsRange');
+    const favoriteToysLabel = document.getElementById('favoriteToysLabel') as HTMLButtonElement;
+    const quantityRange = document.getElementById('quantityRange') as HTMLDivElement;
+    const acquisitionsRange = document.getElementById('acquisitionsRange') as HTMLDivElement;
     const sizeButtons = document.querySelectorAll<HTMLButtonElement>('.filters-size__button');
     const colorButtons = document.querySelectorAll<HTMLButtonElement>('.filters-colors__button');
     const shapeButtons = document.querySelectorAll<HTMLButtonElement>('.filters-forms__button');

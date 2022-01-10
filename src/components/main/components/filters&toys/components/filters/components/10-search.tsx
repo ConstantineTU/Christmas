@@ -16,12 +16,12 @@ export default function Search(props: Props) {
   };
 
   useEffect(() => {
-    const searchInput = document.getElementById('search');
+    const searchInput = document.getElementById('search') as HTMLInputElement;
     searchInput.focus();
   }, [props.activePage]);
 
   const resetSearch = () => {
-    const searchInput = document.getElementById('search');
+    const searchInput = document.getElementById('search') as HTMLInputElement;
     props.search.setValue('');
     searchInput.focus();
   };

@@ -33,19 +33,17 @@ export default function TopButtons(props: Props) {
     }
   };
   const snowBtn = useRef<HTMLButtonElement | null>(null);
-  useEffect(
-    () =>
-      props.snowIsActive.value ? snowBtn.current.classList.add('active') : snowBtn.current.classList.remove('active'),
-    [props.snowIsActive]
-  );
+  useEffect(() => {
+    if (snowBtn.current && props.snowIsActive.value) {
+      snowBtn.current.classList.add('active');
+    } else if (snowBtn.current) snowBtn.current.classList.remove('active');
+  }, [props.snowIsActive]);
   const volumeBtn = useRef<HTMLButtonElement | null>(null);
-  useEffect(
-    () =>
-      props.volumeIsActive.value
-        ? volumeBtn.current.classList.add('active')
-        : volumeBtn.current.classList.remove('active'),
-    [props.volumeIsActive]
-  );
+  useEffect(() => {
+    if (volumeBtn.current && props.volumeIsActive.value) {
+      volumeBtn.current.classList.add('active');
+    } else if (volumeBtn.current) volumeBtn.current.classList.remove('active');
+  }, [props.volumeIsActive]);
   return (
     <div className="column-left__top-buttons">
       <div className="column-left-wrap">

@@ -66,13 +66,13 @@ export default function Tree(props: Props) {
 
   const [currentToy, setCurrentToy] = useState<HTMLImageElement | null>(null);
   const [isArea, setIsArea] = useState<boolean>(false);
-  const mainContainer = useRef<HTMLMapElement | null>(null);
+  const mainContainer = useRef<HTMLMapElement>(null);
 
   console.log(mainContainer);
   function dragEndHandler(): void {
-    const selectToyContainer = document.getElementById(`${String(currentToy.id.split('-', 1))}`) as HTMLDivElement;
+    const selectToyContainer = document.getElementById(`${String(currentToy?.id.split('-', 1))}`) as HTMLDivElement;
     const selectToyCount = document.getElementById(
-      `${String(currentToy.id.split('-', 1))}-toysCount`
+      `${String(currentToy?.id.split('-', 1))}-toysCount`
     ) as HTMLDivElement;
     selectToyCount.textContent = String(selectToyContainer.childNodes.length - 1);
   }
@@ -101,7 +101,6 @@ export default function Tree(props: Props) {
         bgChosen={{ value: bgChosen, setValue: setBgChosen }}
         colorGarland={{ value: colorGarland, setValue: setColorGarland }}
         garlandIsOn={{ value: garlandIsOn, setValue: setGarlandIsOn }}
-        currentToy={{ value: currentToy, setValue: setCurrentToy }}
         isArea={{ value: isArea, setValue: setIsArea }}
         mainContainer={mainContainer}
         elementPageXY={{ value: elementPageXY, setValue: setElementPageXY }}
