@@ -1,4 +1,4 @@
-# Project link [Christmas](https://rolling-scopes-school.github.io/constantinetu-JSFE2021Q3/christmas-task-part2/) 
+# Project link [Christmas](https://constantinetu.github.io/Christmas/) 
 ## (Desktop and mobile (320px) version)
 
 ### It's a game called grandma's toys. Your task is to choose toys, you can sort them by year of purchase and name, as well as filter by shape, color, year of purchase, size and favorite grandmother toys . Next, you can hang your chosen toys on the tree, you can also choose a tree and background, turn on music and snow.
