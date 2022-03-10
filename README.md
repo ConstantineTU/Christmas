@@ -1,5 +1,6 @@
 # Project link [Christmas](https://constantinetu-christmas.netlify.app/) 
 ## (Desktop and mobile (320px) version)
+![](https://raw.githubusercontent.com/ConstantineTU/Portfolio/main/Christmas2.webp)
 
 ### It's a game called grandma's toys. Your task is to choose toys, you can sort them by year of purchase and name, as well as filter by shape, color, year of purchase, size and favorite grandmother toys . Next, you can hang your chosen toys on the tree, you can also choose a tree and background, turn on music and snow.
 
